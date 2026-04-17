@@ -3,7 +3,21 @@ class MovableObject {
     y;
     image;
 
-    idle(){
-        console.log("idle");
+    idle(path){
+        this.image = new Image();
+        this.image.src = path;
+    }
+
+    walkRight(){
+
+    }
+    walkLeft(){
+
+    }
+    jump(){
+
+    }
+    jumpLoop(){
+
     }
 }
