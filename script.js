@@ -1,6 +1,5 @@
 let canvas;
 let level;
-//let character = new Player();
 
 function init(){
     canvas = document.getElementById('game_canvas');
