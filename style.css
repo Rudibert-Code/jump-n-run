@@ -3,10 +3,11 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: rgb(23, 17, 64);
 }
 
 canvas{
-    width: 720px;
-    height: 480px;
+    width: 1080px;
+    height: 720px;
     background-color: rgb(62, 50, 91);
 }
