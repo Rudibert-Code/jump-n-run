@@ -1,10 +1,10 @@
 let canvas;
-let ctx;
-let character = new Player();
+let level;
+//let character = new Player();
 
 function init(){
     canvas = document.getElementById('game_canvas');
-    ctx = canvas.getContext('2d');
+    level = new Level(canvas);
 
-    console.log("character is ", character);
+    console.log("character is ", level.player);
 }

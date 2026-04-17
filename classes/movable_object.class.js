@@ -1,6 +1,6 @@
 class MovableObject {
-    x;
-    y;
+    x = 540;
+    y = 360;
     image;
 
     idle(path){
