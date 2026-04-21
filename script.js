@@ -13,5 +13,5 @@ function init(){
         //    ctx.drawImage(charcater, 20, 20, 50, 50);
         //}, 2000);
     
-    console.log("My character is " , world.charcater);
+    console.log("My character is " , world.character);
 }

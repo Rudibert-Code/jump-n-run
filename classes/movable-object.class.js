@@ -1,6 +1,8 @@
 class MovableObject{
     position_x = 200;
     position_y = 200;
+    height = 100;
+    width = 100;
     img;
 
 
