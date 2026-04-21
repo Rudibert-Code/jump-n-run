@@ -20,6 +20,13 @@ class World{
 
         this.ctx.drawImage(this.character.img, this.character.position_x, this.character.position_y, this.character.width, this.character.height);
         
+
+        // führen den befehel für jedes element in dem array einmal aus
+        this.enemies.forEach(enemy =>{
+            this.ctx.drawImage(enemy.img, enemy.position_x, enemy.position_y, enemy.width, enemy.height);
+        });
+
+        
         // ruft draw methode nach ausführung erneut auf / "this." wird in functionen innerhalb einer class-methode nicht akzeptier? 
         let self = this;
         requestAnimationFrame(function(){
