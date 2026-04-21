@@ -36,6 +36,11 @@ class World{
         this.ctx.drawImage(this.BG2.img, this.BG2.position_x, this.BG2.position_y, this.BG2.width, this.BG2.height);
 
 
+        this.platform.forEach(elemnts =>{
+            this.ctx.drawImage(elemnts.img, elemnts.position_x, elemnts.position_y, elemnts.width, elemnts.height);
+        });
+
+
         this.ctx.drawImage(this.character.img, this.character.position_x, this.character.position_y, this.character.width, this.character.height);
         
 
