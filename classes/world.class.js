@@ -5,6 +5,9 @@ class World{
         new EnemyTank(),
         new EnemyTank(),
     ];
+    levelDeko = [
+        new DekoSky(),
+    ];
 
     canvas;
     ctx;
@@ -26,7 +29,11 @@ class World{
             this.ctx.drawImage(enemy.img, enemy.position_x, enemy.position_y, enemy.width, enemy.height);
         });
 
-        
+        this.levelDeko.forEach(rocks =>{
+            this.ctx.drawImage(rocks.img, rocks.position_x, rocks.position_y, rocks.width, rocks.height);
+        });
+
+
         // ruft draw methode nach ausführung erneut auf / "this." wird in functionen innerhalb einer class-methode nicht akzeptier? 
         let self = this;
         requestAnimationFrame(function(){
