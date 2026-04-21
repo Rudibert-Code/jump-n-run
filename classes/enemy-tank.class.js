@@ -1,3 +1,3 @@
-class EnemyTank{
-    
+class EnemyTank extends MovableObject{
+
 }

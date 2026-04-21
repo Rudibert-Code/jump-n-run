@@ -1,3 +1,3 @@
-class EnemyHover{
-    
+class EnemyHover extends MovableObject{
+
 }
