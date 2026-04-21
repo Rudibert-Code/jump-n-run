@@ -1,5 +1,9 @@
 class Character extends MovableObject{
 
+    constructor(){
+        super().loadImage('./assets/player/idle/0.png');
+    }
+
     jump(){
 
     }
@@ -7,6 +11,6 @@ class Character extends MovableObject{
 
     }
     fire(){
-        
+
     }
 }
