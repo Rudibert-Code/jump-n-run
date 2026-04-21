@@ -1,6 +1,12 @@
 let canvas;
 let ctx;
-let charcater = new MovableObject();
+let charcater = new Character();
+
+let enemies = [
+    new EnemyTank(),
+    new EnemyTank(),
+    new EnemyTank(),
+];
 
 function init(){
     canvas = document.getElementById('game_canvas');
