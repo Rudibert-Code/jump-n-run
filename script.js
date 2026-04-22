@@ -4,7 +4,7 @@ let keyboard;
 
 function init(){
     canvas = document.getElementById('game_canvas');
-    world = new World(canvas);
+    world = new World(canvas, keyboard);
     keyboard = new Keyboard();
     
     // Nötig um Positionen von Elementen auf der Canvas zu steuern

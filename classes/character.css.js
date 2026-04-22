@@ -19,6 +19,8 @@ class Character extends MovableObject{
         './assets/player/idle/15.png',
     ];
 
+    world;
+
     constructor(){
         super().loadImage('./assets/player/idle/0.png');
         this.loadImages(this.img_idle);
@@ -27,6 +29,9 @@ class Character extends MovableObject{
     }
 
     animation(){
+
+        // steuerung durch eventlistener : if (this.world.keyboard.rigth){...}
+
         setInterval(() => {
             // % = mathematischer rest ... bspl: 5 % 15 > 0 rest 5 > 15 kommt 0 mal in 5 vor, bleiben 5.
             // % => 1, 2, 3, 4, ... 13, 14, 15, 0, 1, 3 etc. loop  

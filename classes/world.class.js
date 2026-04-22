@@ -21,12 +21,19 @@ class World{
     FG = new FG();
 
     canvas;
+    keyboard;
     ctx;
 
-    constructor(canvas){
+    constructor(canvas, keyboard){
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
+        this.keyboard = keyboard;
+        this.setWorld();
         this.draw();
+    }
+
+    setWorld(){
+        this.character.world = this;
     }
 
     draw(){
