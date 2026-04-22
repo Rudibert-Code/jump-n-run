@@ -2,13 +2,16 @@ class World{
     character = new Character();
     enemies = [
         new EnemyTank(),
-        new EnemyTank(),
-        new EnemyTank(),
+        new EnemyHover(),
     ];
     levelDeko = [
         new DekoSky(),
     ];
     platform = [
+        new Platform(),
+        new Platform(),
+        new Platform(),
+        new Platform(),
         new Platform(),
     ];
 
@@ -35,10 +38,17 @@ class World{
         this.ctx.drawImage(this.BG1.img, this.BG1.position_x, this.BG1.position_y, this.BG1.width, this.BG1.height);
         this.ctx.drawImage(this.BG2.img, this.BG2.position_x, this.BG2.position_y, this.BG2.width, this.BG2.height);
 
-
         this.platform.forEach(elemnts =>{
             this.ctx.drawImage(elemnts.img, elemnts.position_x, elemnts.position_y, elemnts.width, elemnts.height);
         });
+
+        this.levelDeko.forEach(rock =>{
+            this.ctx.drawImage(rock.img, rock.position_x, rock.position_y, rock.width, rock.height);
+        });
+        //let box = this.platform;
+        //for (let index = 0; index < box.length; index++) { 
+        //    this.ctx.drawImage(box.img, box.position_x + (box.width * index), box.position_y, box.width, box.height);  
+        //}
 
 
         this.ctx.drawImage(this.character.img, this.character.position_x, this.character.position_y, this.character.width, this.character.height);
