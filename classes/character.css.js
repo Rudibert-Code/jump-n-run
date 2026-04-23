@@ -56,6 +56,7 @@ class Character extends MovableObject{
     ];
 
     world;
+    coolDown = 0;
 
     constructor(){
         super().loadImage('./assets/player/idle/0.png');
@@ -74,6 +75,7 @@ class Character extends MovableObject{
             this.position_y += 30;
             if (this.position_y >= 500) {
                 this.position_y = 500;
+                this.coolDown--;
             }
 
             if (this.world.keyboard.right || this.world.keyboard.left) {
@@ -87,7 +89,9 @@ class Character extends MovableObject{
                     this.position_x -= 8;
                 }
             } else 
-                if (this.world.keyboard.jump && this.position_y >= 500) { 
+                if (this.world.keyboard.jump && this.coolDown <= 0) {
+                    // sets cooldown to 5; so player must wait for 1/6 sec. to jump  after landing
+                    this.coolDown = 5;
                     this.jump();
             } else 
                 if (this.world.keyboard.right == false && this.world.keyboard.left == false && this.position_y >= 500) {
