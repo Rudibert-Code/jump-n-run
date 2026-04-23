@@ -69,6 +69,13 @@ class Character extends MovableObject{
     animation(){
 
         setInterval(() => {
+
+            // gravity
+            this.position_y += 10;
+            if (this.position_y >= 500) {
+                this.position_y = 500;
+            }
+
             if (this.world.keyboard.right || this.world.keyboard.left) {
             let i = this.currentImage % this.img_walk.length;
             let path = this.img_walk[i];
