@@ -75,9 +75,9 @@ class Character extends MovableObject{
             this.img = this.imageCache[path];
             this.currentImage++;
                 if(this.world.keyboard.right){
-                    this.position_x += 3;
+                    this.position_x += 8;
                 } else if(this.world.keyboard.left){
-                    this.position_x -= 3;
+                    this.position_x -= 8;
                 }
             } else 
                 if (this.world.keyboard.jump) { 
