@@ -71,7 +71,7 @@ class Character extends MovableObject{
         setInterval(() => {
 
             // gravity
-            this.position_y += 10;
+            this.position_y += 30;
             if (this.position_y >= 500) {
                 this.position_y = 500;
             }
@@ -87,10 +87,11 @@ class Character extends MovableObject{
                     this.position_x -= 8;
                 }
             } else 
-                if (this.world.keyboard.jump) { 
+                if (this.world.keyboard.jump || this.position >= 500) { 
             let i = this.currentImage % this.img_jump.length;
             let path = this.img_jump[i];
             this.img = this.imageCache[path];
+            this.jump();
             this.currentImage++;
             } else 
                 if (this.world.keyboard.right == false && this.world.keyboard.left == false && this.world.keyboard.jump == false) {
@@ -106,7 +107,9 @@ class Character extends MovableObject{
     
 
     jump(){
-
+        if (this.position_y >= 500) {
+            this.position_y -= 120;   
+        }
     }
     moveRight(){
 

@@ -24,7 +24,7 @@ window.addEventListener("keydown", (event) => {
         keyboard.left = true;
     } else if (event.keyCode == 68) {
         keyboard.right = true;
-    } else if (event.code == 'Space') {
+    } else if (event.code == 'Space' && world.character.position_y >= 500) {
         keyboard.jump = true;
     } else if (event.code == 'Enter') {
         keyboard.shoot = true;
