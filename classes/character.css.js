@@ -74,12 +74,19 @@ class Character extends MovableObject{
             let path = this.img_walk[i];
             this.img = this.imageCache[path];
             this.currentImage++;
-            } else if (this.world.keyboard.jump) { 
+                if(this.world.keyboard.right){
+                    this.position_x += 3;
+                } else if(this.world.keyboard.left){
+                    this.position_x -= 3;
+                }
+            } else 
+                if (this.world.keyboard.jump) { 
             let i = this.currentImage % this.img_jump.length;
             let path = this.img_jump[i];
             this.img = this.imageCache[path];
             this.currentImage++;
-            } else if (this.world.keyboard.right == false && this.world.keyboard.left == false && this.world.keyboard.jump == false) {
+            } else 
+                if (this.world.keyboard.right == false && this.world.keyboard.left == false && this.world.keyboard.jump == false) {
             // % = mathematischer rest ... bspl: 5 % 15 > 0 rest 5 > 15 kommt 0 mal in 5 vor, bleiben 5.
             // % => 1, 2, 3, 4, ... 13, 14, 15, 0, 1, 3 etc. loop  
             let i = this.currentImage % this.img_idle.length;
