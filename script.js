@@ -4,8 +4,8 @@ let keyboard;
 
 function init(){
     canvas = document.getElementById('game_canvas');
-    world = new World(canvas, keyboard);
     keyboard = new Keyboard();
+    world = new World(canvas, keyboard);
     
     // Nötig um Positionen von Elementen auf der Canvas zu steuern
         //ctx = canvas.getContext('2d');
@@ -20,28 +20,26 @@ function init(){
 
 window.addEventListener("keydown", (event) => {
     console.log(event);
-    if (event.code === 'a' || event.code === 'A') {
-        Keyboard.left = true;
-    } else if (event.code === 'd' || event.code === 'D') {
-        Keyboard.right = true;
-    } else if (event.code === 'Space') {
-        Keyboard.jump = true;
-        console.log(Keyboard.jump);
-    } else if (event.code === 'Enter') {
-        Keyboard.shoot = true;
+    if (event.keyCode == 65) {
+        keyboard.left = true;
+    } else if (event.keyCode == 68) {
+        keyboard.right = true;
+    } else if (event.code == 'Space') {
+        keyboard.jump = true;
+    } else if (event.code == 'Enter') {
+        keyboard.shoot = true;
     }
 });
 
 window.addEventListener("keyup", (event) => {
     console.log(event);
-    if (event.code === 'a' || event.code === 'A') {
-        Keyboard.left = false;
-    } else if (event.code === 'd' || event.code === 'D') {
-        Keyboard.right = false;
-    } else if (event.code === 'Space') {
-        Keyboard.jump = false;
-        console.log(Keyboard.jump);
-    } else if (event.code === 'Enter') {
-        Keyboard.shoot = false;
+    if (event.keyCode == 65) {
+        keyboard.left = false;
+    } else if (event.keyCode == 68) {
+        keyboard.right = false;
+    } else if (event.code == 'Space') {
+       keyboard.jump = false;
+    } else if (event.code == 'Enter') {
+        keyboard.shoot = false;
     }
 });
