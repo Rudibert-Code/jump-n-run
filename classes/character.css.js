@@ -87,14 +87,10 @@ class Character extends MovableObject{
                     this.position_x -= 8;
                 }
             } else 
-                if (this.world.keyboard.jump || this.position >= 500) { 
-            let i = this.currentImage % this.img_jump.length;
-            let path = this.img_jump[i];
-            this.img = this.imageCache[path];
-            this.jump();
-            this.currentImage++;
+                if (this.world.keyboard.jump && this.position_y >= 500) { 
+                    this.jump();
             } else 
-                if (this.world.keyboard.right == false && this.world.keyboard.left == false && this.world.keyboard.jump == false) {
+                if (this.world.keyboard.right == false && this.world.keyboard.left == false && this.position_y >= 500) {
             // % = mathematischer rest ... bspl: 5 % 15 > 0 rest 5 > 15 kommt 0 mal in 5 vor, bleiben 5.
             // % => 1, 2, 3, 4, ... 13, 14, 15, 0, 1, 3 etc. loop  
             let i = this.currentImage % this.img_idle.length;
@@ -107,8 +103,14 @@ class Character extends MovableObject{
     
 
     jump(){
-        if (this.position_y >= 500) {
-            this.position_y -= 120;   
+        // change character position_y 
+        this.position_y -= 200; 
+        // play jump-ani
+        if (this.position_y <= 499) {
+            let i = this.currentImage % this.img_jump.length;
+            let path = this.img_jump[i];
+            this.img = this.imageCache[path];
+            this.currentImage++;
         }
     }
     moveRight(){
