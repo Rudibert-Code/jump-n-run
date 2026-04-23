@@ -58,6 +58,12 @@ class World{
         //}
 
 
+        // grafik spiegeln, wenn A gedrückt ist...
+            //if (this.character.otherDirection) {
+            //    this.ctx.save();
+            //    this.ctx.translate(this.character.img.width, 0);
+            //    this.ctx.scale(-1, 1);
+            //}
         this.ctx.drawImage(this.character.img, this.character.position_x, this.character.position_y, this.character.width, this.character.height);
         
 

@@ -5,6 +5,7 @@ class MovableObject{
     width = 200;
     img;
     currentImage = 0;
+    otherDirection = false;
 
 
     imageCache={};

@@ -72,7 +72,7 @@ class Character extends MovableObject{
         setInterval(() => {
 
             // gravity
-            this.position_y += 30;
+            this.position_y += 20;
             if (this.position_y >= 500) {
                 this.position_y = 500;
                 this.coolDown--;
@@ -84,9 +84,10 @@ class Character extends MovableObject{
             this.img = this.imageCache[path];
             this.currentImage++;
                 if(this.world.keyboard.right){
-                    this.position_x += 8;
+                    this.moveRight();
                 } else if(this.world.keyboard.left){
-                    this.position_x -= 8;
+                    this.otherDirection = true;
+                    this.moveLeft();
                 }
             } else 
                 if (this.world.keyboard.jump && this.coolDown <= 0) {
@@ -95,12 +96,13 @@ class Character extends MovableObject{
                     this.jump();
             } else 
                 if (this.world.keyboard.right == false && this.world.keyboard.left == false && this.position_y >= 500) {
-            // % = mathematischer rest ... bspl: 5 % 15 > 0 rest 5 > 15 kommt 0 mal in 5 vor, bleiben 5.
-            // % => 1, 2, 3, 4, ... 13, 14, 15, 0, 1, 3 etc. loop  
-            let i = this.currentImage % this.img_idle.length;
-            let path = this.img_idle[i];
-            this.img = this.imageCache[path];
-            this.currentImage++;
+                    this.otherDirection = false;
+                    // % = mathematischer rest ... bspl: 5 % 15 > 0 rest 5 > 15 kommt 0 mal in 5 vor, bleiben 5.
+                    // % => 1, 2, 3, 4, ... 13, 14, 15, 0, 1, 3 etc. loop  
+                    let i = this.currentImage % this.img_idle.length;
+                    let path = this.img_idle[i];
+                    this.img = this.imageCache[path];
+                    this.currentImage++;
             }
         }, 1000 / 30);
     }
@@ -118,10 +120,16 @@ class Character extends MovableObject{
         }
     }
     moveRight(){
-
+        this.position_x += 8;
+        if (this.position_x >= 500) {
+            this.position_x = 500;
+        }
     }
     moveLeft(){
-
+        this.position_x -= 8;
+        if (this.position_x <= 50) {
+            this.position_x = 50;
+        }
     }
     fire(){
 

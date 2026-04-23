@@ -19,7 +19,7 @@ function init(){
 }
 
 window.addEventListener("keydown", (event) => {
-    console.log(event);
+    //console.log(event);
     if (event.keyCode == 65) {
         keyboard.left = true;
     } else if (event.keyCode == 68) {
@@ -32,7 +32,7 @@ window.addEventListener("keydown", (event) => {
 });
 
 window.addEventListener("keyup", (event) => {
-    console.log(event);
+    //console.log(event);
     if (event.keyCode == 65) {
         keyboard.left = false;
     } else if (event.keyCode == 68) {
