@@ -9,10 +9,6 @@ class World{
     ];
     platform = [
         new Platform(),
-        new Platform(),
-        new Platform(),
-        new Platform(),
-        new Platform(),
     ];
 
     sky = new Sky();
@@ -23,6 +19,7 @@ class World{
     canvas;
     keyboard;
     ctx;
+    camera_x = 0;
 
     constructor(canvas, keyboard){
         this.ctx = canvas.getContext('2d');
@@ -38,6 +35,8 @@ class World{
 
     draw(){
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+        this.ctx.translate(this.camera_x, 0);
 
 
         // BG elemente in richtiger reihenfolge wiedergeben
@@ -76,9 +75,11 @@ class World{
         // FG elemnte
         this.ctx.drawImage(this.FG.img, this.FG.position_x, this.FG.position_y, this.FG.width, this.FG.height);
 
+        this.ctx.translate(-this.camera_x, 0);
 
         // ruft draw methode nach ausführung erneut auf / "this." wird in functionen innerhalb einer class-methode nicht akzeptier? 
         let self = this;
+
         requestAnimationFrame(function(){
             self.draw();
         });
