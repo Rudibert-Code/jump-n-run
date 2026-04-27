@@ -1,6 +1,7 @@
 class DekoSky extends MovableObject{
-    height = 200;
-    width = 800;
+    devi = Math.random() * 30;
+    height = 200 - this.devi;
+    width = 800 - this.devi;
 
         constructor(imgPath, x, y){
         super().loadImage(imgPath);

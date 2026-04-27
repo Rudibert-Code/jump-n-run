@@ -56,7 +56,6 @@ class Character extends MovableObject{
     ];
 
     world;
-    sky;
     coolDown = 0;
 
     constructor(){

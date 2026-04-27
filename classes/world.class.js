@@ -5,10 +5,15 @@ class World{
         new EnemyHover(),
     ];
     levelDeko = [
-        new DekoSky('./assets/level/deko/BG_1_rocks1.png', 700, 10),
-        new DekoSky('./assets/level/deko/BG_1_rocks2.png', 200, 10),
+        new DekoSky('./assets/level/deko/BG_1_rocks1.png', 1000, 5),
+        new DekoSky('./assets/level/deko/BG_1_rocks2.png', 2000, 8),
+        new DekoSky('./assets/level/deko/BG_1_rocks1.png', 3000, 5),
+        new DekoSky('./assets/level/deko/BG_1_rocks2.png', 5000, 13),
     ];
-    sky = new Sky();
+    sky = [
+        new Sky('./assets/level/deko/BG.png', 0, 0),
+        new Sky('./assets/level/deko/BG.png', 1080, 0)
+    ];
     backgroundElements1 = [
         new BG1('./assets/level/deko/BG1.png', 0, 344),
         new BG1('./assets/level/deko/BG1.png', 800, 344),
