@@ -2,11 +2,11 @@ class DekoSky extends MovableObject{
     height = 200;
     width = 800;
 
-        constructor(){
-        super().loadImage('./assets/level/deko/BG_1_rocks1.png');
+        constructor(imgPath, x, y){
+        super().loadImage(imgPath);
 
-        this.position_x = 700;
-        this.position_y = 10;
+        this.position_x = x;
+        this.position_y = y;
 
         this.animate();
     }

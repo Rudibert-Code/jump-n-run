@@ -1,21 +1,30 @@
-class World{
+class World{ 
     character = new Character();
     enemies = [
         new EnemyTank(),
         new EnemyHover(),
     ];
     levelDeko = [
-        new DekoSky(),
+        new DekoSky('./assets/level/deko/BG_1_rocks1.png', 700, 10),
+        new DekoSky('./assets/level/deko/BG_1_rocks2.png', 200, 10),
     ];
-    platform = [
+    sky = new Sky();
+    backgroundElements1 = [
+        new BG1('./assets/level/deko/BG1.png', 0, 344),
+        new BG1('./assets/level/deko/BG1.png', 800, 344),
+    ];
+    backgroundElements2 = [
+        new BG2('./assets/level/deko/BG2.png', 0, 331),
+        new BG2('./assets/level/deko/BG2.png', 1080, 331),
+        new BG2('./assets/level/deko/BG2.png', 2160, 331),
+        new BG2('./assets/level/deko/BG2.png', 3240, 331),
+    ];
+    platforms = [
         new Platform(),
     ];
-
-    sky = new Sky();
-    BG1 = new BG1();
-    BG2 = new BG2();
-    FG = new FG();
-
+    foregroundElements = [
+        new FG()
+    ];
     canvas;
     keyboard;
     ctx;
@@ -28,60 +37,39 @@ class World{
         this.setWorld();
         this.draw();
     }
-
     setWorld(){
         this.character.world = this;
     }
-
     draw(){
+        // Lösche alle Elemente im Level > schafft Platz um Elemente auf anderer Position neu zu rendern
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
         this.ctx.translate(this.camera_x, 0);
 
-
-        // BG elemente in richtiger reihenfolge wiedergeben
-        this.ctx.drawImage(this.sky.img, this.sky.position_x, this.sky.position_y, this.sky.width, this.sky.height);
-        this.ctx.drawImage(this.BG1.img, this.BG1.position_x, this.BG1.position_y, this.BG1.width, this.BG1.height);
-        this.ctx.drawImage(this.BG2.img, this.BG2.position_x, this.BG2.position_y, this.BG2.width, this.BG2.height);
-
-        this.platform.forEach(elemnts =>{
-            this.ctx.drawImage(elemnts.img, elemnts.position_x, elemnts.position_y, elemnts.width, elemnts.height);
-        });
-
-        this.levelDeko.forEach(rock =>{
-            this.ctx.drawImage(rock.img, rock.position_x, rock.position_y, rock.width, rock.height);
-        });
-        //let box = this.platform;
-        //for (let index = 0; index < box.length; index++) { 
-        //    this.ctx.drawImage(box.img, box.position_x + (box.width * index), box.position_y, box.width, box.height);  
-        //}
-
-
-        // grafik spiegeln, wenn A gedrückt ist...
-            //if (this.character.otherDirection) {
-            //    this.ctx.save();
-            //    this.ctx.translate(this.character.img.width, 0);
-            //    this.ctx.scale(-1, 1);
-            //}
-        this.ctx.drawImage(this.character.img, this.character.position_x, this.character.position_y, this.character.width, this.character.height);
-        
-
-        // führen den befehel für jedes element in dem array einmal aus
-        this.enemies.forEach(enemy =>{
-            this.ctx.drawImage(enemy.img, enemy.position_x, enemy.position_y, enemy.width, enemy.height);
-        });
-
-
-        // FG elemnte
-        this.ctx.drawImage(this.FG.img, this.FG.position_x, this.FG.position_y, this.FG.width, this.FG.height);
+        // Level-Elemente rendern
+        this.addToMap(this.sky);
+        this.addObjectsToMap(this.backgroundElements1);
+        this.addObjectsToMap(this.backgroundElements2);
+        this.addObjectsToMap(this.platforms);
+        this.addObjectsToMap(this.levelDeko);
+        this.addToMap(this.character);
+        this.addObjectsToMap(this.enemies);
+        this.addObjectsToMap(this.foregroundElements);
 
         this.ctx.translate(-this.camera_x, 0);
 
-        // ruft draw methode nach ausführung erneut auf / "this." wird in functionen innerhalb einer class-methode nicht akzeptier? 
+        // Ruft draw() methode nach ausführung erneut auf > "this." wird in functionen innerhalb einer class-methode nicht akzeptier 
         let self = this;
-
         requestAnimationFrame(function(){
             self.draw();
         });
+    }
+    addObjectsToMap(objects){
+        objects.forEach(element =>{
+            this.addToMap(element);
+        });
+    }
+    addToMap(mo){
+        this.ctx.drawImage(mo.img, mo.position_x, mo.position_y, mo.width, mo.height);
     }
 }

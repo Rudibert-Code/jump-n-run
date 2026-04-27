@@ -56,6 +56,7 @@ class Character extends MovableObject{
     ];
 
     world;
+    sky;
     coolDown = 0;
 
     constructor(){
@@ -121,16 +122,10 @@ class Character extends MovableObject{
     }
     moveRight(){
         this.position_x += 8;
-        //if (this.position_x >= 500) {
-        //    this.position_x = 500;
-        //}
         this.world.camera_x = -this.position_x;
     }
     moveLeft(){
         this.position_x -= 8;
-        //if (this.position_x <= 50) {
-        //    this.position_x = 50;
-        //}
         this.world.camera_x = -this.position_x;
     }
     fire(){

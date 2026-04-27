@@ -2,7 +2,7 @@ class Sky extends MovableObject{
     height = 600;
     width = 1080;
 
-        constructor(){
+    constructor(){
         super().loadImage('./assets/level/deko/BG.png');
 
         this.position_x = 0;
