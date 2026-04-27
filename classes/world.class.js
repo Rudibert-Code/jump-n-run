@@ -1,35 +1,13 @@
 class World{ 
     character = new Character();
-    enemies = [
-        new EnemyTank(),
-        new EnemyHover(),
-    ];
-    levelDeko = [
-        new DekoSky('./assets/level/deko/BG_1_rocks1.png', 1000, 5),
-        new DekoSky('./assets/level/deko/BG_1_rocks2.png', 2000, 8),
-        new DekoSky('./assets/level/deko/BG_1_rocks1.png', 3000, 5),
-        new DekoSky('./assets/level/deko/BG_1_rocks2.png', 5000, 13),
-    ];
-    sky = [
-        new Sky('./assets/level/deko/BG.png', 0, 0),
-        new Sky('./assets/level/deko/BG.png', 1080, 0)
-    ];
-    backgroundElements1 = [
-        new BG1('./assets/level/deko/BG1.png', 0, 344),
-        new BG1('./assets/level/deko/BG1.png', 800, 344),
-    ];
-    backgroundElements2 = [
-        new BG2('./assets/level/deko/BG2.png', 0, 331),
-        new BG2('./assets/level/deko/BG2.png', 1080, 331),
-        new BG2('./assets/level/deko/BG2.png', 2160, 331),
-        new BG2('./assets/level/deko/BG2.png', 3240, 331),
-    ];
-    platforms = [
-        new Platform(),
-    ];
-    foregroundElements = [
-        new FG()
-    ];
+    enemies = level1.enemies;
+    levelDeko = level1.levelDeko;
+    sky = level1.sky;
+    backgroundElements1 = level1.backgroundElements1;
+    backgroundElements2 = level1.backgroundElements2;
+    platforms = level1.platforms;
+    foregroundElements = level1.foregroundElements;
+    
     canvas;
     keyboard;
     ctx;
@@ -52,7 +30,7 @@ class World{
         this.ctx.translate(this.camera_x, 0);
 
         // Level-Elemente rendern
-        this.addToMap(this.sky);
+        this.addObjectsToMap(this.sky);
         this.addObjectsToMap(this.backgroundElements1);
         this.addObjectsToMap(this.backgroundElements2);
         this.addObjectsToMap(this.platforms);

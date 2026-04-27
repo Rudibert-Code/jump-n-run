@@ -85,7 +85,7 @@ class Character extends MovableObject{
             this.currentImage++;
                 if(this.world.keyboard.right){
                     this.moveRight();
-                } else if(this.world.keyboard.left){
+                } else if(this.world.keyboard.left && this.position_x >= 0){
                     this.otherDirection = true;
                     this.moveLeft();
                 }
@@ -104,6 +104,7 @@ class Character extends MovableObject{
                     this.img = this.imageCache[path];
                     this.currentImage++;
             }
+            this.world.camera_x = -this.position_x + 100;
         }, 1000 / 30);
     }
     
@@ -121,11 +122,9 @@ class Character extends MovableObject{
     }
     moveRight(){
         this.position_x += 8;
-        this.world.camera_x = -this.position_x;
     }
     moveLeft(){
         this.position_x -= 8;
-        this.world.camera_x = -this.position_x;
     }
     fire(){
 
