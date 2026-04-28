@@ -7,6 +7,8 @@ class Level {
     platforms;
     foregroundElements;
 
+    levelEndX = 700;
+
     constructor(enemies, levelDeko, sky, backgroundElements1, backgroundElements2, platforms, foregroundElement){
         this.enemies = enemies;
         this.levelDeko = levelDeko;

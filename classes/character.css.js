@@ -58,67 +58,82 @@ class Character extends MovableObject{
     world;
     coolDown = 0;
 
+    speed_y = 0;
+    acceleration = 2.5;
+
+
     constructor(){
         super().loadImage('./assets/player/idle/0.png');
         this.loadImages(this.img_idle);
         this.loadImages(this.img_walk);
         this.loadImages(this.img_jump);
-
-        this.animation();
+        this.applyGravity();
+        this.controls();
+        //this.animation();
     }
 
-    animation(){
+    applyGravity(){
+        setInterval(() => {
+            if (this.position_y <= 500) {
+                this.position_y -= this.speed_y;
+                this.speed_y -= this.acceleration;
+            }
+            if (this.position_y >= 500) {
+                this.position_y = 500;
+            }
+        }, 1000/30);
+    }
+
+    controls(){
 
         setInterval(() => {
 
-            // gravity
-            this.position_y += 20;
-            if (this.position_y >= 500) {
-                this.position_y = 500;
-                this.coolDown--;
-            }
-
             if (this.world.keyboard.right || this.world.keyboard.left) {
-            let i = this.currentImage % this.img_walk.length;
-            let path = this.img_walk[i];
-            this.img = this.imageCache[path];
-            this.currentImage++;
-                if(this.world.keyboard.right){
+                if(this.position_y >= 500){
+                    let i = this.currentImage % this.img_walk.length;
+                    let path = this.img_walk[i];
+                    this.img = this.imageCache[path];
+                    this.currentImage++;
+                    //this.animation(this.img_walk);
+                }
+                if(this.world.keyboard.right && this.position_x <= this.world.level.levelEndX){
                     this.moveRight();
                 } else if(this.world.keyboard.left && this.position_x >= 0){
                     this.otherDirection = true;
                     this.moveLeft();
                 }
-            } else 
-                if (this.world.keyboard.jump && this.coolDown <= 0) {
-                    // sets cooldown to 5; so player must wait for 1/6 sec. to jump  after landing
-                    this.coolDown = 5;
-                    this.jump();
-            } else 
-                if (this.world.keyboard.right == false && this.world.keyboard.left == false && this.position_y >= 500) {
+            } else if (this.world.keyboard.jump && this.position_y >= 500) {
+                this.jump();
+            } else if (this.world.keyboard.right == false && this.world.keyboard.left == false && this.position_y >= 500) {
                     this.otherDirection = false;
-                    // % = mathematischer rest ... bspl: 5 % 15 > 0 rest 5 > 15 kommt 0 mal in 5 vor, bleiben 5.
-                    // % => 1, 2, 3, 4, ... 13, 14, 15, 0, 1, 3 etc. loop  
                     let i = this.currentImage % this.img_idle.length;
                     let path = this.img_idle[i];
                     this.img = this.imageCache[path];
                     this.currentImage++;
-            }
+                    //this.animation(this.img_idle);
+            } else if (this.position_y <= 499){
+                    let i = this.currentImage % this.img_jump.length;
+                    let path = this.img_jump[i];
+                    this.img = this.imageCache[path];
+                    this.currentImage++;
+                    //let jump = this.img_jump;
+                    //this.animation(this.img_jump);
+                }
             this.world.camera_x = -this.position_x + 100;
-        }, 1000 / 30);
+        }, 1000/30);
     }
-    
+
+    //animation(aniType){
+    //    setInterval(() => {
+    //        aniI = this.currentImage % aniType.length;
+    //        let path = aniType[aniI];
+    //        this.img = this.imageCache[path];
+    //        this.currentImage++;
+    //    }, 1000/30);
+    //}
 
     jump(){
-        // change character position_y 
-        this.position_y -= 200; 
-        // play jump-ani
-        if (this.position_y <= 499) {
-            let i = this.currentImage % this.img_jump.length;
-            let path = this.img_jump[i];
-            this.img = this.imageCache[path];
-            this.currentImage++;
-        }
+        this.speed_y = 30;
     }
     moveRight(){
         this.position_x += 8;
@@ -127,6 +142,5 @@ class Character extends MovableObject{
         this.position_x -= 8;
     }
     fire(){
-
     }
 }

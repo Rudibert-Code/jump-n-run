@@ -1,13 +1,15 @@
 class World{ 
     character = new Character();
-    enemies = level1.enemies;
-    levelDeko = level1.levelDeko;
-    sky = level1.sky;
-    backgroundElements1 = level1.backgroundElements1;
-    backgroundElements2 = level1.backgroundElements2;
-    platforms = level1.platforms;
-    foregroundElements = level1.foregroundElements;
-    
+
+    level = level1;
+    //enemies = level1.enemies;
+    //levelDeko = level1.levelDeko;
+    //sky = level1.sky;
+    //backgroundElements1 = level1.backgroundElements1;
+    //backgroundElements2 = level1.backgroundElements2;
+    //platforms = level1.platforms;
+    //foregroundElements = level1.foregroundElements;
+
     canvas;
     keyboard;
     ctx;
@@ -30,14 +32,14 @@ class World{
         this.ctx.translate(this.camera_x, 0);
 
         // Level-Elemente rendern
-        this.addObjectsToMap(this.sky);
-        this.addObjectsToMap(this.backgroundElements1);
-        this.addObjectsToMap(this.backgroundElements2);
-        this.addObjectsToMap(this.platforms);
-        this.addObjectsToMap(this.levelDeko);
+        this.addObjectsToMap(this.level.sky);
+        this.addObjectsToMap(this.level.backgroundElements1);
+        this.addObjectsToMap(this.level.backgroundElements2);
+        this.addObjectsToMap(this.level.platforms);
+        this.addObjectsToMap(this.level.levelDeko);
         this.addToMap(this.character);
-        this.addObjectsToMap(this.enemies);
-        this.addObjectsToMap(this.foregroundElements);
+        this.addObjectsToMap(this.level.enemies);
+        this.addObjectsToMap(this.level.foregroundElements);
 
         this.ctx.translate(-this.camera_x, 0);
 
