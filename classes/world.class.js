@@ -56,5 +56,14 @@ class World{
     }
     addToMap(mo){
         this.ctx.drawImage(mo.img, mo.position_x, mo.position_y, mo.width, mo.height);
+
+        // add collider to rendered object
+        this.ctx.beginPath();
+        this.ctx.lineWidth = '5';
+        this.ctx.strokeStyle = 'blue';
+        this.ctx.rect(mo.position_x, mo.position_y, mo.width, mo.height);
+        this.ctx.stroke();
     }
+
+    
 }
