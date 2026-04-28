@@ -68,7 +68,7 @@ class Character extends MovableObject{
         this.loadImages(this.img_walk);
         this.loadImages(this.img_jump);
         this.applyGravity();
-        this.controls();
+        this.animations();
         //this.animation();
     }
 
@@ -84,7 +84,7 @@ class Character extends MovableObject{
         }, 1000/30);
     }
 
-    controls(){
+    animations(){
 
         setInterval(() => {
 
@@ -102,23 +102,26 @@ class Character extends MovableObject{
                     this.otherDirection = true;
                     this.moveLeft();
                 }
-            } else if (this.world.keyboard.jump && this.position_y >= 500) {
+            }
+            if (this.world.keyboard.jump && this.position_y >= 500) {
                 this.jump();
-            } else if (this.world.keyboard.right == false && this.world.keyboard.left == false && this.position_y >= 500) {
-                    this.otherDirection = false;
-                    let i = this.currentImage % this.img_idle.length;
-                    let path = this.img_idle[i];
-                    this.img = this.imageCache[path];
-                    this.currentImage++;
-                    //this.animation(this.img_idle);
-            } else if (this.position_y <= 499){
-                    let i = this.currentImage % this.img_jump.length;
-                    let path = this.img_jump[i];
-                    this.img = this.imageCache[path];
-                    this.currentImage++;
-                    //let jump = this.img_jump;
-                    //this.animation(this.img_jump);
-                }
+            }
+            if (this.world.keyboard.right == false && this.world.keyboard.left == false && this.position_y >= 500) {
+                this.otherDirection = false;
+                let i = this.currentImage % this.img_idle.length;
+                let path = this.img_idle[i];
+                this.img = this.imageCache[path];
+                this.currentImage++;
+                //this.animation(this.img_idle);
+            }
+            if (this.position_y <= 499){
+                let i = this.currentImage % this.img_jump.length;
+                let path = this.img_jump[i];
+                this.img = this.imageCache[path];
+                this.currentImage++;
+                //let jump = this.img_jump;
+                //this.animation(this.img_jump);
+            }
             this.world.camera_x = -this.position_x + 100;
         }, 1000/30);
     }
