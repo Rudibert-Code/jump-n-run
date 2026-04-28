@@ -61,6 +61,11 @@ class Character extends MovableObject{
     speed_y = 0;
     acceleration = 2.5;
 
+    // animation variables
+    aniType;
+    anI;
+    aniPath;
+
 
     constructor(){
         super().loadImage('./assets/player/idle/0.png');
@@ -69,7 +74,6 @@ class Character extends MovableObject{
         this.loadImages(this.img_jump);
         this.applyGravity();
         this.animations();
-        //this.animation();
     }
 
     applyGravity(){
@@ -90,11 +94,7 @@ class Character extends MovableObject{
 
             if (this.world.keyboard.right || this.world.keyboard.left) {
                 if(this.position_y >= 500){
-                    let i = this.currentImage % this.img_walk.length;
-                    let path = this.img_walk[i];
-                    this.img = this.imageCache[path];
-                    this.currentImage++;
-                    //this.animation(this.img_walk);
+                    this.aniType = this.img_walk;
                 }
                 if(this.world.keyboard.right && this.position_x <= this.world.level.levelEndX){
                     this.moveRight();
@@ -108,35 +108,23 @@ class Character extends MovableObject{
             }
             if (this.world.keyboard.right == false && this.world.keyboard.left == false && this.position_y >= 500) {
                 this.otherDirection = false;
-                let i = this.currentImage % this.img_idle.length;
-                let path = this.img_idle[i];
-                this.img = this.imageCache[path];
-                this.currentImage++;
-                //this.animation(this.img_idle);
+                this.aniType = this.img_idle;
             }
             if (this.position_y <= 499){
-                let i = this.currentImage % this.img_jump.length;
-                let path = this.img_jump[i];
-                this.img = this.imageCache[path];
-                this.currentImage++;
-                //let jump = this.img_jump;
-                //this.animation(this.img_jump);
+                this.aniType = this.img_jump;
             }
+
+            // play animation
+            this.anI = this.currentImage % this.aniType.length;
+            this.path = this.aniType[this.anI];
+            this.img = this.imageCache[this.path];
+            this.currentImage++;
+
             this.world.camera_x = -this.position_x + 100;
         }, 1000/30);
     }
-
-    //animation(aniType){
-    //    setInterval(() => {
-    //        aniI = this.currentImage % aniType.length;
-    //        let path = aniType[aniI];
-    //        this.img = this.imageCache[path];
-    //        this.currentImage++;
-    //    }, 1000/30);
-    //}
-
     jump(){
-        this.speed_y = 30;
+        this.speed_y = 35;
     }
     moveRight(){
         this.position_x += 8;
