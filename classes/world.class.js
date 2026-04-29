@@ -24,6 +24,7 @@ class World{
             this.level.enemies.forEach((unit) => {
                 if (this.character.isColliding(unit)) {
                     this.character.lifePoints -= 10;
+                    this.character.hit = true;
                     console.log(this.character.lifePoints);
                 } 
             }) 

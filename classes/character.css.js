@@ -54,7 +54,7 @@ class Character extends MovableObject{
         './assets/player/jump-loop/14.png',
         './assets/player/jump-loop/15.png',
     ];
-        img_hit = [
+    img_hit = [
         './assets/player/hit/0.png',
         './assets/player/hit/1.png',
         './assets/player/hit/2.png',
@@ -65,7 +65,7 @@ class Character extends MovableObject{
     coolDown = 0;
 
     speed_y = 0;
-    acceleration = 2.5;
+    acceleration = 2;
 
     // animation variables
     aniType;
@@ -78,12 +78,16 @@ class Character extends MovableObject{
     hitWidth = 150;
     hitHeight = 200;
 
+    hit = false;
+    click = 0;
+
 
     constructor(){
         super().loadImage('./assets/player/idle/0.png');
         this.loadImages(this.img_idle);
         this.loadImages(this.img_walk);
         this.loadImages(this.img_jump);
+        this.loadImages(this.img_hit);
         this.applyGravity();
         this.animations();
         this.offset_x = this.position_x;
@@ -126,8 +130,21 @@ class Character extends MovableObject{
             if (this.position_y <= 499){
                 this.aniType = this.img_jump;
             }
+            if (this.hit == true) {
+                this.height = 250;
+                this.width = 250; 
+                this.aniType = this.img_hit;
+                this.click++;
+                if (this.click >= 15) {
+                    this.height = 200;
+                    this.width = 200;
+                    this.click = 0;
+                    this.hit = false;
+                }
+            }
+            // später in world
             if (this.lifePoints == 0) {
-                console.log("GAME OVER");  
+                return console.log("GAME OVER");  
             }
             // play animation
             this.anI = this.currentImage % this.aniType.length;
@@ -140,7 +157,7 @@ class Character extends MovableObject{
         }, 1000/30);
     }
     jump(){
-        this.speed_y = 35;
+        this.speed_y = 40;
     }
     moveRight(){
         this.position_x += 8;
