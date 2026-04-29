@@ -11,11 +11,11 @@ class EnemyTank extends MovableObject{
         './assets/enemy/unit_2/7.png',
     ];
 
-    // hitbox parameters
+    // hitbox
     hitOffset_x = 0;
-    hitOffset_y = 500;
+    hitOffset_y = 550;
     hitWidth = 200;
-    hitHeight = 200;
+    hitHeight = 150;
 
     constructor(){
         super().loadImage('./assets/enemy/unit_2/0.png');
@@ -45,6 +45,5 @@ class EnemyTank extends MovableObject{
     }
     setPosition(){
         this.hitOffset_x = this.position_x;
-        this.hitOffset_y = this.position_y;
     }
 }

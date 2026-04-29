@@ -13,9 +13,20 @@ class World{
         this.keyboard = keyboard;
         this.setWorld();
         this.draw();
+        this.checkCollitions();
     }
     setWorld(){
         this.character.world = this;
+    }
+
+    checkCollitions(){
+        setInterval(() => {
+            this.level.enemies.forEach((unit) => {
+                if (this.character.isColliding(unit)) {
+                    console.log("Hit");
+                } 
+            }) 
+        }, 200);
     }
     draw(){
         // Lösche alle Elemente im Level -> rendert Elemente neu
@@ -37,20 +48,22 @@ class World{
             self.draw();
         });
     }
+
     addObjectsToMap(objects){
         objects.forEach(element =>{
             this.addToMap(element);
         });
     }
+
     addToMap(mo){
         this.ctx.drawImage(mo.img, mo.position_x, mo.position_y, mo.width, mo.height);
         // add collider to rendered object
-        this.ctx.beginPath();
-        this.ctx.lineWidth = '5';
-        this.ctx.strokeStyle = 'blue';
-        this.ctx.rect(mo.hitOffset_x, mo.hitOffset_y, mo.hitWidth, mo.hitHeight);
-        this.ctx.stroke();
+        if (mo instanceof Character || mo instanceof EnemyHover || mo instanceof EnemyTank) {
+            this.ctx.beginPath();
+            this.ctx.lineWidth = '5';
+            this.ctx.strokeStyle = 'blue';
+            this.ctx.rect(mo.hitOffset_x, mo.hitOffset_y, mo.hitWidth, mo.hitHeight);
+            this.ctx.stroke();
+        };
     }
-
-    
 }

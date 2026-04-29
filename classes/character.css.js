@@ -119,7 +119,6 @@ class Character extends MovableObject{
             }
             if (this.position_y <= 499){
                 this.aniType = this.img_jump;
-                console.log(this.position_x, this.position_y);
             }
             // play animation
             this.anI = this.currentImage % this.aniType.length;
