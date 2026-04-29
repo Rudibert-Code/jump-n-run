@@ -11,6 +11,12 @@ class EnemyTank extends MovableObject{
         './assets/enemy/unit_2/7.png',
     ];
 
+    // hitbox parameters
+    hitOffset_x = 0;
+    hitOffset_y = 500;
+    hitWidth = 200;
+    hitHeight = 200;
+
     constructor(){
         super().loadImage('./assets/enemy/unit_2/0.png');
         this.loadImages(this.img_idle);
@@ -24,6 +30,7 @@ class EnemyTank extends MovableObject{
     animate(){
         setInterval( () => {
             this.position_x -= 3;
+            this.setPosition();
         }, 1000 / 30);
     }
 
@@ -33,6 +40,11 @@ class EnemyTank extends MovableObject{
             let path = this.img_idle[i];
             this.img = this.imageCache[path];
             this.currentImage++;
+            this.setPosition();
         }, 1000 / 30);
+    }
+    setPosition(){
+        this.hitOffset_x = this.position_x;
+        this.hitOffset_y = this.position_y;
     }
 }

@@ -2,14 +2,6 @@ class World{
     character = new Character();
 
     level = level1;
-    //enemies = level1.enemies;
-    //levelDeko = level1.levelDeko;
-    //sky = level1.sky;
-    //backgroundElements1 = level1.backgroundElements1;
-    //backgroundElements2 = level1.backgroundElements2;
-    //platforms = level1.platforms;
-    //foregroundElements = level1.foregroundElements;
-
     canvas;
     keyboard;
     ctx;
@@ -26,11 +18,9 @@ class World{
         this.character.world = this;
     }
     draw(){
-        // Lösche alle Elemente im Level > schafft Platz um Elemente auf anderer Position neu zu rendern
+        // Lösche alle Elemente im Level -> rendert Elemente neu
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
         this.ctx.translate(this.camera_x, 0);
-
         // Level-Elemente rendern
         this.addObjectsToMap(this.level.sky);
         this.addObjectsToMap(this.level.backgroundElements1);
@@ -40,9 +30,7 @@ class World{
         this.addToMap(this.character);
         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.level.foregroundElements);
-
         this.ctx.translate(-this.camera_x, 0);
-
         // Ruft draw() methode nach ausführung erneut auf > "this." wird in functionen innerhalb einer class-methode nicht akzeptier 
         let self = this;
         requestAnimationFrame(function(){
@@ -56,12 +44,11 @@ class World{
     }
     addToMap(mo){
         this.ctx.drawImage(mo.img, mo.position_x, mo.position_y, mo.width, mo.height);
-
         // add collider to rendered object
         this.ctx.beginPath();
         this.ctx.lineWidth = '5';
         this.ctx.strokeStyle = 'blue';
-        this.ctx.rect(mo.position_x, mo.position_y, mo.width, mo.height);
+        this.ctx.rect(mo.hitOffset_x, mo.hitOffset_y, mo.hitWidth, mo.hitHeight);
         this.ctx.stroke();
     }
 

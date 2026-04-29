@@ -66,6 +66,12 @@ class Character extends MovableObject{
     anI;
     aniPath;
 
+    // hitbox parameters
+    hitOffset_x = 0;
+    hitOffset_y = 500;
+    hitWidth = 150;
+    hitHeight = 200;
+
 
     constructor(){
         super().loadImage('./assets/player/idle/0.png');
@@ -74,7 +80,8 @@ class Character extends MovableObject{
         this.loadImages(this.img_jump);
         this.applyGravity();
         this.animations();
-
+        this.offset_x = this.position_x;
+        this.offset_y = this.position_y;
     }
 
     applyGravity(){
@@ -86,13 +93,12 @@ class Character extends MovableObject{
             if (this.position_y >= 500) {
                 this.position_y = 500;
             }
+            this.setPosition();
         }, 1000/30);
     }
 
     animations(){
-
         setInterval(() => {
-
             if (this.world.keyboard.right || this.world.keyboard.left) {
                 if(this.position_y >= 500){
                     this.aniType = this.img_walk;
@@ -113,8 +119,8 @@ class Character extends MovableObject{
             }
             if (this.position_y <= 499){
                 this.aniType = this.img_jump;
+                console.log(this.position_x, this.position_y);
             }
-
             // play animation
             this.anI = this.currentImage % this.aniType.length;
             this.path = this.aniType[this.anI];
@@ -122,6 +128,7 @@ class Character extends MovableObject{
             this.currentImage++;
 
             this.world.camera_x = -this.position_x + 100;
+            this.setPosition();
         }, 1000/30);
     }
     jump(){
@@ -134,5 +141,9 @@ class Character extends MovableObject{
         this.position_x -= 8;
     }
     fire(){
+    }
+    setPosition(){
+        this.hitOffset_x = this.position_x;
+        this.hitOffset_y = this.position_y;
     }
 }

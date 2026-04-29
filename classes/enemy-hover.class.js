@@ -3,6 +3,12 @@ class EnemyHover extends MovableObject{
     width = 300;
     position_y = 450;
 
+    // hitbox parameters
+    hitOffset_x = 0;
+    hitOffset_y = 500;
+    hitWidth = 140;
+    hitHeight = 140;
+
     constructor(){
         super().loadImage('./assets/enemy/unit_1/0.png');
 
@@ -19,6 +25,7 @@ class EnemyHover extends MovableObject{
                 this.animateDown();
                 clearInterval(this.aniUp);
             }
+            this.setPosition();
         }, 1000 / 30)
     }
     animateDown(){
@@ -28,6 +35,11 @@ class EnemyHover extends MovableObject{
                 this.animateUp();
                 clearInterval(this.aniDown);
             }
+            this.setPosition();
         }, 1000 / 30)
+    }
+    setPosition(){
+        this.hitOffset_x = this.position_x + 80;
+        this.hitOffset_y = this.position_y + 75;
     }
 }
