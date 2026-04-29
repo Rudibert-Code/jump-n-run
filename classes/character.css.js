@@ -54,6 +54,12 @@ class Character extends MovableObject{
         './assets/player/jump-loop/14.png',
         './assets/player/jump-loop/15.png',
     ];
+        img_hit = [
+        './assets/player/hit/0.png',
+        './assets/player/hit/1.png',
+        './assets/player/hit/2.png',
+        './assets/player/hit/3.png',
+    ];
 
     world;
     coolDown = 0;
@@ -119,6 +125,9 @@ class Character extends MovableObject{
             }
             if (this.position_y <= 499){
                 this.aniType = this.img_jump;
+            }
+            if (this.lifePoints == 0) {
+                console.log("GAME OVER");  
             }
             // play animation
             this.anI = this.currentImage % this.aniType.length;

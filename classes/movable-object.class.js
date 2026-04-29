@@ -7,6 +7,8 @@ class MovableObject{
     currentImage = 0;
     otherDirection = false;
 
+    lifePoints = 100;
+
 
     imageCache={};
 
@@ -24,12 +26,6 @@ class MovableObject{
         });
     }
 
-    //isColliding(object){
-    //    return this.position_x + this.width > object.position_x &&
-    //    this. position_y + this.height > object.position_y &&
-    //    this.position_x < object.position_x &&
-    //    this.position_y < object.position_y
-    //}
     isColliding(object){
         return this.hitOffset_x + this.hitWidth > object.hitOffset_x &&
         this. hitOffset_y + this.hitHeight > object.hitOffset_y &&
@@ -38,6 +34,12 @@ class MovableObject{
         this.hitOffset_y < object.hitOffset_y || this.hitOffset_x + this.hitWidth > object.hitOffset_x &&
         this. hitOffset_y + this.hitHeight > object.hitOffset_y + object.hitHeight &&
         this.hitOffset_x < object.hitOffset_x &&
+        this.hitOffset_y < object.hitOffset_y + object.hitHeight || this.hitOffset_x + this.hitWidth > object.hitOffset_x + object.hitWidth &&
+        this. hitOffset_y + this.hitHeight > object.hitOffset_y &&
+        this.hitOffset_x < object.hitOffset_x + object.hitWidth &&
+        this.hitOffset_y < object.hitOffset_y || this.hitOffset_x + this.hitWidth > object.hitOffset_x + object.hitWidth &&
+        this. hitOffset_y + this.hitHeight > object.hitOffset_y + object.hitHeight &&
+        this.hitOffset_x < object.hitOffset_x + object.hitWidth &&
         this.hitOffset_y < object.hitOffset_y + object.hitHeight
     }
 }
