@@ -131,8 +131,8 @@ class Character extends MovableObject{
                 this.aniType = this.img_jump;
             }
             if (this.hit == true) {
-                this.height = 250;
-                this.width = 250; 
+                this.height = 230;
+                this.width = 230; 
                 this.aniType = this.img_hit;
                 this.click++;
                 if (this.click >= 15) {
