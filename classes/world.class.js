@@ -24,11 +24,8 @@ class World{
             this.level.enemies.forEach((unit) => {
                 if (this.character.isColliding(unit)) {
                     this.character.lifePoints -= 10;
+                    this.healthBar.setHealth(this.character.lifePoints);
                     this.character.hit = true;
-                    //if (this.character.lifePoints <= 0) {
-                    //    this.character.lifePoints = 0;
-                    //}
-                    console.log(this.character.lifePoints);
                 } 
             }) 
         }, 200);
@@ -41,9 +38,11 @@ class World{
         this.addObjectsToMap(this.level.sky);
         this.addObjectsToMap(this.level.backgroundElements1);
         this.addObjectsToMap(this.level.backgroundElements2);
-        this.addToMap(this.healthBar);
         this.addObjectsToMap(this.level.platforms);
         this.addObjectsToMap(this.level.levelDeko);
+        this.ctx.translate(-this.camera_x, 0);
+        this.addToMap(this.healthBar);
+        this.ctx.translate(this.camera_x, 0);
         this.addToMap(this.character);
         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.level.foregroundElements);

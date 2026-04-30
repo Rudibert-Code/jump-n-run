@@ -1,5 +1,4 @@
 class MovableObject extends DrawableObject{
-
     otherDirection = false;
     lifePoints = 100;
 

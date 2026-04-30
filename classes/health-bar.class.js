@@ -15,30 +15,32 @@ class HealthBar extends DrawableObject{
         super();
         this.loadImages(this.assets);
         this.setHealth(100);
-        this.position_x = 100;
-        this.position_y = 100;
+        this.position_x = 25;
+        this.position_y = 25;
+        this.height = 72;
+        this.width = 400;
     }
 
-    setHealth(percent){
-        this.healthTotal = percent;
+    setHealth(LP){
+        this.healthTotal = LP;
         let imgPath = this.assets[this.healthBarIndex()];
         this.img = this.imageCache[imgPath];
-        console.log(this.healthTotal);
+        console.log("new HP", this.healthTotal);
     }
 
     healthBarIndex(){
-        if (this.healthTotal == 100) {
-            return 5;
-        } else if (this.healthTotal == 80) {
-            return 4;
-        } else if (this.healthTotal == 60) {
-            return 3;
-        } else if (this.healthTotal == 40) {
-            return 2;
-        } else if (this.healthTotal == 20) {
-            return 1;
-        } else {
+        if (this.healthTotal <= 100 && this.healthTotal >= 81) {
             return 0;
+        } else if (this.healthTotal <= 80 && this.healthTotal >= 61) {
+            return 1;
+        } else if (this.healthTotal <= 60 && this.healthTotal >= 41) {
+            return 2;
+        } else if (this.healthTotal <= 40 && this.healthTotal >= 21) {
+            return 3;
+        } else if (this.healthTotal <= 20 && this.healthTotal >= 1) {
+            return 4;
+        } else {
+            return 5;
         }
     }
 }
