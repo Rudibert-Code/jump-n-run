@@ -1,6 +1,6 @@
 class World{ 
     character = new Character();
-
+    healthBar = new HealthBar();
     level = level1;
     canvas;
     keyboard;
@@ -41,6 +41,7 @@ class World{
         this.addObjectsToMap(this.level.sky);
         this.addObjectsToMap(this.level.backgroundElements1);
         this.addObjectsToMap(this.level.backgroundElements2);
+        this.addToMap(this.healthBar);
         this.addObjectsToMap(this.level.platforms);
         this.addObjectsToMap(this.level.levelDeko);
         this.addToMap(this.character);
@@ -63,6 +64,10 @@ class World{
     addToMap(mo){
         this.ctx.drawImage(mo.img, mo.position_x, mo.position_y, mo.width, mo.height);
         // add collider to rendered object
+        this.drawFrame(mo);
+    }
+
+    drawFrame(mo){
         if (mo instanceof Character || mo instanceof EnemyHover || mo instanceof EnemyTank) {
             this.ctx.beginPath();
             this.ctx.lineWidth = '5';
