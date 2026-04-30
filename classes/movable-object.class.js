@@ -1,30 +1,7 @@
-class MovableObject{
-    position_x = 0;
-    position_y = 500;
-    height = 200;
-    width = 200;
-    img;
-    currentImage = 0;
+class MovableObject extends DrawableObject{
+
     otherDirection = false;
-
     lifePoints = 100;
-
-
-    imageCache={};
-
-
-    loadImage(path){
-        this.img = new Image(); // gleichbedeutend mit  this.img = document.getElementByID('image')
-        this.img.src = path;
-    }
-
-    loadImages(ar){
-        ar.forEach(path => {
-            let image = new Image();
-            image.src = path;
-            this.imageCache[path] = image; 
-        });
-    }
 
     isColliding(object){
         return this.hitOffset_x + this.hitWidth > object.hitOffset_x &&

@@ -25,6 +25,9 @@ class World{
                 if (this.character.isColliding(unit)) {
                     this.character.lifePoints -= 10;
                     this.character.hit = true;
+                    //if (this.character.lifePoints <= 0) {
+                    //    this.character.lifePoints = 0;
+                    //}
                     console.log(this.character.lifePoints);
                 } 
             }) 
