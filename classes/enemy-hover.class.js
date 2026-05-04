@@ -21,7 +21,7 @@ class EnemyHover extends MovableObject{
     animateUp(){
         this.aniUp = setInterval( () => {
             this.position_y-=2;
-            if (this.position_y == 300) {
+            if (this.position_y == 200) {
                 this.animateDown();
                 clearInterval(this.aniUp);
             }

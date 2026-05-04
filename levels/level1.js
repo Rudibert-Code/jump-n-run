@@ -1,6 +1,8 @@
 const level1 = new Level(
     [
         new EnemyTank(),
+    ],
+    [
         new EnemyHover(),
     ],
     [
@@ -33,6 +35,8 @@ const level1 = new Level(
         new FG()
     ],
         [
+        new Coins(),
+        new Coins(),
         new Coins()
     ],
 );
