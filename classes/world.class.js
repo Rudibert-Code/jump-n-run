@@ -16,8 +16,7 @@ class World{
         this.setWorld();
         this.draw();
         this.checkCollitionsEnemies();
-        this.checkCollitionsEnemieTanks();
-        this.checkCollitionsItem();
+        //this.checkCollitionsItem();
     }
     setWorld(){
         this.character.world = this;
@@ -32,12 +31,12 @@ class World{
                     this.character.hit = true;
                 } 
             }) 
-        }, 200);
-    }
-    checkCollitionsEnemieTanks(){
-        setInterval(() => {
             this.level.enemiesTank.forEach((unit) => {
-                if (this.character.isColliding(unit)) {
+                let unitID = this.level.enemiesTank.indexOf(unit);
+                if (this.character.isColliding(unit) && this.character.midAir == true) {
+                    this.level.enemiesTank.splice(unitID,1);
+                    this.character.jump(20);
+                } else if (this.character.isColliding(unit)) {
                     this.character.lifePoints -= 10;
                     this.healthBar.setHealth(this.character.lifePoints);
                     this.character.hit = true;
@@ -48,14 +47,11 @@ class World{
     checkCollitionsItem(){
         setInterval(() => {
             this.level.coins.forEach((unit) => {
-                if (this.character.isCollidingHit(unit)) {
+                let itemID = this.level.coins.indexOf(unit);
+                if (this.character.isColliding(unit)) {
                     this.highScore++;
-                    this.level.coins.splice(0,1);
-                } 
-                if (this.character.isCollidingKill(unit)) {
-                    this.highScore++;
-                    this.level.coins.splice(0,1);
-                } 
+                    this.level.coins.splice(itemID,1);
+                }
             }) 
         }, 200);
     }

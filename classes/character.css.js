@@ -63,22 +63,19 @@ class Character extends MovableObject{
 
     world;
     coolDown = 0;
-
     speed_y = 0;
     acceleration = 2;
-
     // animation variables
     aniType;
     anI;
     aniPath;
-
     // hitbox parameters
     hitOffset_x = 0;
     hitOffset_y = 500;
     hitWidth = 150;
     hitHeight = 200;
-
     hit = false;
+    midAir = false;
     click = 0;
 
 
@@ -111,6 +108,7 @@ class Character extends MovableObject{
         setInterval(() => {
             if (this.world.keyboard.right || this.world.keyboard.left) {
                 if(this.position_y >= 500){
+                    this.midAir = false;
                     this.aniType = this.img_walk;
                 }
                 if(this.world.keyboard.right && this.position_x <= this.world.level.levelEndX){
@@ -121,13 +119,15 @@ class Character extends MovableObject{
                 }
             }
             if (this.world.keyboard.jump && this.position_y >= 500) {
-                this.jump();
+                this.jump(40);
             }
             if (this.world.keyboard.right == false && this.world.keyboard.left == false && this.position_y >= 500) {
+                this.midAir = false;
                 this.otherDirection = false;
                 this.aniType = this.img_idle;
             }
             if (this.position_y <= 499){
+                this.midAir = true;
                 this.aniType = this.img_jump;
             }
             if (this.hit == true) {
@@ -156,8 +156,8 @@ class Character extends MovableObject{
             this.setPosition();
         }, 1000/30);
     }
-    jump(){
-        this.speed_y = 40;
+    jump(strength){
+        this.speed_y = strength;
     }
     moveRight(){
         this.position_x += 8;

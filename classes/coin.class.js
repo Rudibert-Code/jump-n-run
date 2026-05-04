@@ -18,7 +18,6 @@ class Coins extends MovableObject{
     height = 80;
     width = 80;
 
-    // hitbox
     hitOffset_x = 0;
     hitOffset_y = 0;
     hitWidth = 80;

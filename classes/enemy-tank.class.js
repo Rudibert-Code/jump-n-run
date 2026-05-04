@@ -46,4 +46,7 @@ class EnemyTank extends MovableObject{
     setPosition(){
         this.hitOffset_x = this.position_x;
     }
+    destroyUnit(){
+        console.log("Enemy Died");
+    }
 }
