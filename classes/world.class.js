@@ -44,6 +44,7 @@ class World{
         this.addToMap(this.healthBar);
         this.ctx.translate(this.camera_x, 0);
         this.addToMap(this.character);
+        this.addObjectsToMap(this.level.coins);
         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.level.foregroundElements);
         this.ctx.translate(-this.camera_x, 0);
@@ -67,7 +68,7 @@ class World{
     }
 
     drawFrame(mo){
-        if (mo instanceof Character || mo instanceof EnemyHover || mo instanceof EnemyTank) {
+        if (mo instanceof Character || mo instanceof EnemyHover || mo instanceof EnemyTank || mo instanceof Coins) {
             this.ctx.beginPath();
             this.ctx.lineWidth = '5';
             this.ctx.strokeStyle = 'blue';
