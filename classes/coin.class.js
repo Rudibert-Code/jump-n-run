@@ -1,5 +1,4 @@
 class Coins extends MovableObject{
-
     img_coin = [
         './assets/ui/ani_coin/1.png',
         './assets/ui/ani_coin/2.png',
@@ -14,10 +13,9 @@ class Coins extends MovableObject{
         './assets/ui/ani_coin/11.png',
         './assets/ui/ani_coin/12.png',
     ];
-
+    
     height = 80;
     width = 80;
-
     hitOffset_x = 0;
     hitOffset_y = 0;
     hitWidth = 80;

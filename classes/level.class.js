@@ -8,7 +8,6 @@ class Level {
     platforms;
     foregroundElements;
     coins;
-
     levelEndX = 700;
 
     constructor(enemiesTank, enemiesHover, levelDeko, sky, backgroundElements1, backgroundElements2, platforms, foregroundElement, coins){

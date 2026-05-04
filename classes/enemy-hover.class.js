@@ -2,8 +2,6 @@ class EnemyHover extends MovableObject{
     height = 300;
     width = 300;
     position_y = 450;
-
-    // hitbox parameters
     hitOffset_x = 0;
     hitOffset_y = 500;
     hitWidth = 140;
@@ -16,7 +14,6 @@ class EnemyHover extends MovableObject{
 
         this.animateUp();
     }
-
     
     animateUp(){
         this.aniUp = setInterval( () => {

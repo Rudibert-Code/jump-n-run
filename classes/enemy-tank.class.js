@@ -1,5 +1,4 @@
 class EnemyTank extends MovableObject{
-
     img_idle = [
         './assets/enemy/unit_2/0.png',
         './assets/enemy/unit_2/1.png',
@@ -10,8 +9,7 @@ class EnemyTank extends MovableObject{
         './assets/enemy/unit_2/6.png',
         './assets/enemy/unit_2/7.png',
     ];
-
-    // hitbox
+    
     hitOffset_x = 0;
     hitOffset_y = 550;
     hitWidth = 200;
@@ -33,7 +31,6 @@ class EnemyTank extends MovableObject{
             this.setPosition();
         }, 1000 / 30);
     }
-
     animation(){
         setInterval(() => { 
             let i = this.currentImage % this.img_idle.length;

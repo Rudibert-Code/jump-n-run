@@ -1,5 +1,4 @@
 class Character extends MovableObject{
-
     img_idle = [
         './assets/player/idle/0.png',
         './assets/player/idle/1.png',
@@ -65,11 +64,9 @@ class Character extends MovableObject{
     coolDown = 0;
     speed_y = 0;
     acceleration = 2;
-    // animation variables
     aniType;
     anI;
     aniPath;
-    // hitbox parameters
     hitOffset_x = 0;
     hitOffset_y = 500;
     hitWidth = 150;
@@ -103,7 +100,6 @@ class Character extends MovableObject{
             this.setPosition();
         }, 1000/30);
     }
-
     animations(){
         setInterval(() => {
             if (this.world.keyboard.right || this.world.keyboard.left) {

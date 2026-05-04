@@ -21,7 +21,6 @@ class World{
     setWorld(){
         this.character.world = this;
     }
-
     checkCollitionsEnemies(){
         setInterval(() => {
             this.level.enemiesHover.forEach((unit) => {
@@ -56,10 +55,8 @@ class World{
         }, 200);
     }
     draw(){
-        // Lösche alle Elemente im Level -> rendert Elemente neu
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.ctx.translate(this.camera_x, 0);
-        // Level-Elemente rendern
         this.addObjectsToMap(this.level.sky);
         this.addObjectsToMap(this.level.backgroundElements1);
         this.addObjectsToMap(this.level.backgroundElements2);
@@ -75,25 +72,20 @@ class World{
         this.addObjectsToMap(this.level.enemiesHover);
         this.addObjectsToMap(this.level.foregroundElements);
         this.ctx.translate(-this.camera_x, 0);
-        // Ruft draw() methode nach ausführung erneut auf > "this." wird in functionen innerhalb einer class-methode nicht akzeptier 
         let self = this;
         requestAnimationFrame(function(){
             self.draw();
         });
     }
-
     addObjectsToMap(objects){
         objects.forEach(element =>{
             this.addToMap(element);
         });
     }
-
     addToMap(mo){
         this.ctx.drawImage(mo.img, mo.position_x, mo.position_y, mo.width, mo.height);
-        // add collider to rendered object
         this.drawFrame(mo);
     }
-
     drawFrame(mo){
         if (mo instanceof Character || mo instanceof EnemyHover || mo instanceof EnemyTank || mo instanceof Coins) {
             this.ctx.beginPath();
