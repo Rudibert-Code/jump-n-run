@@ -9,23 +9,34 @@ class World{
 
     constructor(canvas, keyboard){
         this.ctx = canvas.getContext('2d');
+        this.ctx.font = "50px Arial";
         this.canvas = canvas;
         this.keyboard = keyboard;
         this.setWorld();
         this.draw();
-        this.checkCollitions();
+        this.checkCollitionsEnemies();
+        this.checkCollitionsCoins();
     }
     setWorld(){
         this.character.world = this;
     }
 
-    checkCollitions(){
+    checkCollitionsEnemies(){
         setInterval(() => {
             this.level.enemies.forEach((unit) => {
                 if (this.character.isColliding(unit)) {
                     this.character.lifePoints -= 10;
                     this.healthBar.setHealth(this.character.lifePoints);
                     this.character.hit = true;
+                } 
+            }) 
+        }, 200);
+    }
+    checkCollitionsCoins(){
+        setInterval(() => {
+            this.level.coins.forEach((unit) => {
+                if (this.character.isColliding(unit)) {
+                    console.log("Coins +1");
                 } 
             }) 
         }, 200);
@@ -42,6 +53,7 @@ class World{
         this.addObjectsToMap(this.level.levelDeko);
         this.ctx.translate(-this.camera_x, 0);
         this.addToMap(this.healthBar);
+        this.ctx.fillText("Hello World",100,25);
         this.ctx.translate(this.camera_x, 0);
         this.addToMap(this.character);
         this.addObjectsToMap(this.level.coins);
