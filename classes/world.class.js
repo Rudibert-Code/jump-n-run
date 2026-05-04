@@ -16,7 +16,7 @@ class World{
         this.setWorld();
         this.draw();
         this.checkCollitionsEnemies();
-        //this.checkCollitionsItem();
+        this.checkCollitionsItem();
     }
     setWorld(){
         this.character.world = this;
