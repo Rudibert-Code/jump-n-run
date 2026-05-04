@@ -6,6 +6,7 @@ class World{
     keyboard;
     ctx;
     camera_x = 0;
+    highScore = 0;
 
     constructor(canvas, keyboard){
         this.ctx = canvas.getContext('2d');
@@ -15,7 +16,7 @@ class World{
         this.setWorld();
         this.draw();
         this.checkCollitionsEnemies();
-        this.checkCollitionsCoins();
+        this.checkCollitionsItem();
     }
     setWorld(){
         this.character.world = this;
@@ -32,11 +33,12 @@ class World{
             }) 
         }, 200);
     }
-    checkCollitionsCoins(){
+    checkCollitionsItem(){
         setInterval(() => {
             this.level.coins.forEach((unit) => {
                 if (this.character.isColliding(unit)) {
-                    console.log("Coins +1");
+                    this.highScore++;
+                    this.level.coins.splice(0,1);
                 } 
             }) 
         }, 200);
@@ -53,7 +55,7 @@ class World{
         this.addObjectsToMap(this.level.levelDeko);
         this.ctx.translate(-this.camera_x, 0);
         this.addToMap(this.healthBar);
-        this.ctx.fillText("Hello World",100,25);
+        this.ctx.fillText(this.highScore,504,80);
         this.ctx.translate(this.camera_x, 0);
         this.addToMap(this.character);
         this.addObjectsToMap(this.level.coins);
