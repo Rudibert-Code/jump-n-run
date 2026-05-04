@@ -91,7 +91,7 @@ class Character extends MovableObject{
     applyGravity(){
         setInterval(() => {
             if (this.position_y <= 399) {
-                this.midAir = true
+                this.midAir = true;
                 this.position_y -= this.speed_y;
                 this.speed_y -= this.acceleration;
             }
@@ -115,12 +115,13 @@ class Character extends MovableObject{
                     this.moveLeft();
                 }
             }
-            if (this.world.keyboard.jump && this.position_y >= 400) {
-                this.jump(40);
-            }
             if (this.world.keyboard.right == false && this.world.keyboard.left == false && this.position_y >= 400) {
                 this.otherDirection = false;
                 this.aniType = this.img_idle;
+            }
+            if (this.world.keyboard.jump && this.position_y >= 400) {
+                this.jump(40);
+                this.position_y -= this.speed_y;
             }
             if (this.position_y <= 399){
                 this.aniType = this.img_jump;
