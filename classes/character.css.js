@@ -68,7 +68,7 @@ class Character extends MovableObject{
     anI;
     aniPath;
     hitOffset_x = 0;
-    hitOffset_y = 500;
+    hitOffset_y = 400;
     hitWidth = 150;
     hitHeight = 200;
     hit = false;
@@ -90,12 +90,14 @@ class Character extends MovableObject{
 
     applyGravity(){
         setInterval(() => {
-            if (this.position_y <= 500) {
+            if (this.position_y <= 399) {
+                this.midAir = true
                 this.position_y -= this.speed_y;
                 this.speed_y -= this.acceleration;
             }
-            if (this.position_y >= 500) {
-                this.position_y = 500;
+            if (this.position_y >= 400) {
+                this.midAir = false;
+                this.position_y = 400;
             }
             this.setPosition();
         }, 1000/30);
@@ -103,8 +105,7 @@ class Character extends MovableObject{
     animations(){
         setInterval(() => {
             if (this.world.keyboard.right || this.world.keyboard.left) {
-                if(this.position_y >= 500){
-                    this.midAir = false;
+                if(this.position_y >= 400){
                     this.aniType = this.img_walk;
                 }
                 if(this.world.keyboard.right && this.position_x <= this.world.level.levelEndX){
@@ -114,16 +115,14 @@ class Character extends MovableObject{
                     this.moveLeft();
                 }
             }
-            if (this.world.keyboard.jump && this.position_y >= 500) {
+            if (this.world.keyboard.jump && this.position_y >= 400) {
                 this.jump(40);
             }
-            if (this.world.keyboard.right == false && this.world.keyboard.left == false && this.position_y >= 500) {
-                this.midAir = false;
+            if (this.world.keyboard.right == false && this.world.keyboard.left == false && this.position_y >= 400) {
                 this.otherDirection = false;
                 this.aniType = this.img_idle;
             }
-            if (this.position_y <= 499){
-                this.midAir = true;
+            if (this.position_y <= 399){
                 this.aniType = this.img_jump;
             }
             if (this.hit == true) {
@@ -138,7 +137,7 @@ class Character extends MovableObject{
                     this.hit = false;
                 }
             }
-            // später in world
+            // GAME
             if (this.lifePoints == 0) {
                 return console.log("GAME OVER");  
             }

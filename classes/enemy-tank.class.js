@@ -9,16 +9,17 @@ class EnemyTank extends MovableObject{
         './assets/enemy/unit_2/6.png',
         './assets/enemy/unit_2/7.png',
     ];
-    
+
     hitOffset_x = 0;
-    hitOffset_y = 550;
+    hitOffset_y = 450;
     hitWidth = 200;
     hitHeight = 150;
 
     constructor(){
         super().loadImage('./assets/enemy/unit_2/0.png');
         this.loadImages(this.img_idle);
-        
+
+        this.position_y = 400;
         this.position_x = 500 + Math.random() * 100;
 
         this.animate();
