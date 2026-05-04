@@ -29,7 +29,9 @@ const level1 = new Level(
         new BG2('./assets/level/deko/BG2.png', 3240, 331),
     ],
     [
-        new Platform(),
+        new Platform('./assets/level/platform.png', -120, 570),
+        new Platform('./assets/level/platform.png', 180, 570),
+        new Platform('./assets/level/platform.png', 780, 570),
     ],
     [
         new FG()
@@ -39,4 +41,7 @@ const level1 = new Level(
         new Coins(),
         new Coins()
     ],
+    //[
+    //    new Lava('./assets/level/hazard/lava/0.png', 480, 570),
+    //],
 );

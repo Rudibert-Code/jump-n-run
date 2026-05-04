@@ -14,11 +14,11 @@ class EnemyHover extends MovableObject{
 
         this.animateUp();
     }
-    
+
     animateUp(){
         this.aniUp = setInterval( () => {
             this.position_y-=2;
-            if (this.position_y == 200) {
+            if (this.position_y == 150) {
                 this.animateDown();
                 clearInterval(this.aniUp);
             }
@@ -28,7 +28,7 @@ class EnemyHover extends MovableObject{
     animateDown(){
         this.aniDown = setInterval( () => {
             this.position_y+=2;
-            if (this.position_y == 450) {
+            if (this.position_y == 350) {
                 this.animateUp();
                 clearInterval(this.aniDown);
             }

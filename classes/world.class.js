@@ -62,11 +62,12 @@ class World{
         this.addObjectsToMap(this.level.backgroundElements2);
         this.addObjectsToMap(this.level.platforms);
         this.addObjectsToMap(this.level.levelDeko);
+        //this.addObjectsToMap(this.level.lava);
+        this.addToMap(this.character);
         this.ctx.translate(-this.camera_x, 0);
         this.addToMap(this.healthBar);
         this.ctx.fillText(this.highScore,504,80);
         this.ctx.translate(this.camera_x, 0);
-        this.addToMap(this.character);
         this.addObjectsToMap(this.level.coins);
         this.addObjectsToMap(this.level.enemiesTank);
         this.addObjectsToMap(this.level.enemiesHover);

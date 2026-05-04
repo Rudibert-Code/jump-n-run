@@ -1,4 +1,4 @@
-class Platform{
+class Platform extends MovableObject{
     height = 162;
     width = 300;
     hitOffset_x = 0;
@@ -6,11 +6,10 @@ class Platform{
     hitHeight = 162;
     hitWidth = 300;
 
-    constructor(){
+    constructor(imgPath, x, y){
+        super().loadImage(imgPath);
 
-        this.img = new Image();
-        this.img.src = './assets/level/platform.png';
-        this.position_x = 0;   
-        this.position_y = 570;
+        this.position_x = x;
+        this.position_y = y;
     }
 }
