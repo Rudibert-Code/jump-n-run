@@ -138,6 +138,11 @@ class Character extends MovableObject{
                     this.hit = false;
                 }
             }
+            if (this.world.keyboard.shoot == true){
+                //console.log(this.world.projectile);
+                let amo = new Shot(this.position_x, this.position_y);
+                this.world.projectile.push(amo);
+            }
             // GAME
             if (this.lifePoints == 0) {
                 return console.log("GAME OVER");  
@@ -160,8 +165,6 @@ class Character extends MovableObject{
     }
     moveLeft(){
         this.position_x -= 8;
-    }
-    fire(){
     }
     setPosition(){
         this.hitOffset_x = this.position_x;

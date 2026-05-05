@@ -16,8 +16,6 @@ class World{
         this.keyboard = keyboard;
         this.setWorld();
         this.draw();
-        //this.checkCollitionsEnemies();
-        //this.checkCollitionsItem();
         this.run();
     }
     setWorld(){
@@ -71,7 +69,7 @@ class World{
         this.addObjectsToMap(this.level.levelDeko);
         //this.addObjectsToMap(this.level.lava);
         this.addToMap(this.character);
-        this.addObjectsToMap(this.level.shot);
+        this.addObjectsToMap(this.projectile);
         this.ctx.translate(-this.camera_x, 0);
         this.addToMap(this.healthBar);
         this.ctx.fillText(this.highScore,504,80);

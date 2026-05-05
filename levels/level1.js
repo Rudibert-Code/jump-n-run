@@ -41,9 +41,6 @@ const level1 = new Level(
         new Coins(),
         new Coins()
     ],
-    [
-        new Shot(),
-    ],
     //[
     //    new Lava('./assets/level/hazard/lava/0.png', 480, 570),
     //],

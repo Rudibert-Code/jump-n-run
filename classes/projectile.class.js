@@ -1,24 +1,19 @@
 class Shot extends MovableObject{
     height = 40;
     width = 40;
-    position_x = 100;
-    position_y = 100;
 
     hitOffset_x = 0;
     hitOffset_y = 0;
     hitWidth = 40;
     hitHeight = 40;
 
-    constructor(){
+    constructor(x,y){
         super().loadImage('./assets/player/shot.png');
 
-        this.animation();
-    }
+        this.position_x = x + 150;
+        this.position_y = y + 25;
 
-    shoot(x,y){
-        this.position_x = x;
-        this.position_y = y;
-        this.animation();
+        this.animation(100,100);
     }
 
     animation(){
