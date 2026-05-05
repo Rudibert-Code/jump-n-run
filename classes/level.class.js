@@ -8,11 +8,11 @@ class Level {
     platforms;
     foregroundElements;
     coins; 
-    lava;
+    amo;
 
     levelEndX = 1000;
 
-    constructor(enemiesTank, enemiesHover, levelDeko, sky, backgroundElements1, backgroundElements2, platforms, foregroundElement, coins, lava){
+    constructor(enemiesTank, enemiesHover, levelDeko, sky, backgroundElements1, backgroundElements2, platforms, foregroundElement, coins, amo){
         this.enemiesTank = enemiesTank;
         this.enemiesHover = enemiesHover;
         this.levelDeko = levelDeko;
@@ -22,6 +22,6 @@ class Level {
         this.platforms = platforms;
         this.foregroundElements = foregroundElement;
         this.coins = coins;
-        this.lava = lava;
+        this.amo = amo;
     }
 }

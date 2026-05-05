@@ -61,7 +61,7 @@ class Character extends MovableObject{
     ];
 
     world;
-    coolDown = true;
+    pause = true;
     speed_y = 0;
     acceleration = 2;
     aniType;
@@ -82,6 +82,7 @@ class Character extends MovableObject{
         this.loadImages(this.img_walk);
         this.loadImages(this.img_jump);
         this.loadImages(this.img_hit);
+        this.coolDown();
         this.applyGravity();
         this.animations();
         this.offset_x = this.position_x;
@@ -136,8 +137,8 @@ class Character extends MovableObject{
                     this.hit = false;
                 }
             }
-            if (this.world.keyboard.shoot == true && this.coolDown == true){
-                this.coolDown = false;
+            if (this.world.keyboard.shoot == true && this.pause == true && this.world.amoNumber >= 1){
+                this.pause = false;
                 this.shoot();
             }
             this.anI = this.currentImage % this.aniType.length;
@@ -160,6 +161,7 @@ class Character extends MovableObject{
         this.position_x -= 8;
     }
     shoot(){
+        this.world.amoNumber--
         let amo = new Shot(this.position_x, this.position_y);
         this.world.projectile.push(amo);
         this.world.pID++;
@@ -167,5 +169,16 @@ class Character extends MovableObject{
     setPosition(){
         this.hitOffset_x = this.position_x;
         this.hitOffset_y = this.position_y;
+    }
+    coolDown(){
+        setInterval(() => {
+            if (this.pause == false) {
+            this.click++
+            if (this.click == 30) {
+                this.click = 0;
+                this.pause = true;
+            }
+            }
+        }, 1000/30);
     }
 }

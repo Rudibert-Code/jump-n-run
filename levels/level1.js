@@ -41,12 +41,12 @@ const level1 = new Level(
     [
         new FG()
     ],
-        [
+    [
         new Coins(),
         new Coins(),
         new Coins()
     ],
-    //[
-    //    new Lava('./assets/level/hazard/lava/0.png', 480, 570),
-    //],
+    [
+        new Amo(),
+    ]
 );

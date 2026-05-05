@@ -9,6 +9,7 @@ class World{
     ctx;
     camera_x = 0;
     highScore = 0;
+    amoNumber = 3;
 
     constructor(canvas, keyboard){
         this.ctx = canvas.getContext('2d');
@@ -72,14 +73,15 @@ class World{
         this.addObjectsToMap(this.level.backgroundElements2);
         this.addObjectsToMap(this.level.platforms);
         this.addObjectsToMap(this.level.levelDeko);
-        //this.addObjectsToMap(this.level.lava);
         this.addToMap(this.character);
         this.addObjectsToMap(this.projectile);
         this.ctx.translate(-this.camera_x, 0);
         this.addToMap(this.healthBar);
         this.ctx.fillText(this.highScore,504,80);
+        this.ctx.fillText(this.amoNumber,40,200);
         this.ctx.translate(this.camera_x, 0);
         this.addObjectsToMap(this.level.coins);
+        this.addObjectsToMap(this.level.amo);
         this.addObjectsToMap(this.level.enemiesTank);
         this.addObjectsToMap(this.level.enemiesHover);
         this.addObjectsToMap(this.level.foregroundElements);
