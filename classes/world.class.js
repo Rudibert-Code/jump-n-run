@@ -64,6 +64,7 @@ class World{
         this.addObjectsToMap(this.level.levelDeko);
         //this.addObjectsToMap(this.level.lava);
         this.addToMap(this.character);
+        this.addObjectsToMap(this.level.shot);
         this.ctx.translate(-this.camera_x, 0);
         this.addToMap(this.healthBar);
         this.ctx.fillText(this.highScore,504,80);
