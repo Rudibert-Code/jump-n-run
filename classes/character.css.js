@@ -61,7 +61,7 @@ class Character extends MovableObject{
     ];
 
     world;
-    coolDown = 0;
+    coolDown = true;
     speed_y = 0;
     acceleration = 2;
     aniType;
@@ -111,12 +111,10 @@ class Character extends MovableObject{
                 if(this.world.keyboard.right && this.position_x <= this.world.level.levelEndX){
                     this.moveRight();
                 } else if(this.world.keyboard.left && this.position_x >= 0){
-                    this.otherDirection = true;
                     this.moveLeft();
                 }
             }
             if (this.world.keyboard.right == false && this.world.keyboard.left == false && this.position_y >= 400) {
-                this.otherDirection = false;
                 this.aniType = this.img_idle;
             }
             if (this.world.keyboard.jump && this.position_y >= 400) {
@@ -138,16 +136,10 @@ class Character extends MovableObject{
                     this.hit = false;
                 }
             }
-            if (this.world.keyboard.shoot == true){
-                //console.log(this.world.projectile);
-                let amo = new Shot(this.position_x, this.position_y);
-                this.world.projectile.push(amo);
+            if (this.world.keyboard.shoot == true && this.coolDown == true){
+                this.coolDown = false;
+                this.shoot();
             }
-            // GAME
-            if (this.lifePoints == 0) {
-                return console.log("GAME OVER");  
-            }
-            // play animation
             this.anI = this.currentImage % this.aniType.length;
             this.path = this.aniType[this.anI];
             this.img = this.imageCache[this.path];
@@ -157,6 +149,7 @@ class Character extends MovableObject{
             this.setPosition();
         }, 1000/30);
     }
+
     jump(strength){
         this.speed_y = strength;
     }
@@ -165,6 +158,10 @@ class Character extends MovableObject{
     }
     moveLeft(){
         this.position_x -= 8;
+    }
+    shoot(){
+        let amo = new Shot(this.position_x, this.position_y);
+        this.world.projectile.push(amo);
     }
     setPosition(){
         this.hitOffset_x = this.position_x;

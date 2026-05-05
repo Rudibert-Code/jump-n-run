@@ -26,6 +26,7 @@ class World{
             this.checkCollitionsEnemyTank();
             this.checkCollitionsEnemyHover();
             this.checkCollitionsItem();
+            this.checkCollitionShot();
         }, 200);
     }
     checkCollitionsEnemyTank(){
@@ -56,6 +57,14 @@ class World{
             if (this.character.isColliding(unit)) {
                 this.highScore++;
                 this.level.coins.splice(itemID,1);
+            }
+        }) 
+    }
+    checkCollitionShot(){
+        this.level.enemiesHover.forEach((unit) => {
+            let itemID = this.level.enemiesHover.indexOf(unit);
+            if (this.projectile.isColliding(unit)) {
+                this.level.enemiesHover.splice(unitID,1);
             }
         }) 
     }
@@ -94,7 +103,7 @@ class World{
         this.drawFrame(mo);
     }
     drawFrame(mo){
-        if (mo instanceof Character || mo instanceof EnemyHover || mo instanceof EnemyTank || mo instanceof Coins) {
+        if (mo instanceof Character || mo instanceof EnemyHover || mo instanceof EnemyTank || mo instanceof Coins || mo instanceof Shot) {
             this.ctx.beginPath();
             this.ctx.lineWidth = '5';
             this.ctx.strokeStyle = 'blue';
