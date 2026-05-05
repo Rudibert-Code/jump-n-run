@@ -162,6 +162,7 @@ class Character extends MovableObject{
     shoot(){
         let amo = new Shot(this.position_x, this.position_y);
         this.world.projectile.push(amo);
+        this.world.pID++;
     }
     setPosition(){
         this.hitOffset_x = this.position_x;

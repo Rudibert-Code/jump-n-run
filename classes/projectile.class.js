@@ -1,10 +1,10 @@
 class Shot extends MovableObject{
     height = 40;
     width = 40;
-    hitOffset_x = 0;
-    hitOffset_y = 0;
-    hitWidth = 40;
-    hitHeight = 40;
+    hitOffset_x;
+    hitOffset_y;
+    hitWidth = 80;
+    hitHeight = 80;
 
     constructor(x,y){
         super().loadImage('./assets/player/shot.png');
@@ -22,8 +22,8 @@ class Shot extends MovableObject{
     }
 
     setPosition(){
-        this.hitOffset_x = this.position_x;
-        this.hitOffset_y = this.position_y;
+        this.hitOffset_x = this.position_x -20;
+        this.hitOffset_y = this.position_y -20;
     }
 
     //deleteThis(){

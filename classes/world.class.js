@@ -1,7 +1,8 @@
 class World{ 
     character = new Character();
     healthBar = new HealthBar();
-    projectile = [];
+    projectile = [new Shot()];
+    pID = 0;
     level = level1;
     canvas;
     keyboard;
@@ -26,7 +27,6 @@ class World{
             this.checkCollitionsEnemyTank();
             this.checkCollitionsEnemyHover();
             this.checkCollitionsItem();
-            this.checkCollitionShot();
         }, 200);
     }
     checkCollitionsEnemyTank(){
@@ -39,16 +39,20 @@ class World{
                 this.character.lifePoints -= 10;
                 this.healthBar.setHealth(this.character.lifePoints);
                 this.character.hit = true;
-            } 
+            }
         }) 
     }
     checkCollitionsEnemyHover(){
         this.level.enemiesHover.forEach((unit) => {
+            let unitID = this.level.enemiesHover.indexOf(unit);
             if (this.character.isColliding(unit)) {
                 this.character.lifePoints -= 10;
                 this.healthBar.setHealth(this.character.lifePoints);
                 this.character.hit = true;
-            } 
+            } else if (this.projectile[this.pID].isColliding(unit)) {
+                this.level.enemiesHover.splice(unitID,1);
+                this.projectile.splice(this.pID,1);
+            }
         }) 
     }
     checkCollitionsItem(){
@@ -57,25 +61,6 @@ class World{
             if (this.character.isColliding(unit)) {
                 this.highScore++;
                 this.level.coins.splice(itemID,1);
-            }
-        }) 
-    }
-    //checkCollitionShot(){
-    //    this.level.enemiesHover.forEach((unit) => {
-    //        let itemID = this.level.enemiesHover.indexOf(unit);
-    //        if (this.projectile[0].isColliding(unit)) {
-    //            console.log("HIT");
-    //            this.level.enemiesHover.splice(unitID,1);
-    //            this.level.projectile.splice(0,1);
-    //        }
-    //    }) 
-    //}
-    checkCollitionShot(){
-        this.projectile.forEach((unit) => {
-            let amoID = this.projectile.indexOf(unit);
-            if (this.level.enemiesHover.isColliding(unit)) {
-                console.log("HIT");
-                this.projectile.splice(amoID,1);
             }
         }) 
     }
