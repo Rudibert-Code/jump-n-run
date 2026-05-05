@@ -10,7 +10,6 @@ class Amo extends MovableObject{
         './assets/ui/ani_amo/8.png',
         './assets/ui/ani_amo/9.png',
         './assets/ui/ani_amo/10.png',
-        './assets/ui/ani_amo/11.png',
         './assets/ui/ani_amo/12.png',
         './assets/ui/ani_amo/13.png',
     ];
@@ -18,7 +17,7 @@ class Amo extends MovableObject{
     height = 80;
     width = 80;
     position_x = 500;
-    position_y = 0;
+    position_y = 300;
     hitOffset_x = 0;
     hitOffset_y = 0;
     hitWidth = 80;
@@ -27,7 +26,6 @@ class Amo extends MovableObject{
     constructor(){
         super().loadImage('./assets/ui/ani_amo/1.png');
         this.loadImages(this.img_amo);
-        //this.position_x = 500 + Math.random() * 100;
         this.animation();
     }
 

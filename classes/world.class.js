@@ -64,6 +64,13 @@ class World{
                 this.level.coins.splice(itemID,1);
             }
         }) 
+        this.level.amo.forEach((unit) => {
+            let itemID = this.level.amo.indexOf(unit);
+            if (this.character.isColliding(unit)) {
+                this.amoNumber++;
+                this.level.amo.splice(itemID,1);
+            }
+        }) 
     }
     draw(){
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -101,7 +108,7 @@ class World{
         this.drawFrame(mo);
     }
     drawFrame(mo){
-        if (mo instanceof Character || mo instanceof EnemyHover || mo instanceof EnemyTank || mo instanceof Coins || mo instanceof Shot) {
+        if (mo instanceof Character || mo instanceof EnemyHover || mo instanceof EnemyTank || mo instanceof Coins ||  mo instanceof Amo || mo instanceof Shot) {
             this.ctx.beginPath();
             this.ctx.lineWidth = '5';
             this.ctx.strokeStyle = 'blue';
