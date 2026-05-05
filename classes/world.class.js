@@ -1,6 +1,7 @@
 class World{ 
     character = new Character();
     healthBar = new HealthBar();
+    projectile = [new Shot()];
     level = level1;
     canvas;
     keyboard;
@@ -15,44 +16,50 @@ class World{
         this.keyboard = keyboard;
         this.setWorld();
         this.draw();
-        this.checkCollitionsEnemies();
-        this.checkCollitionsItem();
+        //this.checkCollitionsEnemies();
+        //this.checkCollitionsItem();
+        this.run();
     }
     setWorld(){
         this.character.world = this;
     }
-    checkCollitionsEnemies(){
+    run(){
         setInterval(() => {
-            this.level.enemiesHover.forEach((unit) => {
-                if (this.character.isColliding(unit)) {
-                    this.character.lifePoints -= 10;
-                    this.healthBar.setHealth(this.character.lifePoints);
-                    this.character.hit = true;
-                } 
-            }) 
-            this.level.enemiesTank.forEach((unit) => {
-                let unitID = this.level.enemiesTank.indexOf(unit);
-                if (this.character.isColliding(unit) && this.character.midAir == true) {
-                    this.level.enemiesTank.splice(unitID,1);
-                    this.character.jump(20);
-                } else if (this.character.isColliding(unit)) {
-                    this.character.lifePoints -= 10;
-                    this.healthBar.setHealth(this.character.lifePoints);
-                    this.character.hit = true;
-                } 
-            }) 
+            this.checkCollitionsEnemyTank();
+            this.checkCollitionsEnemyHover();
+            this.checkCollitionsItem();
         }, 200);
     }
+    checkCollitionsEnemyTank(){
+        this.level.enemiesTank.forEach((unit) => {
+            let unitID = this.level.enemiesTank.indexOf(unit);
+            if (this.character.isColliding(unit) && this.character.midAir == true) {
+                this.level.enemiesTank.splice(unitID,1);
+                this.character.jump(20);
+            } else if (this.character.isColliding(unit)) {
+                this.character.lifePoints -= 10;
+                this.healthBar.setHealth(this.character.lifePoints);
+                this.character.hit = true;
+            } 
+        }) 
+    }
+    checkCollitionsEnemyHover(){
+        this.level.enemiesHover.forEach((unit) => {
+            if (this.character.isColliding(unit)) {
+                this.character.lifePoints -= 10;
+                this.healthBar.setHealth(this.character.lifePoints);
+                this.character.hit = true;
+            } 
+        }) 
+    }
     checkCollitionsItem(){
-        setInterval(() => {
-            this.level.coins.forEach((unit) => {
-                let itemID = this.level.coins.indexOf(unit);
-                if (this.character.isColliding(unit)) {
-                    this.highScore++;
-                    this.level.coins.splice(itemID,1);
-                }
-            }) 
-        }, 200);
+        this.level.coins.forEach((unit) => {
+            let itemID = this.level.coins.indexOf(unit);
+            if (this.character.isColliding(unit)) {
+                this.highScore++;
+                this.level.coins.splice(itemID,1);
+            }
+        }) 
     }
     draw(){
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
