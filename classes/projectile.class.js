@@ -17,6 +17,7 @@ class Shot extends MovableObject{
         setInterval( () => {
             this.position_x += 10;
             this.setPosition();
+            //this.deleteThis();
         }, 1000 / 30)
     }
 
@@ -24,4 +25,7 @@ class Shot extends MovableObject{
         this.hitOffset_x = this.position_x;
         this.hitOffset_y = this.position_y;
     }
+
+    //deleteThis(){
+    //}
 }

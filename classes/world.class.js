@@ -1,7 +1,7 @@
 class World{ 
     character = new Character();
     healthBar = new HealthBar();
-    projectile = [new Shot()];
+    projectile = [];
     level = level1;
     canvas;
     keyboard;
@@ -60,11 +60,22 @@ class World{
             }
         }) 
     }
+    //checkCollitionShot(){
+    //    this.level.enemiesHover.forEach((unit) => {
+    //        let itemID = this.level.enemiesHover.indexOf(unit);
+    //        if (this.projectile[0].isColliding(unit)) {
+    //            console.log("HIT");
+    //            this.level.enemiesHover.splice(unitID,1);
+    //            this.level.projectile.splice(0,1);
+    //        }
+    //    }) 
+    //}
     checkCollitionShot(){
-        this.level.enemiesHover.forEach((unit) => {
-            let itemID = this.level.enemiesHover.indexOf(unit);
-            if (this.projectile.isColliding(unit)) {
-                this.level.enemiesHover.splice(unitID,1);
+        this.projectile.forEach((unit) => {
+            let amoID = this.projectile.indexOf(unit);
+            if (this.level.enemiesHover.isColliding(unit)) {
+                console.log("HIT");
+                this.projectile.splice(amoID,1);
             }
         }) 
     }
