@@ -21,7 +21,7 @@ class Shot extends MovableObject{
     }
 
     setPosition(){
-        this.hitOffset_x = this.position_x -20;
-        this.hitOffset_y = this.position_y -20;
+        this.hitOffset_x = this.position_x -30;
+        this.hitOffset_y = this.position_y -30;
     }
 }

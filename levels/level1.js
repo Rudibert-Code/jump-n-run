@@ -31,7 +31,7 @@ const level1 = new Level(
     [
         new Platform('./assets/level/platform.png', -120, 570),
         new Platform('./assets/level/platform.png', 180, 570),
-        new Platform('./assets/level/platform.png', 480, 570),
+        //new Platform('./assets/level/platform.png', 480, 570),
         new Platform('./assets/level/platform.png', 780, 570),
         new Platform('./assets/level/platform.png', 1080, 570),
         new Platform('./assets/level/platform.png', 1380, 570),
@@ -49,4 +49,7 @@ const level1 = new Level(
     [
         new Amo(),
     ],
+    [
+        new Lava('./assets/level/hazard/lava/0.png', 480, 570),
+    ]
 );

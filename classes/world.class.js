@@ -28,7 +28,8 @@ class World{
             this.checkCollitionsEnemyTank();
             this.checkCollitionsEnemyHover();
             this.checkCollitionsItem();
-        }, 200);
+            this.checkCollitionsLava();
+        }, 1000/30);
     }
     checkCollitionsEnemyTank(){
         this.level.enemiesTank.forEach((unit) => {
@@ -72,6 +73,14 @@ class World{
             }
         }) 
     }
+    checkCollitionsLava(){
+        this.level.lava.forEach((unit) => {
+            if (this.character.isColliding(unit)) {
+                this.character.lifePoints = 0;
+                this.healthBar.setHealth(this.character.lifePoints);
+            }
+        }) 
+    }
     draw(){
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.ctx.translate(this.camera_x, 0);
@@ -79,6 +88,7 @@ class World{
         this.addObjectsToMap(this.level.backgroundElements1);
         this.addObjectsToMap(this.level.backgroundElements2);
         this.addObjectsToMap(this.level.platforms);
+        this.addObjectsToMap(this.level.lava);
         this.addObjectsToMap(this.level.levelDeko);
         this.addToMap(this.character);
         this.addObjectsToMap(this.projectile);
@@ -108,7 +118,7 @@ class World{
         this.drawFrame(mo);
     }
     drawFrame(mo){
-        if (mo instanceof Character || mo instanceof EnemyHover || mo instanceof EnemyTank || mo instanceof Coins ||  mo instanceof Amo || mo instanceof Shot) {
+        if (mo instanceof Character || mo instanceof EnemyHover || mo instanceof EnemyTank || mo instanceof Coins ||  mo instanceof Amo || mo instanceof Shot || mo instanceof Lava) {
             this.ctx.beginPath();
             this.ctx.lineWidth = '5';
             this.ctx.strokeStyle = 'blue';
