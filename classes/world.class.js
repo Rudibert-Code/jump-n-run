@@ -2,6 +2,7 @@ class World{
     character = new Character();
     healthBar = new HealthBar();
     projectile = [new Shot()];
+    destroy = [new Destroy()];
     pID = 0;
     level = level1;
     canvas;
@@ -35,7 +36,8 @@ class World{
         this.level.enemiesTank.forEach((unit) => {
             let unitID = this.level.enemiesTank.indexOf(unit);
             if (this.character.isColliding(unit) && this.character.midAir == true) {
-                this.level.enemiesTank.destroy = true;
+                let enemyLocation = new Destroy(unit.position_x, unit.position_y);
+                this.destroy.push(enemyLocation);
                 this.level.enemiesTank.splice(unitID,1);
                 this.character.jump(20);
             } else if (this.character.isColliding(unit)) {
@@ -106,6 +108,7 @@ class World{
         this.addObjectsToMap(this.level.amo);
         this.addObjectsToMap(this.level.enemiesTank);
         this.addObjectsToMap(this.level.enemiesHover);
+        this.addObjectsToMap(this.destroy);
         this.addObjectsToMap(this.level.foregroundElements);
         this.ctx.translate(-this.camera_x, 0);
         let self = this;

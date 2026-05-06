@@ -1,7 +1,5 @@
 class Destroy extends MovableObject{
     img_destroy = [
-        './assets/enemy/destroy/1.png',
-        './assets/enemy/destroy/2.png',
         './assets/enemy/destroy/3.png',
         './assets/enemy/destroy/4.png',
         './assets/enemy/destroy/5.png',
@@ -16,15 +14,17 @@ class Destroy extends MovableObject{
         './assets/enemy/destroy/14.png',
         './assets/enemy/destroy/15.png',
         './assets/enemy/destroy/16.png',
+        './assets/enemy/destroy/17.png',
     ];
 
-    constructor(x,y){
-        super().loadImage('./assets/enemy/destroy/1.png');
-        this.loadImages(this.img_destroy);
+    height = 200;
+    width = 200;
 
+    constructor(x,y){
+        super().loadImage('./assets/enemy/destroy/3.png');
+        this.loadImages(this.img_destroy);
         this.position_x = x;
         this.position_y = y;
-
         this.animation();
     }
     animation(){
@@ -33,6 +33,9 @@ class Destroy extends MovableObject{
             let path = this.img_destroy[i];
             this.img = this.imageCache[path];
             this.currentImage++;
+            if (this.currentImage == 14) {
+                this.img_destroy.splice(0,14);
+            }
         }, 1000 / 30);
     }
 }
