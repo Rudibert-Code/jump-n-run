@@ -1,9 +1,11 @@
 const level1 = new Level(
     [
-        new EnemyTank(),
+        new EnemyTank('./assets/enemy/unit_2/0.png', 2580),
     ],
     [
-        new EnemyHover('./assets/enemy/unit_1/0.png',480),
+        new EnemyHover('./assets/enemy/unit_1/0.png',1370),
+        new EnemyHover('./assets/enemy/unit_1/0.png',1970),
+        new EnemyHover('./assets/enemy/unit_1/0.png',2270),
     ],
     [
         new DekoSky('./assets/level/deko/BG_1_rocks1.png', 1000, 5),
@@ -48,9 +50,14 @@ const level1 = new Level(
     [
         new Coins('./assets/ui/ani_coin/1.png',290, 450),
         new Coins('./assets/ui/ani_coin/1.png',890, 450),
+        new Coins('./assets/ui/ani_coin/1.png',1180, 450),
+        new Coins('./assets/ui/ani_coin/1.png',1490, 200),
+        new Coins('./assets/ui/ani_coin/1.png', 1790, 450),
     ],
     [
-        new Amo(),
+        new Amo('./assets/ui/ani_amo/1.png',1180, 200),
+        new Amo('./assets/ui/ani_amo/1.png',2080, 450),
+        new Amo('./assets/ui/ani_amo/1.png',2680, 450),
     ],
     [
         new Lava('./assets/level/hazard/lava/0.png', 480, 570),

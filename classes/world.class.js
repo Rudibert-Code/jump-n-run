@@ -9,7 +9,7 @@ class World{
     ctx;
     camera_x = 0;
     highScore = 0;
-    amoNumber = 3;
+    amoNumber = 0;
 
     constructor(canvas, keyboard){
         this.ctx = canvas.getContext('2d');
@@ -54,22 +54,23 @@ class World{
             } else if (this.projectile[this.pID].isColliding(unit)) {
                 this.level.enemiesHover.splice(unitID,1);
                 this.projectile.splice(this.pID,1);
+                this.pID = 0;
             }
         }) 
     }
     checkCollitionsItem(){
         this.level.coins.forEach((unit) => {
-            let itemID = this.level.coins.indexOf(unit);
+            let coinID = this.level.coins.indexOf(unit);
             if (this.character.isColliding(unit)) {
                 this.highScore++;
-                this.level.coins.splice(itemID,1);
+                this.level.coins.splice(coinID,1);
             }
         }) 
         this.level.amo.forEach((unit) => {
-            let itemID = this.level.amo.indexOf(unit);
+            let amoID = this.level.amo.indexOf(unit);
             if (this.character.isColliding(unit)) {
                 this.amoNumber++;
-                this.level.amo.splice(itemID,1);
+                this.level.amo.splice(amoID,1);
             }
         }) 
     }

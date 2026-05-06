@@ -16,16 +16,18 @@ class Amo extends MovableObject{
     
     height = 80;
     width = 80;
-    position_x = 500;
-    position_y = 300;
+    position_x;
+    position_y;
     hitOffset_x = 0;
     hitOffset_y = 0;
     hitWidth = 80;
     hitHeight = 80;
 
-    constructor(){
-        super().loadImage('./assets/ui/ani_amo/1.png');
+    constructor(imgPath, x,y){
+        super().loadImage(imgPath);
         this.loadImages(this.img_amo);
+        this.position_x = x;
+        this.position_y = y;
         this.animation();
     }
 
