@@ -21,10 +21,11 @@ class Coins extends MovableObject{
     hitWidth = 80;
     hitHeight = 80;
 
-    constructor(){
-        super().loadImage('./assets/ui/ani_coin/1.png');
+    constructor(imgPath, x,y){
+        super().loadImage(imgPath);
         this.loadImages(this.img_coin);
-        this.position_x = 200 + Math.random() * 100;
+        this.position_x = x;
+        this.position_y = y;
         this.animation();
     }
 

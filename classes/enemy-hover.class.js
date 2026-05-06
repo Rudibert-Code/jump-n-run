@@ -7,10 +7,10 @@ class EnemyHover extends MovableObject{
     hitWidth = 140;
     hitHeight = 140;
 
-    constructor(){
-        super().loadImage('./assets/enemy/unit_1/0.png');
+    constructor(imgPath, x){
+        super().loadImage(imgPath);
 
-        this.position_x = 500;
+        this.position_x = x;
 
         this.animateUp();
     }

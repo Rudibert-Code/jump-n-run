@@ -69,7 +69,7 @@ class Character extends MovableObject{
     aniPath;
     hitOffset_x = 0;
     hitOffset_y = 400;
-    hitWidth = 150;
+    hitWidth = 120;
     hitHeight = 200;
     hit = false;
     midAir = false;
