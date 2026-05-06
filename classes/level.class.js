@@ -11,7 +11,7 @@ class Level {
     amo;
     lava;
 
-    levelEndX = 3000;
+    levelEndX = 3300;
 
     constructor(enemiesTank, enemiesHover, levelDeko, sky, backgroundElements1, backgroundElements2, platforms, foregroundElement, coins, amo, lava){
         this.enemiesTank = enemiesTank;

@@ -67,5 +67,6 @@ const level1 = new Level(
         new Lava('./assets/level/hazard/lava/0.png', 3179, 570),
         new Lava('./assets/level/hazard/lava/0.png', 3479, 570),
         new Lava('./assets/level/hazard/lava/0.png', 3779, 570),
+        new Lava('./assets/level/hazard/lava/0.png', 4079, 570),
     ]
 );
