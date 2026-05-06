@@ -42,6 +42,9 @@ class World{
                 this.healthBar.setHealth(this.character.lifePoints);
                 this.character.hit = true;
             }
+            if (this.level.lava[1].isColliding(unit)) {
+                this.level.enemiesTank.splice(unitID,1);
+            }
         }) 
     }
     checkCollitionsEnemyHover(){

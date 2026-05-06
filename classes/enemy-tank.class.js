@@ -29,7 +29,7 @@ class EnemyTank extends MovableObject{
     animate(){
         setInterval( () => {
             this.position_x -= 3;
-            this.setPosition();
+            this.setPosition();  
         }, 1000 / 30);
     }
     animation(){
