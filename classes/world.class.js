@@ -36,8 +36,7 @@ class World{
         this.level.enemiesTank.forEach((unit) => {
             let unitID = this.level.enemiesTank.indexOf(unit);
             if (this.character.isColliding(unit) && this.character.midAir == true) {
-                let enemyLocation = new Destroy(unit.position_x, unit.position_y);
-                this.destroy.push(enemyLocation);
+                this.destroyEnemyUnit(unit);
                 this.level.enemiesTank.splice(unitID,1);
                 this.character.jump(20);
             } else if (this.character.isColliding(unit)) {
@@ -46,6 +45,7 @@ class World{
                 this.character.hit = true;
             }
             if (this.level.lava[1].isColliding(unit)) {
+                this.destroyEnemyUnit(unit);
                 this.level.enemiesTank.splice(unitID,1);
             }
         }) 
@@ -58,6 +58,7 @@ class World{
                 this.healthBar.setHealth(this.character.lifePoints);
                 this.character.hit = true;
             } else if (this.projectile[this.pID].isColliding(unit)) {
+                this.destroyEnemyUnit(unit);
                 this.level.enemiesHover.splice(unitID,1);
                 this.projectile.splice(this.pID,1);
                 this.pID = 0;
@@ -87,6 +88,10 @@ class World{
                 this.healthBar.setHealth(this.character.lifePoints);
             }
         }) 
+    }
+    destroyEnemyUnit(unit){
+        let enemyLocation = new Destroy(unit.position_x, unit.position_y);
+        this.destroy.push(enemyLocation);
     }
     draw(){
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
