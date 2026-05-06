@@ -54,13 +54,14 @@ class EnemyTank extends MovableObject{
     animation(){
         setInterval(() => { 
             if (this.destroy == true) {
-                let i = this.currentImage % this.img_destroy.length;
-                let path = this.img_destroy[i];
+                let iD = this.currentImage % this.img_destroy.length;
+                let path = this.img_destroy[iD];
                 this.img = this.imageCache[path];
                 this.currentImage++;
+                console.log("DEAD");
             } else {
-                let i = this.currentImage % this.img_idle.length;
-                let path = this.img_idle[i];
+                let iW = this.currentImage % this.img_idle.length;
+                let path = this.img_idle[iW];
                 this.img = this.imageCache[path];
                 this.currentImage++;
                 this.setPosition(); 
