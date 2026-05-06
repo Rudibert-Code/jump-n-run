@@ -56,6 +56,7 @@ const level1 = new Level(
     [
         new Amo('./assets/ui/ani_amo/1.png',1180, 200),
         new Amo('./assets/ui/ani_amo/1.png',2080, 450),
+        new Amo('./assets/ui/ani_amo/1.png',2380, 200),
         new Amo('./assets/ui/ani_amo/1.png',2680, 450),
     ],
     [

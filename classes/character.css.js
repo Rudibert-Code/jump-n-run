@@ -73,6 +73,7 @@ class Character extends MovableObject{
     hitHeight = 200;
     hit = false;
     midAir = false;
+    dead = false;
     click = 0;
 
 
@@ -91,12 +92,12 @@ class Character extends MovableObject{
 
     applyGravity(){
         setInterval(() => {
-            if (this.position_y <= 399) {
+            if (this.position_y <= 1000) {
                 this.midAir = true;
                 this.position_y -= this.speed_y;
                 this.speed_y -= this.acceleration;
             }
-            if (this.position_y >= 400) {
+            if (this.position_y >= 400 && this.dead == false) {
                 this.midAir = false;
                 this.position_y = 400;
             }
@@ -109,9 +110,9 @@ class Character extends MovableObject{
                 if(this.position_y >= 400){
                     this.aniType = this.img_walk;
                 }
-                if(this.world.keyboard.right && this.position_x <= this.world.level.levelEndX){
+                if(this.world.keyboard.right && this.position_x <= this.world.level.levelEndX && this.dead == false){
                     this.moveRight();
-                } else if(this.world.keyboard.left && this.position_x >= 0){
+                } else if(this.world.keyboard.left && this.position_x >= 0 && this.dead == false){
                     this.moveLeft();
                 }
             }
@@ -120,7 +121,6 @@ class Character extends MovableObject{
             }
             if (this.world.keyboard.jump && this.position_y >= 400) {
                 this.jump(40);
-                this.position_y -= this.speed_y;
             }
             if (this.position_y <= 399){
                 this.aniType = this.img_jump;
@@ -141,6 +141,10 @@ class Character extends MovableObject{
                 this.pause = false;
                 this.shoot();
             }
+            if (this.lifePoints <= 0 && this.dead == false) {
+                this.jump(20);
+                this.dead = true;
+            }
             this.anI = this.currentImage % this.aniType.length;
             this.path = this.aniType[this.anI];
             this.img = this.imageCache[this.path];
@@ -153,6 +157,7 @@ class Character extends MovableObject{
 
     jump(strength){
         this.speed_y = strength;
+        this.position_y -= this.speed_y;
     }
     moveRight(){
         this.position_x += 8;
