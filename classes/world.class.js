@@ -35,6 +35,7 @@ class World{
         this.level.enemiesTank.forEach((unit) => {
             let unitID = this.level.enemiesTank.indexOf(unit);
             if (this.character.isColliding(unit) && this.character.midAir == true) {
+                this.level.enemiesTank.destroy = true;
                 this.level.enemiesTank.splice(unitID,1);
                 this.character.jump(20);
             } else if (this.character.isColliding(unit)) {
