@@ -3,8 +3,8 @@ class AmoNumber extends DrawableObject{
 
     constructor(){
         super();
-        this.position_x = 100;
-        this.position_y = 25;
+        this.position_x = 0;
+        this.position_y = 0;
         this.height = 72;
         this.width = 400;
     }

@@ -51,7 +51,9 @@ const level1 = new Level(
         new Coins('./assets/ui/ani_coin/1.png',890, 450),
         new Coins('./assets/ui/ani_coin/1.png',1180, 450),
         new Coins('./assets/ui/ani_coin/1.png',1490, 200),
-        new Coins('./assets/ui/ani_coin/1.png', 1790, 450),
+        new Coins('./assets/ui/ani_coin/1.png',1790, 450),
+        new Coins('./assets/ui/ani_coin/1.png',2080, 200),
+        new Coins('./assets/ui/ani_coin/1.png',2380, 450),
     ],
     [
         new Amo('./assets/ui/ani_amo/1.png',1180, 200),

@@ -1,6 +1,8 @@
 class World{ 
     character = new Character();
     healthBar = new HealthBar();
+    iconCoin = new IconCoin();
+    iconAmo = new IconAmo();
     projectile = [new Shot()];
     destroy = [new Destroy()];
     pID = 0;
@@ -106,8 +108,10 @@ class World{
         this.addObjectsToMap(this.projectile);
         this.ctx.translate(-this.camera_x, 0);
         this.addToMap(this.healthBar);
-        this.ctx.fillText(this.highScore,504,80);
-        this.ctx.fillText(this.amoNumber,40,200);
+        this.addToMap(this.iconAmo);
+        this.addToMap(this.iconCoin);
+        this.ctx.fillText(this.highScore,560,80);
+        this.ctx.fillText(this.amoNumber,110,170);
         this.ctx.translate(this.camera_x, 0);
         this.addObjectsToMap(this.level.coins);
         this.addObjectsToMap(this.level.amo);

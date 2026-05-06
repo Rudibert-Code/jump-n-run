@@ -25,7 +25,6 @@ class HealthBar extends DrawableObject{
         this.healthTotal = LP;
         let imgPath = this.assets[this.healthBarIndex()];
         this.img = this.imageCache[imgPath];
-        console.log("new HP", this.healthTotal);
     }
 
     healthBarIndex(){
