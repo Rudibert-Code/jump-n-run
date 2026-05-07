@@ -165,13 +165,15 @@ class World{
             }
         }
         this.bossCoolDown++
-        if (this.bossCoolDown == 30) {
+        if (this.bossCoolDown == 60) {
             this.bossCoolDown = 0;
         }
     }
     bossShot(){
         console.log("SHOT");
-        let shot = new EnemyShot(this.level.enemiesBoss.position_x, this.level.enemiesBoss.position_y);
+        let bossX = this.level.enemiesBoss[0].position_x;
+        let bossY = this.level.enemiesBoss[0].position_y;
+        let shot = new EnemyShot(bossX,bossY);
         this.projectileEnemy.push(shot);
     }
 }
