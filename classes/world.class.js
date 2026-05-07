@@ -4,6 +4,7 @@ class World{
     iconCoin = new IconCoin();
     iconAmo = new IconAmo();
     projectile = [new Shot()];
+    projectileEnemy = [new EnemyShot()];
     destroy = [new Destroy()];
     pID = 0;
     level = level1;
@@ -13,6 +14,8 @@ class World{
     camera_x = 0;
     highScore = 0;
     amoNumber = 0;
+    bossFight = false;
+    bossCoolDown = 0;
 
     constructor(canvas, keyboard){
         this.ctx = canvas.getContext('2d');
@@ -32,6 +35,7 @@ class World{
             this.checkCollitionsEnemyHover();
             this.checkCollitionsItem();
             this.checkCollitionsLava();
+            this.checkPlayerLocation();
         }, 1000/30);
     }
     checkCollitionsEnemyTank(){
@@ -107,6 +111,7 @@ class World{
         this.addObjectsToMap(this.level.levelDeko);
         this.addToMap(this.character);
         this.addObjectsToMap(this.projectile);
+        this.addObjectsToMap(this.projectileEnemy);
         this.ctx.translate(-this.camera_x, 0);
         this.addToMap(this.healthBar);
         this.addToMap(this.iconAmo);
@@ -136,12 +141,37 @@ class World{
         this.drawFrame(mo);
     }
     drawFrame(mo){
-        if (mo instanceof Character || mo instanceof EnemyHover || mo instanceof EnemyTank || mo instanceof Coins ||  mo instanceof Amo || mo instanceof Shot || mo instanceof Lava || mo instanceof Boss1) {
+        if (mo instanceof Character || mo instanceof EnemyHover || mo instanceof EnemyTank || mo instanceof Coins ||  mo instanceof Amo || mo instanceof Shot || mo instanceof EnemyShot || mo instanceof Lava || mo instanceof Boss1) {
             this.ctx.beginPath();
             this.ctx.lineWidth = '5';
             this.ctx.strokeStyle = 'blue';
             this.ctx.rect(mo.hitOffset_x, mo.hitOffset_y, mo.hitWidth, mo.hitHeight);
             this.ctx.stroke();
         };
+    }
+    checkPlayerLocation(){
+        if (this.character.position_x >= 3000) {
+            this.bossFight = true;
+            this.bossAttacks();
+        }
+    }
+    bossAttacks(){
+        if (this.bossCoolDown == 0) {
+            let rng = Math.random()*10;
+            if (rng <= 8) {
+                this.bossShot();
+            } else{
+                console.log("AMO"); 
+            }
+        }
+        this.bossCoolDown++
+        if (this.bossCoolDown == 30) {
+            this.bossCoolDown = 0;
+        }
+    }
+    bossShot(){
+        console.log("SHOT");
+        let shot = new EnemyShot(this.level.enemiesBoss.position_x, this.level.enemiesBoss.position_y);
+        this.projectileEnemy.push(shot);
     }
 }
