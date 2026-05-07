@@ -35,11 +35,10 @@ class Boss1 extends MovableObject{
 
     height = 400;
     width = 400;
-    hitOffset_x = 0;
-    hitOffset_y = 0;
-    hitWidth = 400;
-    hitHeight = 400;
-    destroy = false;
+    hitOffset_x;
+    hitOffset_y = 260;
+    hitWidth = 300;
+    hitHeight = 200;
     speed = 2;
 
     constructor(imgPath, x){
@@ -74,6 +73,6 @@ class Boss1 extends MovableObject{
         }, 1000 / 30);
     }
     setPosition(){
-        this.hitOffset_x = this.position_x;
+        this.hitOffset_x = this.position_x + 75;
     }
 }

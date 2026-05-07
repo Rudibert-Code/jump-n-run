@@ -136,7 +136,7 @@ class World{
         this.drawFrame(mo);
     }
     drawFrame(mo){
-        if (mo instanceof Character || mo instanceof EnemyHover || mo instanceof EnemyTank || mo instanceof Coins ||  mo instanceof Amo || mo instanceof Shot || mo instanceof Lava) {
+        if (mo instanceof Character || mo instanceof EnemyHover || mo instanceof EnemyTank || mo instanceof Coins ||  mo instanceof Amo || mo instanceof Shot || mo instanceof Lava || mo instanceof Boss1) {
             this.ctx.beginPath();
             this.ctx.lineWidth = '5';
             this.ctx.strokeStyle = 'blue';
