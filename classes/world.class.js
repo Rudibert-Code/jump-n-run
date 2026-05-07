@@ -5,8 +5,11 @@ class World{
     iconAmo = new IconAmo();
     projectile = [new Shot()];
     projectileEnemy = [new EnemyShot()];
+    movingAmo = [new AmoTwo()];
     destroy = [new Destroy()];
     pID = 0;
+    epID = 0;
+    aID = 0;
     level = level1;
     canvas;
     keyboard;
@@ -101,6 +104,12 @@ class World{
                 this.level.amo.splice(amoID,1);
             }
         }) 
+        let moAmo = this.movingAmo[this.aID];
+        if (this.character.isColliding(moAmo)){
+                this.amoNumber++;
+                this.movingAmo.splice(this.aID,1);
+                this.aID = 0;
+            }
     }
     checkCollitionsLava(){
         this.level.lava.forEach((unit) => {
@@ -127,6 +136,7 @@ class World{
         this.addToMap(this.character);
         this.addObjectsToMap(this.projectile);
         this.addObjectsToMap(this.projectileEnemy);
+        this.addObjectsToMap(this.movingAmo);
         this.ctx.translate(-this.camera_x, 0);
         this.addToMap(this.healthBar);
         this.addToMap(this.iconAmo);
@@ -174,9 +184,9 @@ class World{
         if (this.bossCoolDown == 0) {
             let rng = Math.random()*10;
             if (rng <= 8) {
-                this.bossShot();
+                this.bossShot(1);
             } else{
-                console.log("AMO"); 
+                this.bossShot(2);
             }
         }
         this.bossCoolDown++
@@ -184,11 +194,19 @@ class World{
             this.bossCoolDown = 0;
         }
     }
-    bossShot(){
-        console.log("SHOT");
+    bossShot(x){
         let bossX = this.level.enemiesBoss[0].position_x;
         let bossY = this.level.enemiesBoss[0].position_y;
         let shot = new EnemyShot(bossX,bossY);
-        this.projectileEnemy.push(shot);
+        let reload = new AmoTwo(bossX,bossY);
+        if (x == 1) {
+            console.log("SHOT");
+            this.projectileEnemy.push(shot);
+        } else if (x== 2) {
+            console.log("AMO");
+            this.aID++
+            this.movingAmo.push(reload);
+        }
+        
     }
 }
