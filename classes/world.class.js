@@ -41,6 +41,9 @@ class World{
             this.checkCollitionsEnemyBossAttack();
             this.checkCollitionsLava();
             this.checkPlayerLocation();
+            if (this.bossFight == true) {
+                this.bossAttacks();
+            }
         }, 1000/30);
     }
     checkCollitionsEnemyTank(){
@@ -98,6 +101,7 @@ class World{
                 this.character.hit = true;
                 this.projectileEnemy.splice(this.epID,1);
                 this.epID = 0;
+                console.log("boss shot ID",this.epID);
             }
     }
     checkCollitionsItem(){
@@ -188,11 +192,10 @@ class World{
     checkPlayerLocation(){
         if (this.character.position_x >= 3000) {
             this.bossFight = true;
-            this.bossAttacks();
         }
     }
     bossAttacks(){
-        if (this.bossCoolDown == 0) {
+        if (this.bossCoolDown == 0 && this.level.enemiesBoss[0].lifePoints >= 1) {
             let rng = Math.random()*10;
             if (rng <= 8) {
                 this.bossShot(1);
