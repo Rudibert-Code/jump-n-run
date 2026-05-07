@@ -33,6 +33,7 @@ class World{
         setInterval(() => {
             this.checkCollitionsEnemyTank();
             this.checkCollitionsEnemyHover();
+            this.checkCollitionsEnemyBoss();
             this.checkCollitionsItem();
             this.checkCollitionsLava();
             this.checkPlayerLocation();
@@ -68,6 +69,20 @@ class World{
                 this.level.enemiesHover.splice(unitID,1);
                 this.projectile.splice(this.pID,1);
                 this.pID = 0;
+            }
+        }) 
+    }
+        checkCollitionsEnemyBoss(){
+        this.level.enemiesBoss.forEach((unit) => {
+            let unitID = this.level.enemiesBoss.indexOf(unit);
+            if (this.projectile[this.pID].isColliding(unit)) {
+                unit.lifePoints -= 20;
+                console.log(unit.lifePoints);
+                this.projectile.splice(this.pID,1);
+                this.pID = 0;
+                if (unit.lifePoints == 0) {
+                    this.level.enemiesBoss.splice(unitID,1);
+                }
             }
         }) 
     }

@@ -9,7 +9,7 @@ class EnemyShot extends MovableObject{
     constructor(x,y){
         super().loadImage('./assets/player/shot.png');
         this.position_x = x;
-        this.position_y = y + 100;
+        this.position_y = y + 150;
         this.animation(100,100);
     }
 
