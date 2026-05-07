@@ -102,6 +102,7 @@ class World{
         this.addObjectsToMap(this.level.backgroundElements1);
         this.addObjectsToMap(this.level.backgroundElements2);
         this.addObjectsToMap(this.level.platforms);
+        this.addObjectsToMap(this.level.enemiesBoss);
         this.addObjectsToMap(this.level.lava);
         this.addObjectsToMap(this.level.levelDeko);
         this.addToMap(this.character);

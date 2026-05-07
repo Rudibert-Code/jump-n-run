@@ -1,6 +1,7 @@
 class Level {
     enemiesTank;
     enemiesHover;
+    enemiesBoss;
     levelDeko;
     sky;
     backgroundElements1;
@@ -13,9 +14,10 @@ class Level {
 
     levelEndX = 3300;
 
-    constructor(enemiesTank, enemiesHover, levelDeko, sky, backgroundElements1, backgroundElements2, platforms, foregroundElement, coins, amo, lava){
+    constructor(enemiesTank, enemiesHover, enemiesBoss, levelDeko, sky, backgroundElements1, backgroundElements2, platforms, foregroundElement, coins, amo, lava){
         this.enemiesTank = enemiesTank;
         this.enemiesHover = enemiesHover;
+        this.enemiesBoss = enemiesBoss;
         this.levelDeko = levelDeko;
         this.sky = sky;
         this.backgroundElements1 = backgroundElements1;

@@ -8,6 +8,9 @@ const level1 = new Level(
         new EnemyHover('./assets/enemy/unit_1/0.png',2270),
     ],
     [
+        new Boss1('./assets/enemy/Boss/Normal/skeleton-animation_00.png',34500),
+    ],
+    [
         new DekoSky('./assets/level/deko/BG_1_rocks1.png', 1000, 5),
         new DekoSky('./assets/level/deko/BG_1_rocks2.png', 2000, 8),
         new DekoSky('./assets/level/deko/BG_1_rocks1.png', 3000, 5),
