@@ -38,6 +38,7 @@ class World{
             this.checkCollitionsEnemyHover();
             this.checkCollitionsEnemyBoss();
             this.checkCollitionsItem();
+            this.checkCollitionsEnemyBossAttack();
             this.checkCollitionsLava();
             this.checkPlayerLocation();
         }, 1000/30);
@@ -50,7 +51,7 @@ class World{
                 this.level.enemiesTank.splice(unitID,1);
                 this.character.jump(20);
             } else if (this.character.isColliding(unit)) {
-                this.character.lifePoints -= 10;
+                this.character.lifePoints -= 20;
                 this.healthBar.setHealth(this.character.lifePoints);
                 this.character.hit = true;
             }
@@ -64,7 +65,7 @@ class World{
         this.level.enemiesHover.forEach((unit) => {
             let unitID = this.level.enemiesHover.indexOf(unit);
             if (this.character.isColliding(unit)) {
-                this.character.lifePoints -= 10;
+                this.character.lifePoints -= 20;
                 this.healthBar.setHealth(this.character.lifePoints);
                 this.character.hit = true;
             } else if (this.projectile[this.pID].isColliding(unit)) {
@@ -75,7 +76,7 @@ class World{
             }
         }) 
     }
-        checkCollitionsEnemyBoss(){
+    checkCollitionsEnemyBoss(){
         this.level.enemiesBoss.forEach((unit) => {
             let unitID = this.level.enemiesBoss.indexOf(unit);
             if (this.projectile[this.pID].isColliding(unit)) {
@@ -88,6 +89,16 @@ class World{
                 }
             }
         }) 
+    }
+    checkCollitionsEnemyBossAttack(){
+        let attack = this.projectileEnemy[this.epID];
+        if (this.character.isColliding(attack)){
+                this.character.lifePoints -= 40;
+                this.healthBar.setHealth(this.character.lifePoints);
+                this.character.hit = true;
+                this.projectileEnemy.splice(this.epID,1);
+                this.epID = 0;
+            }
     }
     checkCollitionsItem(){
         this.level.coins.forEach((unit) => {
@@ -201,6 +212,7 @@ class World{
         let reload = new AmoTwo(bossX,bossY);
         if (x == 1) {
             console.log("SHOT");
+            this.epID++
             this.projectileEnemy.push(shot);
         } else if (x== 2) {
             console.log("AMO");
