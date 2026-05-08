@@ -73,9 +73,11 @@ class Character extends MovableObject{
     hitHeight = 200;
     hit = false;
     midAir = false;
-    dead = false;
     click = 0;
     lifePoints = 100;
+    position_y = 400;
+    dead = false;
+    outOfBounds = false;
 
 
     constructor(){
@@ -146,6 +148,9 @@ class Character extends MovableObject{
                 this.hit = true;
                 this.jump(20);
                 this.dead = true;
+            }
+            if (this.position_y >= 800 && this.outOfBounds == false){
+                this.outOfBounds = true;
             }
             this.anI = this.currentImage % this.aniType.length;
             this.path = this.aniType[this.anI];

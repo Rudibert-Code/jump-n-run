@@ -41,7 +41,9 @@ class World{
             this.checkCollitionsEnemyBossAttack();
             this.checkCollitionsLava();
             this.checkPlayerLocation();
-            this.checkGameOver();
+            if (this.character.dead == true && this.character.outOfBounds == true) {
+                this.gameOver(1);   
+            }
             if (this.bossFight == true) {
                 this.bossAttacks();
             }
@@ -91,9 +93,7 @@ class World{
                 if (unit.lifePoints == 0) {
                     this.bossFight = false;
                     this.level.enemiesBoss.splice(unitID,1);
-                    document.getElementById('screen-graphic').src ='./assets/ui/screens/WinScreen.jpg';
-                    document.getElementById('screen-graphic').classList.remove("hide");
-                    document.getElementById('startButton').innerHTML = "RE-START";
+                    this.gameOver(2);
                 }
             }
         }) 
@@ -106,7 +106,6 @@ class World{
                 this.character.hit = true;
                 this.projectileEnemy.splice(this.epID,1);
                 this.epID = 0;
-                console.log("boss shot ID",this.epID);
             }
     }
     checkCollitionsItem(){
@@ -143,12 +142,14 @@ class World{
         let enemyLocation = new Destroy(unit.position_x, unit.position_y);
         this.destroy.push(enemyLocation);
     }
-    checkGameOver(){
-        if (this.character.position_y >= 800 && this.character.lifePoints <= 0) {
+    gameOver(x){
+        if (x == 1) {
             document.getElementById('screen-graphic').src ='./assets/ui/screens/EndScreen.jpg';
-            document.getElementById('screen-graphic').classList.remove("hide");
-            document.getElementById('startButton').innerHTML = "RE-START";
+        } else if (x == 2) {
+            document.getElementById('screen-graphic').src ='./assets/ui/screens/WinScreen.jpg';
         }
+        document.getElementById('screen-graphic').classList.remove("hide");
+        document.getElementById('startButton').innerHTML = "RE-START";
     }
     draw(){
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
