@@ -91,6 +91,8 @@ class Character extends MovableObject{
         this.animations();
         this.offset_x = this.position_x;
         this.offset_y = this.position_y;
+        this.dead = false;
+        this.outOfBounds = false;
     }
 
     applyGravity(){
@@ -145,8 +147,9 @@ class Character extends MovableObject{
                 this.shoot();
             }
             if (this.lifePoints <= 0 && this.dead == false) {
+                this.lifePoints = 0;
                 this.hit = true;
-                this.jump(20);
+                this.jump(10);
                 this.dead = true;
             }
             if (this.position_y >= 800 && this.outOfBounds == false){

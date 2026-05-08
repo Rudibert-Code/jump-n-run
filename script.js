@@ -8,7 +8,8 @@ function initGame(){
     renderLeve();
     canvas = document.getElementById('game_canvas');
     keyboard = new Keyboard();
-    world = new World(canvas, keyboard);    
+    world = new World(canvas, keyboard); 
+    startLevel1 = false; 
 }
 
 window.addEventListener("keydown", (event) => {

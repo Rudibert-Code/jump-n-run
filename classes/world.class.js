@@ -41,7 +41,7 @@ class World{
             this.checkCollitionsEnemyBossAttack();
             this.checkCollitionsLava();
             this.checkPlayerLocation();
-            if (this.character.dead == true && this.character.outOfBounds == true) {
+            if (this.character.outOfBounds == true) {
                 this.gameOver(1);   
             }
             if (this.bossFight == true) {

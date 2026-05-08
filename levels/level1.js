@@ -79,6 +79,4 @@ function renderLeve(){
     ]
 );
 }
-
-startLevel1 = false;
 }
