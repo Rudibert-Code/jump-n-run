@@ -21,6 +21,7 @@ class World{
     bossCoolDown = 0;
 
     constructor(canvas, keyboard){
+        console.log(this.character.dead,"false", this.character.outOfBounds,"false", this.character.position_y,"400", this.character.lifePoints,"100", startLevel1,"false")
         this.ctx = canvas.getContext('2d');
         this.ctx.font = "50px Arial";
         this.canvas = canvas;
@@ -145,6 +146,7 @@ class World{
     gameOver(x){
         if (x == 1) {
             document.getElementById('screen-graphic').src ='./assets/ui/screens/EndScreen.jpg';
+            this.character.reset = true;
         } else if (x == 2) {
             document.getElementById('screen-graphic').src ='./assets/ui/screens/WinScreen.jpg';
         }

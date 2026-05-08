@@ -147,7 +147,6 @@ class Character extends MovableObject{
                 this.shoot();
             }
             if (this.lifePoints <= 0 && this.dead == false) {
-                this.lifePoints = 0;
                 this.hit = true;
                 this.jump(10);
                 this.dead = true;
