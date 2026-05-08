@@ -33,6 +33,7 @@ class Boss1 extends MovableObject{
         './assets/enemy/Boss/Hit/skeleton-hit_4.png',
     ];
 
+    lifePoints = 100;
     height = 400;
     width = 400;
     hitOffset_x;

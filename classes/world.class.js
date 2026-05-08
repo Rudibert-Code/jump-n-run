@@ -41,6 +41,7 @@ class World{
             this.checkCollitionsEnemyBossAttack();
             this.checkCollitionsLava();
             this.checkPlayerLocation();
+            this.checkGameOver();
             if (this.bossFight == true) {
                 this.bossAttacks();
             }
@@ -88,7 +89,10 @@ class World{
                 this.projectile.splice(this.pID,1);
                 this.pID = 0;
                 if (unit.lifePoints == 0) {
+                    this.bossFight = false;
                     this.level.enemiesBoss.splice(unitID,1);
+                    document.getElementById('screen-graphic').src ='./assets/ui/screens/WinScreen.jpg';
+                    document.getElementById('screen-graphic').classList.remove("hide");
                 }
             }
         }) 
@@ -137,6 +141,13 @@ class World{
     destroyEnemyUnit(unit){
         let enemyLocation = new Destroy(unit.position_x, unit.position_y);
         this.destroy.push(enemyLocation);
+    }
+    checkGameOver(){
+        if (this.character.position_y >= 800) {
+            console.log("Out Of Bounds");
+            document.getElementById('screen-graphic').src ='./assets/ui/screens/EndScreen.jpg';
+            document.getElementById('screen-graphic').classList.remove("hide");
+        }
     }
     draw(){
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -190,12 +201,12 @@ class World{
         };
     }
     checkPlayerLocation(){
-        if (this.character.position_x >= 3000) {
+        if (this.character.position_x >= 3000 && this.bossFight == false) {
             this.bossFight = true;
         }
     }
     bossAttacks(){
-        if (this.bossCoolDown == 0 && this.level.enemiesBoss[0].lifePoints >= 1) {
+        if (this.bossCoolDown == 0) {
             let rng = Math.random()*10;
             if (rng <= 8) {
                 this.bossShot(1);
