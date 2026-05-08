@@ -1,4 +1,9 @@
-const level1 = new Level(
+let startLevel1 = false;
+let level1;
+
+function renderLeve(){
+    if (startLevel1 == true) {
+    level1 = new Level(
     [
         new EnemyTank('./assets/enemy/unit_2/0.png', 2580),
     ],
@@ -73,3 +78,7 @@ const level1 = new Level(
         new Lava('./assets/level/hazard/lava/0.png', 4079, 570),
     ]
 );
+}
+
+startLevel1 = false;
+}
