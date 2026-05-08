@@ -75,6 +75,7 @@ class Character extends MovableObject{
     midAir = false;
     dead = false;
     click = 0;
+    lifePoints = 100;
 
 
     constructor(){

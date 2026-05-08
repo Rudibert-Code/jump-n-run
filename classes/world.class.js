@@ -93,6 +93,7 @@ class World{
                     this.level.enemiesBoss.splice(unitID,1);
                     document.getElementById('screen-graphic').src ='./assets/ui/screens/WinScreen.jpg';
                     document.getElementById('screen-graphic').classList.remove("hide");
+                    document.getElementById('startButton').innerHTML = "RE-START";
                 }
             }
         }) 
@@ -143,10 +144,10 @@ class World{
         this.destroy.push(enemyLocation);
     }
     checkGameOver(){
-        if (this.character.position_y >= 800) {
-            console.log("Out Of Bounds");
+        if (this.character.position_y >= 800 && this.character.lifePoints <= 0) {
             document.getElementById('screen-graphic').src ='./assets/ui/screens/EndScreen.jpg';
             document.getElementById('screen-graphic').classList.remove("hide");
+            document.getElementById('startButton').innerHTML = "RE-START";
         }
     }
     draw(){
@@ -206,7 +207,7 @@ class World{
         }
     }
     bossAttacks(){
-        if (this.bossCoolDown == 0) {
+        if (this.bossCoolDown == 0 && this.bossFight == true) {
             let rng = Math.random()*10;
             if (rng <= 8) {
                 this.bossShot(1);
@@ -233,6 +234,5 @@ class World{
             this.aID++
             this.movingAmo.push(reload);
         }
-        
     }
 }

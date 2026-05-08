@@ -12,7 +12,6 @@ function initGame(){
 }
 
 window.addEventListener("keydown", (event) => {
-    //console.log(event);
     if (event.keyCode == 65) {
         keyboard.left = true;
     } else if (event.keyCode == 68) {
