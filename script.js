@@ -1,6 +1,7 @@
 let canvas;
 let world;
 let keyboard;
+let mute = false;
 
 function initGame(){
     AudioHub.playSound(AudioHub.UISelect);
@@ -11,6 +12,16 @@ function initGame(){
     canvas = document.getElementById('game_canvas');
     keyboard = new Keyboard();
     world = new World(canvas, keyboard); 
+}
+
+function editSound(){
+    if (mute == false) {
+        document.getElementById('theme-player').volume = 0;
+        mute = true;
+    } else if (mute == true){
+        document.getElementById('theme-player').volume = 0.2;
+        mute == false;
+    }
 }
 
 window.addEventListener("keydown", (event) => {
