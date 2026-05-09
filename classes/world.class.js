@@ -7,6 +7,7 @@ class World{
     projectileEnemy = [new EnemyShot()];
     movingAmo = [new AmoTwo()];
     destroy = [new Destroy()];
+    audioHub = new AudioHub();
     pID = 0;
     epID = 0;
     aID = 0;
@@ -21,7 +22,6 @@ class World{
     bossCoolDown = 0;
 
     constructor(canvas, keyboard){
-        console.log(this.character.dead,"false", this.character.outOfBounds,"false", this.character.position_y,"400", this.character.lifePoints,"100", startLevel1,"false")
         this.ctx = canvas.getContext('2d');
         this.ctx.font = "50px Arial";
         this.canvas = canvas;
@@ -29,8 +29,11 @@ class World{
         this.setWorld();
         this.draw();
         this.run();
+        this.playTheme();
+        //AudioHub.playTheme(AudioHub.Theme);
     }
     setWorld(){
+        document.getElementById('theme-player').src = this.level.levelTheme;
         this.character.world = this;
     }
     run(){
@@ -49,6 +52,12 @@ class World{
                 this.bossAttacks();
             }
         }, 1000/30);
+    }
+    playTheme(){
+        let audioSorce = document.getElementById('theme-player');
+        audioSorce.loop = true;
+        audioSorce.volume = 0.2;
+        audioSorce.play();
     }
     checkCollitionsEnemyTank(){
         this.level.enemiesTank.forEach((unit) => {

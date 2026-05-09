@@ -5,6 +5,9 @@ function renderLeve(){
     if (startLevel1 == true) {
     level1 = new Level(
     [
+        './assets/sounds/melody.wav'
+    ],
+    [
         new EnemyTank('./assets/enemy/unit_2/0.png', 2580),
     ],
     [
