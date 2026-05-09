@@ -18,9 +18,9 @@ function editSound(){
     if (mute == false) {
         document.getElementById('theme-player').volume = 0;
         mute = true;
-    } else if (mute == true){
+    } else {
         document.getElementById('theme-player').volume = 0.2;
-        mute == false;
+        mute = false;
     }
 }
 
