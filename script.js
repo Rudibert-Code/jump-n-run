@@ -8,6 +8,7 @@ function initGame(){
     startLevel1 = true;
     document.getElementById('screen-graphic').classList.add("hide");
     document.getElementById('button').classList.add("hide");
+    document.getElementById('settings').classList.remove("hide");
     renderLeve();
     canvas = document.getElementById('game_canvas');
     keyboard = new Keyboard();
