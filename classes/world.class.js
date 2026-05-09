@@ -1,6 +1,7 @@
 class World{ 
     character = new Character();
     healthBar = new HealthBar();
+    healthBarBoss = new HealthBarBoss();
     iconCoin = new IconCoin();
     iconAmo = new IconAmo();
     projectile = [new Shot()];
@@ -97,6 +98,7 @@ class World{
             let unitID = this.level.enemiesBoss.indexOf(unit);
             if (this.projectile[this.pID].isColliding(unit)) {
                 unit.lifePoints -= 20;
+                this.healthBarBoss.setHealth(this.level.enemiesBoss[0].lifePoints);
                 console.log(unit.lifePoints);
                 this.projectile.splice(this.pID,1);
                 this.pID = 0;
@@ -182,6 +184,7 @@ class World{
         this.addObjectsToMap(this.movingAmo);
         this.ctx.translate(-this.camera_x, 0);
         this.addToMap(this.healthBar);
+        this.addToMap(this.healthBarBoss);
         this.addToMap(this.iconAmo);
         this.addToMap(this.iconCoin);
         this.ctx.fillText(this.highScore,560,80);
@@ -220,6 +223,7 @@ class World{
     checkPlayerLocation(){
         if (this.character.position_x >= 3000 && this.bossFight == false) {
             this.bossFight = true;
+            this.healthBarBoss.setHealth(100);
         }
     }
     bossAttacks(){
