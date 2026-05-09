@@ -158,6 +158,7 @@ class Character extends MovableObject{
             }
             if (this.position_y >= 800 && this.outOfBounds == false){
                 this.outOfBounds = true;
+                console.log(this.outOfBounds, this.dead);
             }
             this.anI = this.currentImage % this.aniType.length;
             this.path = this.aniType[this.anI];

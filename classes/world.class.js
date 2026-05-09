@@ -34,7 +34,7 @@ class World{
     }
     setWorld(){
         document.getElementById('theme-player').src = this.level.levelTheme;
-        this.character.world = this;
+        this.character.world = this;        
     }
     run(){
         setInterval(() => {
@@ -45,7 +45,7 @@ class World{
             this.checkCollitionsEnemyBossAttack();
             this.checkCollitionsLava();
             this.checkPlayerLocation();
-            if (this.character.outOfBounds == true) {
+            if (this.character.outOfBounds == true && this.win == false) {
                 this.gameOver(1);   
             }
             if (this.bossFight == true) {
@@ -163,7 +163,7 @@ class World{
     gameOver(x){
         if (x == 1) {
             document.getElementById('screen-graphic').src ='./assets/ui/screens/EndScreen.jpg';
-            this.character.reset = true;
+            this.win = true;
         } else if (x == 2) {
             document.getElementById('screen-graphic').src ='./assets/ui/screens/WinScreen.jpg';
         }
