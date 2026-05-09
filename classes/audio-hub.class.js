@@ -1,8 +1,13 @@
 class AudioHub {
-    static Theme = new Audio('./assets/sounds/melody.wav');
-
+    static Walk = new Audio('./assets/sounds/sound_walk.wav');
+    static Shot = new Audio('./assets/sounds/sound_laser_hero.wav');
+    static Coin = new Audio('./assets/sounds/sound_collect-coin.wav');
+    static Amo = new Audio('./assets/sounds/sound_reload.wav');
+    static Hit = new Audio('./assets/sounds/sound_hit.wav');
+    static UISelect = new Audio('./assets/sounds/sound_select.wav');
+    
     static playSound(sound) {
-        sound.volume = 0.5;
+        sound.volume = 0.2;
         sound.currentTime = 0;
         sound.play();
     }
@@ -23,11 +28,4 @@ class AudioHub {
     static stopSound(sound) {
         sound.pause();
     }
-
-    //static objSetVolume(volumeSlider) {
-    //    let volumeValue = document.getElementById('volume').value;  // Holt den aktuellen Lautstärkewert aus dem Inputfeld
-    //    volumeSlider.forEach(sound => {
-    //        sound.volume = volumeValue;  // Setzt die Lautstärke für jedes Audio wie im Slider angegeben
-    //    });
-    //}
 }

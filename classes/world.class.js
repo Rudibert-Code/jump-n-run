@@ -7,7 +7,6 @@ class World{
     projectileEnemy = [new EnemyShot()];
     movingAmo = [new AmoTwo()];
     destroy = [new Destroy()];
-    audioHub = new AudioHub();
     pID = 0;
     epID = 0;
     aID = 0;
@@ -30,7 +29,6 @@ class World{
         this.draw();
         this.run();
         this.playTheme();
-        //AudioHub.playTheme(AudioHub.Theme);
     }
     setWorld(){
         document.getElementById('theme-player').src = this.level.levelTheme;
@@ -73,6 +71,7 @@ class World{
             }
             if (this.level.lava[1].isColliding(unit)) {
                 this.destroyEnemyUnit(unit);
+                AudioHub.playSound(AudioHub.Hit);
                 this.level.enemiesTank.splice(unitID,1);
             }
         }) 
@@ -86,6 +85,7 @@ class World{
                 this.character.hit = true;
             } else if (this.projectile[this.pID].isColliding(unit)) {
                 this.destroyEnemyUnit(unit);
+                AudioHub.playSound(AudioHub.Hit);
                 this.level.enemiesHover.splice(unitID,1);
                 this.projectile.splice(this.pID,1);
                 this.pID = 0;
@@ -103,6 +103,7 @@ class World{
                 if (unit.lifePoints == 0) {
                     this.bossFight = false;
                     this.level.enemiesBoss.splice(unitID,1);
+                    document.getElementById('theme-player').pause();
                     this.gameOver(2);
                 }
             }
@@ -122,6 +123,7 @@ class World{
         this.level.coins.forEach((unit) => {
             let coinID = this.level.coins.indexOf(unit);
             if (this.character.isColliding(unit)) {
+                AudioHub.playSound(AudioHub.Coin);
                 this.highScore++;
                 this.level.coins.splice(coinID,1);
             }
@@ -129,12 +131,14 @@ class World{
         this.level.amo.forEach((unit) => {
             let amoID = this.level.amo.indexOf(unit);
             if (this.character.isColliding(unit)) {
+                AudioHub.playSound(AudioHub.Amo);
                 this.amoNumber++;
                 this.level.amo.splice(amoID,1);
             }
         }) 
         let moAmo = this.movingAmo[this.aID];
         if (this.character.isColliding(moAmo)){
+                AudioHub.playSound(AudioHub.Amo);
                 this.amoNumber++;
                 this.movingAmo.splice(this.aID,1);
                 this.aID = 0;

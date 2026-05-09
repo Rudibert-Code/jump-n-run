@@ -113,6 +113,7 @@ class Character extends MovableObject{
         setInterval(() => {
             if (this.world.keyboard.right || this.world.keyboard.left) {
                 if(this.position_y >= 400){
+                    AudioHub.playSound(AudioHub.Walk);
                     this.aniType = this.img_walk;
                 }
                 if(this.world.keyboard.right && this.position_x <= this.world.level.levelEndX && this.dead == false){
@@ -122,15 +123,18 @@ class Character extends MovableObject{
                 }
             }
             if (this.world.keyboard.right == false && this.world.keyboard.left == false && this.position_y >= 400) {
+                AudioHub.stopSound(AudioHub.Walk);
                 this.aniType = this.img_idle;
             }
             if (this.world.keyboard.jump && this.position_y >= 400) {
+                AudioHub.stopSound(AudioHub.Walk);
                 this.jump(40);
             }
             if (this.position_y <= 399){
                 this.aniType = this.img_jump;
             }
             if (this.hit == true) {
+                AudioHub.playSound(AudioHub.Hit);
                 this.height = 230;
                 this.width = 230; 
                 this.aniType = this.img_hit;
@@ -148,6 +152,7 @@ class Character extends MovableObject{
             }
             if (this.lifePoints <= 0 && this.dead == false) {
                 this.hit = true;
+                AudioHub.stopSound(AudioHub.Walk);
                 this.jump(10);
                 this.dead = true;
             }
@@ -178,6 +183,7 @@ class Character extends MovableObject{
         this.world.amoNumber--
         let amo = new Shot(this.position_x, this.position_y);
         this.world.projectile.push(amo);
+        AudioHub.playSound(AudioHub.Shot);
         this.world.pID++;
     }
     setPosition(){

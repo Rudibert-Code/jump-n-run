@@ -3,6 +3,7 @@ let world;
 let keyboard;
 
 function initGame(){
+    AudioHub.playSound(AudioHub.UISelect);
     startLevel1 = true;
     document.getElementById('screen-graphic').classList.add("hide");
     renderLeve();
