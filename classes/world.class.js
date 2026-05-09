@@ -168,6 +168,7 @@ class World{
             document.getElementById('screen-graphic').src ='./assets/ui/screens/WinScreen.jpg';
         }
         document.getElementById('screen-graphic').classList.remove("hide");
+        document.getElementById('button').classList.remove("hide");
         document.getElementById('startButton').innerHTML = "RE-START";
     }
     draw(){

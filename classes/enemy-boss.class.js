@@ -48,10 +48,8 @@ class Boss1 extends MovableObject{
         super().loadImage(imgPath);
         this.loadImages(this.boss_idle);
         this.loadImages(this.boss_hit);
-
         this.position_y = 250;
         this.position_x = x;
-
         this.animate();
     }
 
@@ -67,8 +65,7 @@ class Boss1 extends MovableObject{
             }
             if (this.hit == false) {
                 this.animation(this.boss_idle);
-            }
-            if (this.hit == true) {
+            } else if (this.hit == true) {
                 this.animation(this.boss_hit);
                 this.click++
                 if (this.click >= 5) {

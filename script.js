@@ -6,6 +6,7 @@ function initGame(){
     AudioHub.playSound(AudioHub.UISelect);
     startLevel1 = true;
     document.getElementById('screen-graphic').classList.add("hide");
+    document.getElementById('button').classList.add("hide");
     renderLeve();
     canvas = document.getElementById('game_canvas');
     keyboard = new Keyboard();
