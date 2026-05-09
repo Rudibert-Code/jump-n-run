@@ -99,7 +99,8 @@ class World{
             let unitID = this.level.enemiesBoss.indexOf(unit);
             if (this.projectile[this.pID].isColliding(unit)) {
                 unit.lifePoints -= 20;
-                this.healthBarBoss.setHealth(this.level.enemiesBoss[0].lifePoints);
+                this.healthBarBoss.setHealth(unit.lifePoints);
+                unit.hit = true;
                 this.projectile.splice(this.pID,1);
                 this.pID = 0;
                 if (unit.lifePoints == 0) {

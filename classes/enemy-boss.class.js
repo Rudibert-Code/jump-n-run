@@ -41,6 +41,8 @@ class Boss1 extends MovableObject{
     hitWidth = 300;
     hitHeight = 200;
     speed = 2;
+    hit = false;
+    click = 0;
 
     constructor(imgPath, x){
         super().loadImage(imgPath);
@@ -50,7 +52,6 @@ class Boss1 extends MovableObject{
         this.position_x = x;
 
         this.animate();
-        this.animation();
     }
 
     animate(){
@@ -63,17 +64,30 @@ class Boss1 extends MovableObject{
             if (this.position_x == 3600) {
                 this.speed = 2;
             }
+            if (this.hit == false) {
+                this.animation(this.boss_idle);
+            } else if (this.hit == true) {
+                this.animation(this.boss_hit);
+                this.hitDuration();
+            }
         }, 1000 / 30);
     }
-    animation(){
-        setInterval(() => { 
-                let iD = this.currentImage % this.boss_idle.length;
-                let path = this.boss_idle[iD];
-                this.img = this.imageCache[path];
-                this.currentImage++;
-        }, 1000 / 30);
+
+    animation(aniType){
+        let iD = this.currentImage % aniType.length;
+        let path = aniType[iD];
+        this.img = this.imageCache[path];
+        this.currentImage++;
     }
     setPosition(){
         this.hitOffset_x = this.position_x + 75;
+    }
+    hitDuration(){
+        console.log("HIT");
+        this.click++
+        if (this.click >= 5) {
+            this.click = 0;
+            this.hit = false;
+        }
     }
 }
