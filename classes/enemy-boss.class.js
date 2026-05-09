@@ -47,6 +47,7 @@ class Boss1 extends MovableObject{
     constructor(imgPath, x){
         super().loadImage(imgPath);
         this.loadImages(this.boss_idle);
+        this.loadImages(this.boss_hit);
 
         this.position_y = 250;
         this.position_x = x;
@@ -66,9 +67,14 @@ class Boss1 extends MovableObject{
             }
             if (this.hit == false) {
                 this.animation(this.boss_idle);
-            } else if (this.hit == true) {
+            }
+            if (this.hit == true) {
                 this.animation(this.boss_hit);
-                this.hitDuration();
+                this.click++
+                if (this.click >= 5) {
+                    this.click = 0;
+                    this.hit = false;
+                }
             }
         }, 1000 / 30);
     }
@@ -81,13 +87,5 @@ class Boss1 extends MovableObject{
     }
     setPosition(){
         this.hitOffset_x = this.position_x + 75;
-    }
-    hitDuration(){
-        console.log("HIT");
-        this.click++
-        if (this.click >= 5) {
-            this.click = 0;
-            this.hit = false;
-        }
     }
 }
