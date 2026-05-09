@@ -11,13 +11,11 @@ class HealthBarBoss extends DrawableObject{
     ];
 
     healthTotal = 100;
-    bossFight = false;
 
     constructor(){
         super();
         this.loadImages(this.assets);
         this.inActive();
-        //this.setHealth(100);
         this.position_x = 154;
         this.position_y = 600;
         this.height = 70;

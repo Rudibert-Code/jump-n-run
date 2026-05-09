@@ -20,6 +20,7 @@ class World{
     amoNumber = 0;
     bossFight = false;
     bossCoolDown = 0;
+    win = false;
 
     constructor(canvas, keyboard){
         this.ctx = canvas.getContext('2d');
@@ -99,11 +100,11 @@ class World{
             if (this.projectile[this.pID].isColliding(unit)) {
                 unit.lifePoints -= 20;
                 this.healthBarBoss.setHealth(this.level.enemiesBoss[0].lifePoints);
-                console.log(unit.lifePoints);
                 this.projectile.splice(this.pID,1);
                 this.pID = 0;
                 if (unit.lifePoints == 0) {
                     this.bossFight = false;
+                    this.win = true;
                     this.level.enemiesBoss.splice(unitID,1);
                     document.getElementById('theme-player').pause();
                     this.gameOver(2);
@@ -221,7 +222,7 @@ class World{
         };
     }
     checkPlayerLocation(){
-        if (this.character.position_x >= 3000 && this.bossFight == false) {
+        if (this.character.position_x >= 3000 && this.bossFight == false && this.win == false) {
             this.bossFight = true;
             this.healthBarBoss.setHealth(100);
         }
@@ -246,11 +247,9 @@ class World{
         let shot = new EnemyShot(bossX,bossY);
         let reload = new AmoTwo(bossX,bossY);
         if (x == 1) {
-            console.log("SHOT");
             this.epID++
             this.projectileEnemy.push(shot);
         } else if (x== 2) {
-            console.log("AMO");
             this.aID++
             this.movingAmo.push(reload);
         }
