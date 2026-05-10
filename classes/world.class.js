@@ -167,6 +167,7 @@ class World{
             document.getElementById('screen-graphic').src ='./assets/ui/screens/WinScreen.jpg';
         }
         document.getElementById('theme-player').pause();
+        document.getElementById('game_canvas').classList.add("hide");
         document.getElementById('screen-graphic').classList.remove("hide");
         document.getElementById('button').classList.remove("hide");
         document.getElementById('settings').classList.add("hide");

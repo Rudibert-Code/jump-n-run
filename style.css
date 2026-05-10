@@ -16,8 +16,7 @@ canvas{
     z-index: -1;
 }
 
-img{
-    position: absolute;
+.screen{
     width: 1080px;
     height: 720px;
     z-index: 1;
@@ -78,4 +77,12 @@ footer{
 }
 
 @media (max-width: 1079px) {
+    canvas{
+        height: 100%;
+        width: auto;
+    }
+    .screen{
+        width: auto;
+        height: 100%;
+    }
 }

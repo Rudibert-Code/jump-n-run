@@ -38,13 +38,13 @@
     <link rel="stylesheet" href="./style.css">
     
 </head>
-<body  id="body">
+<body id="body">
     <header></header>
     <main>
         <audio src="" id="theme-player"></audio>
-        <img src="./assets/ui/screens/StartScreen.jpg" id="screen-graphic">
+        <img class="screen" src="./assets/ui/screens/StartScreen.jpg" id="screen-graphic">
         <img class="icon-sound hide" src="./assets/ui/Icon_Mute.png" onclick="editSound()" id="settings">
-        <canvas class="screen-size" id="game_canvas" width="1080" height="720">
+        <canvas class="hide" id="game_canvas" width="1080" height="720">
         </canvas>
         <section class="browser-button-bar">
             <button class="menu-button" onclick="initGame()" id="button">PLAY</button>

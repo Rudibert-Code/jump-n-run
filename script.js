@@ -8,6 +8,7 @@ function initGame(){
     setSound();
     AudioHub.playSound(AudioHub.UISelect);
     startLevel1 = true;
+    document.getElementById('game_canvas').classList.remove("hide");
     document.getElementById('screen-graphic').classList.add("hide");
     document.getElementById('button').classList.add("hide");
     document.getElementById('settings').classList.remove("hide");
@@ -29,9 +30,9 @@ function checkScreenOrientation(){
 function fullscreen(){
   if (canvas.requestFullscreen) {
     canvas.requestFullscreen();
-  } else if (elem.webkitRequestFullscreen) {
+  } else if (canvas.webkitRequestFullscreen) {
     canvas.webkitRequestFullscreen();
-  } else if (elem.msRequestFullscreen) {
+  } else if (canvas.msRequestFullscreen) {
     canvas.msRequestFullscreen();
   }
 }
