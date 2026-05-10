@@ -8,42 +8,45 @@ function initGame(){
     setSound();
     AudioHub.playSound(AudioHub.UISelect);
     startLevel1 = true;
-    document.getElementById('game_canvas').classList.remove("hide");
-    document.getElementById('screen-graphic').classList.add("hide");
-    document.getElementById('button').classList.add("hide");
-    document.getElementById('settings').classList.remove("hide");
     renderLeve();
     canvas = document.getElementById('game_canvas');
     keyboard = new Keyboard();
     world = new World(canvas, keyboard);
-    checkScreenOrientation();
+    checkScreenOrientation(canvas);
 }
 
-function checkScreenOrientation(){
+window.matchMedia("(orientation: portrait)").addEventListener("change", screenOrientation => {
+    const portrait = screenOrientation.matches;
+    if(portrait){
+        alert("This game only supports landscape mode. Please turn your phone.")
+    }
+});
+
+function checkScreenOrientation(element){
     if (window.screen.width <= 1079) {
-        fullscreen();
+        fullscreen(element);
     } else{
-        exitFullscreen();
+        exitFullscreen(element);
     }
 }
 
-function fullscreen(){
-  if (canvas.requestFullscreen) {
-    canvas.requestFullscreen();
-  } else if (canvas.webkitRequestFullscreen) {
-    canvas.webkitRequestFullscreen();
-  } else if (canvas.msRequestFullscreen) {
-    canvas.msRequestFullscreen();
+function fullscreen(element){
+  if (element.requestFullscreen) {
+    element.requestFullscreen();
+  } else if (element.webkitRequestFullscreen) {
+    element.webkitRequestFullscreen();
+  } else if (element.msRequestFullscreen) {
+    element.msRequestFullscreen();
   }
 }
 
-function exitFullscreen(){
-  if (canvas.exitFullscreen) {
-    canvas.exitFullscreen();
-  } else if (canvas.webkitExitFullscreen) {
-    canvas.webkitExitFullscreen();
-  } else if (canvas.msExitFullscreen) {
-    canvas.msExitFullscreen();
+function exitFullscreen(element){
+  if (element.exitFullscreen) {
+    element.exitFullscreen();
+  } else if (element.webkitExitFullscreen) {
+    element.webkitExitFullscreen();
+  } else if (element.msExitFullscreen) {
+    element.msExitFullscreen();
   }
 }
 
@@ -93,6 +96,7 @@ window.addEventListener("keydown", (event) => {
         keyboard.shoot = true;
     }
 });
+
 window.addEventListener("keyup", (event) => {
     if (event.keyCode == 65) {
         keyboard.left = false;
@@ -104,12 +108,5 @@ window.addEventListener("keyup", (event) => {
     } else if (event.code == 'Enter') {
         event.preventDefault();
         keyboard.shoot = false;
-    }
-});
-
-window.matchMedia("(orientation: portrait)").addEventListener("change", screenOrientation => {
-    const portrait = screenOrientation.matches;
-    if(portrait){
-        alert("This game only supports landscape mode. Please turn your phone.")
     }
 });

@@ -23,6 +23,11 @@ class World{
     win = false;
 
     constructor(canvas, keyboard){
+        document.getElementById('game_canvas').classList.remove("hide");
+        document.getElementById('screen-graphic').classList.add("hide");
+        //document.getElementById('screen-base').classList.add("hide");
+        document.getElementById('button').classList.add("hide");
+        document.getElementById('settings').classList.remove("hide");
         this.ctx = canvas.getContext('2d');
         this.ctx.font = "50px Arial";
         this.canvas = canvas;
@@ -169,6 +174,7 @@ class World{
         document.getElementById('theme-player').pause();
         document.getElementById('game_canvas').classList.add("hide");
         document.getElementById('screen-graphic').classList.remove("hide");
+        document.getElementById('screen-base').classList.remove("hide");
         document.getElementById('button').classList.remove("hide");
         document.getElementById('settings').classList.add("hide");
         document.getElementById('button').innerHTML = "PLAY AGAIN";

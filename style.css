@@ -19,7 +19,16 @@ canvas{
 .screen{
     width: 1080px;
     height: 720px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
     z-index: 1;
+}
+
+.screen-image{
+    width: 100%;
+    height: auto;
 }
 
 header{
@@ -44,9 +53,9 @@ footer{
     width: 50px;
     height: 50px;
     position: absolute;
-    top: 50%;
-    right: 50%;
-    translate:+490px -310px;
+    top: 0;
+    right: 0;
+    translate: -50% +50%;
     z-index: 5;
 }
 .opacity{
@@ -73,16 +82,23 @@ footer{
     cursor: pointer;
     position: absolute;
     top: 760px;
-    z-index: 2;
+    z-index: 4;
 }
 
 @media (max-width: 1079px) {
-    canvas{
-        height: 100%;
-        width: auto;
-    }
     .screen{
-        width: auto;
-        height: 100%;
+        height: auto;
+        width: 90%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        translate:-50% -50%;
+
+    }
+    .menu-button{
+        width: 40%;
+        height: 10%;
+        top: 85%;
+        z-index: 10;
     }
 }
