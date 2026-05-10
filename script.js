@@ -2,6 +2,7 @@ let canvas;
 let world;
 let keyboard;
 let mute = false;
+let effectVolume = 0.2;
 
 function initGame(){
     AudioHub.playSound(AudioHub.UISelect);
@@ -18,10 +19,12 @@ function initGame(){
 function editSound(){
     if (mute == false) {
         document.getElementById('theme-player').volume = 0;
+        effectVolume = 0;
         document.getElementById('settings').classList.add("opacity");
         mute = true;
     } else {
         document.getElementById('theme-player').volume = 0.2;
+        effectVolume = 0.2;
         document.getElementById('settings').classList.remove("opacity");
         mute = false;
     }
