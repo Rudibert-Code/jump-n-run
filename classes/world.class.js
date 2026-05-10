@@ -56,7 +56,7 @@ class World{
     playTheme(){
         let audioSorce = document.getElementById('theme-player');
         audioSorce.loop = true;
-        audioSorce.volume = 0.2;
+        audioSorce.volume = effectVolume;
         audioSorce.play();
     }
     checkCollitionsEnemyTank(){
@@ -107,7 +107,6 @@ class World{
                     this.bossFight = false;
                     this.win = true;
                     this.level.enemiesBoss.splice(unitID,1);
-                    document.getElementById('theme-player').pause();
                     this.gameOver(2);
                 }
             }
@@ -167,6 +166,7 @@ class World{
         } else if (x == 2) {
             document.getElementById('screen-graphic').src ='./assets/ui/screens/WinScreen.jpg';
         }
+        document.getElementById('theme-player').pause();
         document.getElementById('screen-graphic').classList.remove("hide");
         document.getElementById('button').classList.remove("hide");
         document.getElementById('settings').classList.add("hide");

@@ -123,18 +123,15 @@ class Character extends MovableObject{
                 }
             }
             if (this.world.keyboard.right == false && this.world.keyboard.left == false && this.position_y >= 400) {
-                AudioHub.stopSound(AudioHub.Walk);
                 this.aniType = this.img_idle;
             }
             if (this.world.keyboard.jump && this.position_y >= 400) {
-                AudioHub.stopSound(AudioHub.Walk);
                 this.jump(40);
             }
             if (this.position_y <= 399){
                 this.aniType = this.img_jump;
             }
             if (this.hit == true) {
-                AudioHub.playSound(AudioHub.Hit);
                 this.height = 230;
                 this.width = 230; 
                 this.aniType = this.img_hit;

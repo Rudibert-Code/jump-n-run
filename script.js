@@ -1,10 +1,11 @@
 let canvas;
 let world;
 let keyboard;
-let mute = false;
+let mute = 0;
 let effectVolume = 0.2;
 
 function initGame(){
+    setSound();
     AudioHub.playSound(AudioHub.UISelect);
     startLevel1 = true;
     document.getElementById('screen-graphic').classList.add("hide");
@@ -13,21 +14,40 @@ function initGame(){
     renderLeve();
     canvas = document.getElementById('game_canvas');
     keyboard = new Keyboard();
-    world = new World(canvas, keyboard); 
+    world = new World(canvas, keyboard);
 }
 
 function editSound(){
-    if (mute == false) {
-        document.getElementById('theme-player').volume = 0;
+    if (mute == 0) {
         effectVolume = 0;
+        mute = 1;
         document.getElementById('settings').classList.add("opacity");
-        mute = true;
     } else {
-        document.getElementById('theme-player').volume = 0.2;
         effectVolume = 0.2;
+        mute = 0;
         document.getElementById('settings').classList.remove("opacity");
-        mute = false;
     }
+    document.getElementById('theme-player').volume = effectVolume;
+    saveSound();
+}
+
+function saveSound(){
+    localStorage.setItem("ClassBoolean", mute);
+    localStorage.setItem("Volume", effectVolume);
+    setSound();
+}
+
+function setSound(){
+    let audioVolume = Number(localStorage.getItem("ClassBoolean"));
+    if (audioVolume == 0) {
+        mute = 0;
+        document.getElementById('settings').classList.remove("opacity");
+    } else {
+        mute = 1;
+        document.getElementById('settings').classList.add("opacity");
+    }
+    effectVolume = Number(localStorage.getItem("Volume"));
+    document.getElementById('theme-player').volume = effectVolume;
 }
 
 window.addEventListener("keydown", (event) => {
