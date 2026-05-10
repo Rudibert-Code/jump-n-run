@@ -15,6 +15,35 @@ function initGame(){
     canvas = document.getElementById('game_canvas');
     keyboard = new Keyboard();
     world = new World(canvas, keyboard);
+    checkScreenOrientation();
+}
+
+function checkScreenOrientation(){
+    if (window.screen.width <= 1079) {
+        fullscreen();
+    } else{
+        exitFullscreen();
+    }
+}
+
+function fullscreen(){
+  if (canvas.requestFullscreen) {
+    canvas.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) {
+    canvas.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) {
+    canvas.msRequestFullscreen();
+  }
+}
+
+function exitFullscreen(){
+  if (canvas.exitFullscreen) {
+    canvas.exitFullscreen();
+  } else if (canvas.webkitExitFullscreen) {
+    canvas.webkitExitFullscreen();
+  } else if (canvas.msExitFullscreen) {
+    canvas.msExitFullscreen();
+  }
 }
 
 function editSound(){
@@ -48,16 +77,6 @@ function setSound(){
     }
     effectVolume = Number(localStorage.getItem("Volume"));
     document.getElementById('theme-player').volume = effectVolume;
-}
-
-function fullscreen() {
-  if (canvas.requestFullscreen) {
-    canvas.requestFullscreen();
-  } else if (elem.webkitRequestFullscreen) {
-    canvas.webkitRequestFullscreen();
-  } else if (elem.msRequestFullscreen) {
-    canvas.msRequestFullscreen();
-  }
 }
 
 window.addEventListener("keydown", (event) => {
