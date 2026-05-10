@@ -170,7 +170,7 @@ class World{
         document.getElementById('screen-graphic').classList.remove("hide");
         document.getElementById('button').classList.remove("hide");
         document.getElementById('settings').classList.add("hide");
-        document.getElementById('startButton').innerHTML = "RE-START";
+        document.getElementById('button').innerHTML = "PLAY AGAIN";
     }
     draw(){
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);

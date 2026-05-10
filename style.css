@@ -1,8 +1,9 @@
 body{
-    height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 0;
     background-color: rgb(23, 17, 64);
 }
 
@@ -14,6 +15,21 @@ img{
     position: absolute;
     width: 1080px;
     height: 720px;
+}
+
+header{
+    width: 100%;
+    height: 80px;
+    margin-bottom: 80px;
+    background-color: black;
+}
+
+footer{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 80px;
+    background-color: black;
 }
 
 .hide{
@@ -41,11 +57,12 @@ img{
     width: 400px;
     height: 50px;
     background-color: black;
-    color: rgb(255, 170, 0);
+    color: #ffaa00;
     font-size: 30px;
+    box-shadow: 0 0 5px 3px #ffea00;
     border-radius: 100px;
     border-style:none;
     cursor: pointer;
     position: absolute;
-    top: 715px;
+    top: 760px;
 }
