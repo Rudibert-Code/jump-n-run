@@ -18,9 +18,11 @@ function initGame(){
 function editSound(){
     if (mute == false) {
         document.getElementById('theme-player').volume = 0;
+        document.getElementById('settings').classList.add("opacity");
         mute = true;
     } else {
         document.getElementById('theme-player').volume = 0.2;
+        document.getElementById('settings').classList.remove("opacity");
         mute = false;
     }
 }
