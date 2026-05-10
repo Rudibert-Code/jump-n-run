@@ -3,6 +3,7 @@ let world;
 let keyboard;
 let mute = 0;
 let effectVolume = 0.2;
+const portrait = window.matchMedia("(orientation: portrait)").matches;
 
 function initGame(){
     setSound();
@@ -48,6 +49,16 @@ function setSound(){
     }
     effectVolume = Number(localStorage.getItem("Volume"));
     document.getElementById('theme-player').volume = effectVolume;
+}
+
+function fullscreen() {
+  if (canvas.requestFullscreen) {
+    canvas.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) {
+    canvas.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) {
+    canvas.msRequestFullscreen();
+  }
 }
 
 window.addEventListener("keydown", (event) => {

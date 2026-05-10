@@ -113,7 +113,6 @@ class Character extends MovableObject{
         setInterval(() => {
             if (this.world.keyboard.right || this.world.keyboard.left) {
                 if(this.position_y >= 400){
-                    AudioHub.playSound(AudioHub.Walk);
                     this.aniType = this.img_walk;
                 }
                 if(this.world.keyboard.right && this.position_x <= this.world.level.levelEndX && this.dead == false){
