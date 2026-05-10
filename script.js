@@ -3,7 +3,6 @@ let world;
 let keyboard;
 let mute = 0;
 let effectVolume = 0.2;
-const portrait = window.matchMedia("(orientation: portrait)").matches;
 
 function initGame(){
     setSound();
@@ -85,5 +84,12 @@ window.addEventListener("keyup", (event) => {
     } else if (event.code == 'Enter') {
         event.preventDefault();
         keyboard.shoot = false;
+    }
+});
+
+window.matchMedia("(orientation: portrait)").addEventListener("change", screenOrientation => {
+    const portrait = screenOrientation.matches;
+    if(portrait){
+        alert("This game only supports landscape mode. Please turn your phone.")
     }
 });
