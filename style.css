@@ -87,8 +87,8 @@ footer{
 
 @media (max-width: 1079px) {
     .screen{
-        height: auto;
-        width: 90%;
+        height: 90%;
+        width: auto;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -100,5 +100,8 @@ footer{
         height: 10%;
         top: 85%;
         z-index: 10;
+    }
+    footer{
+        display: none;
     }
 }
