@@ -1,0 +1,12 @@
+"use strict";this.default_OneGoogleWidgetUi=this.default_OneGoogleWidgetUi||{};(function(_){var window=this;
+try{
+_.u("P6sQOc");
+var PAa=function(a,b,c,d,e,f){this.v=a;this.O=b;this.N=c;this.U=d;this.V=e;this.l=f||null;this.na=Date.now();this.j=0;this.o=OAa(this)},QAa=function(a){var b={};_.Da(a.ir(),function(e){b[e]=!0});var c=a.Ou(),d=a.Pu();return new PAa(a.er(),_.dw(c.getSeconds())*1E3,a.Tq(),_.dw(d.getSeconds())*1E3,b)},OAa=function(a){if(a.l){var b=Date.now()-a.na;return a.l(a.j+1,b)}return Math.random()*Math.min(a.O*Math.pow(a.N,a.j),a.U)},A0=function(a,b){return a.j>=a.v?!1:b!=null?!!a.V[b]:!0};var RAa=new _.Xo("retryConfigOverrides"),SAa=function(){this.j=_.ag(_.NAa);this.l=_.ag(_.z0);var a=_.ag(_.KY);this.fetch=a.fetch.bind(a)};
+SAa.prototype.qj=function(a,b){if(this.l.getType(a.Db())!==1)return _.$p(a);var c=this.j.Tv,d=a.kc(RAa),e=null;if(d){e={};if(d.YO)for(var f=_.y(d.YO),g=f.next();!g.done;g=f.next())e[g.value]=!0;else if(c)for(f=_.y(c.ir()),g=f.next();!g.done;g=f.next())e[g.value]=!0;var h=1,l=0;f=Infinity;g=2;if(c){h=c.er()||h;var m,p=(m=c.rK())==null?void 0:m.getSeconds();l=_.dw(c.EK().getSeconds())*1E3;f=p!=null?_.dw(p)*1E3:f;g=c.Tq()||g}var q,t,r,v;c=(q=d.faa)!=null?q:h;q=(t=d.H$)!=null?t:l;t=(r=d.v9)!=null?r:g;
+r=(v=d.gaa)!=null?v:f;e=new PAa(c,q,t,r,e,d.u9)}else c&&(e=QAa(c));e&&A0(e)?(b=TAa(this,a,b,e),a=new _.Zp(a,b,2)):a=_.$p(a);return a};
+var TAa=function(a,b,c,d){return c.then(function(e){return e},function(e){if("function"==typeof _.uh&&e instanceof _.uh){if(!e.status||!A0(d,_.Mn(e.status,1)))throw e;}else if("function"==typeof _.ix&&e instanceof _.ix)switch(e.l){case 103:case 7:case 10:case 101:case 105:case 408:case 425:case 429:case 502:case 503:case 504:break;default:throw e;}if(d&&!A0(d))return _.Oi(e);var f=d.o;return(new _.Sl(function(g){setTimeout(g,f)})).then(function(){if(!A0(d))throw Error("qe`"+d.v);++d.j;d.o=OAa(d);
+b=b.nh(_.Zo,d.j);return TAa(a,b,a.fetch(b),d)})})};_.KC(SAa,_.$N);
+_.x();
+}catch(e){_._DumpException(e)}
+}).call(this,this.default_OneGoogleWidgetUi);
+// Google Inc.

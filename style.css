@@ -85,15 +85,28 @@ footer{
     z-index: 4;
 }
 
-@media (max-width: 1079px) {
+@media (max-width: 1440px) {
+    body{
+        background-color: black;
+    }
+    canvas{
+        background-color: black;
+    }
+    header{
+        display: none;
+    }
     .screen{
-        height: 90%;
+        height: 100%;
         width: auto;
         position: absolute;
         top: 50%;
         left: 50%;
         translate:-50% -50%;
-
+        overflow: hidden;
+    }
+    .screen-image{
+        height: 100%;
+        width: auto;
     }
     .menu-button{
         width: 40%;
