@@ -7,6 +7,10 @@ body{
     background-color: rgb(11, 3, 27);
 }
 
+a{
+    cursor: pointer;
+}
+
 canvas{
     background-color: rgb(62, 50, 91);
     position: absolute;
@@ -67,20 +71,21 @@ footer{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    >a{
-        color: #EAB33B;
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        font-size: 1.4rem;
-        position: absolute;
-        z-index: 5;
-        top: calc(100% - 124px);
-        text-decoration: none;
-    }
-    >a:hover{
-        color: #FFFFB7;
-        font-size: 1.6rem;
-        transition: 0.5s;
-    }
+}
+
+.position-imprint{
+    color: #EAB33B;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1.4rem;
+    position: absolute;
+    z-index: 5;
+    top: calc(100% - 124px);
+    text-decoration: none;
+}
+.position-imprint:hover{
+    color: #FFFFB7;
+    font-size: 1.6rem;
+    transition: 0.5s;
 }
 
 .menu-button{
@@ -102,6 +107,43 @@ footer{
     color: #FFFFB7;
     font-size: 2.2rem;
     transition: 0.5s;
+}
+
+.mobile-controlls_l{
+    color: #EAB33B;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1.4rem;
+    position: absolute;
+    top: calc(50% + 300px);
+    left: calc(50% - 480px);
+    z-index: 4;
+}
+.mobile-controlls_r{
+    color: #EAB33B;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1.4rem;
+    position: absolute;
+    top: calc(50% + 300px);
+    left: calc(50% - 300px);
+    z-index: 4;
+}
+.mobile-controlls_j{
+    color: #EAB33B;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1.4rem;
+    position: absolute;
+    top: calc(50% + 280px);
+    left: calc(50% - 390px);
+    z-index: 4;
+}
+.mobile-controlls_s{
+    color: #EAB33B;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1.4rem;
+    position: absolute;
+    top: calc(50% + 300px);
+    left: calc(50% + 390px);
+    z-index: 4;
 }
 
 @media (max-width: 1440px) {
