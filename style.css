@@ -17,19 +17,8 @@ canvas{
 }
 
 .screen{
-    width: 1080px;
-    height: 720px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    translate: -50% -50%;
-    z-index: 1;
-}
-
-.Testscreen{
     max-height: 720px;
     aspect-ratio: 3/2;
-    
     position: absolute;
     top: 50%;
     left: 50%;
