@@ -21,6 +21,7 @@ class World{
     bossFight = false;
     bossCoolDown = 0;
     win = false;
+    iFrame = false;
 
     constructor(canvas, keyboard){
         document.getElementById('game_canvas').classList.remove("hide");
@@ -64,10 +65,18 @@ class World{
         audioSorce.volume = effectVolume;
         audioSorce.play();
     }
+
+    iFrameTimer(){
+        iFrame = true;
+        setTimeout(()=>{
+            iFrame = false;
+        }, 0)
+    }
+
     checkCollitionsEnemyTank(){
         this.level.enemiesTank.forEach((unit) => {
             let unitID = this.level.enemiesTank.indexOf(unit);
-            if (this.character.isColliding(unit) && this.character.midAir == true) {
+            if (this.character.isColliding(unit) && this.character.midAir) {
                 this.destroyEnemyUnit(unit);
                 this.level.enemiesTank.splice(unitID,1);
                 this.character.jump(20);
