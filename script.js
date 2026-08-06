@@ -110,3 +110,72 @@ window.addEventListener("keyup", (event) => {
         keyboard.shoot = false;
     }
 });
+
+function mobileButtonDown(ID){
+switch (ID) {
+    case 'L':
+        keyboard.left = true;
+        break;
+    case 'R':
+        keyboard.right = true;
+        break;
+    case 'Jump':
+        keyboard.jump = true;
+        break;
+    case 'Shoot':
+        keyboard.right = true;
+        break;
+    default:
+        keyboard.left = false;
+        keyboard.right = false;
+        keyboard.jump = false;
+        keyboard.right = false;
+        break;
+}
+};
+
+function mobileButtonUp(ID){
+switch (ID) {
+    case 'L':
+        keyboard.left = false;
+        break;
+    case 'R':
+        keyboard.right = false;
+        break;
+    case 'Jump':
+        keyboard.jump = false;
+        break;
+    case 'Shoot':
+        keyboard.right = false;
+        break;
+    default:
+        keyboard.left = false;
+        keyboard.right = false;
+        keyboard.jump = false;
+        keyboard.right = false;
+        break;
+}
+};
+
+function mobileButtonLeave(ID){
+switch (ID) {
+    case 'L':
+        keyboard.left = false;
+        break;
+    case 'R':
+        keyboard.right = false;
+        break;
+    case 'Jump':
+        keyboard.jump = false;
+        break;
+    case 'Shoot':
+        keyboard.right = false;
+        break;
+    default:
+        keyboard.left = false;
+        keyboard.right = false;
+        keyboard.jump = false;
+        keyboard.right = false;
+        break;
+}
+};
