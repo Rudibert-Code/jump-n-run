@@ -79,6 +79,7 @@ footer{
     >a:hover{
         color: #FFFFB7;
         font-size: 1.6rem;
+        transition: 0.5s;
     }
 }
 
@@ -93,13 +94,14 @@ footer{
     border-style:none;
     cursor: pointer;
     position: absolute;
-    top: calc(50% + 224px);
+    top: calc(50% + 250px);
     z-index: 4;
 }
 
 .menu-button:hover{
     color: #FFFFB7;
     font-size: 2.2rem;
+    transition: 0.5s;
 }
 
 @media (max-width: 1440px) {
