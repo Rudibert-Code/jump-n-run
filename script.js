@@ -123,13 +123,13 @@ switch (ID) {
         keyboard.jump = true;
         break;
     case 'Shoot':
-        keyboard.right = true;
+        keyboard.shoot = true;
         break;
     default:
         keyboard.left = false;
         keyboard.right = false;
         keyboard.jump = false;
-        keyboard.right = false;
+        keyboard.shoot = false;
         break;
 }
 };
@@ -146,13 +146,13 @@ switch (ID) {
         keyboard.jump = false;
         break;
     case 'Shoot':
-        keyboard.right = false;
+        keyboard.shoot = false;
         break;
     default:
         keyboard.left = false;
         keyboard.right = false;
         keyboard.jump = false;
-        keyboard.right = false;
+        keyboard.shoot = false;
         break;
 }
 };
@@ -169,13 +169,13 @@ switch (ID) {
         keyboard.jump = false;
         break;
     case 'Shoot':
-        keyboard.right = false;
+        keyboard.shoot = false;
         break;
     default:
         keyboard.left = false;
         keyboard.right = false;
         keyboard.jump = false;
-        keyboard.right = false;
+        keyboard.shoot = false;
         break;
 }
 };
