@@ -26,6 +26,17 @@ canvas{
     z-index: 1;
 }
 
+.Testscreen{
+    max-height: 720px;
+    aspect-ratio: 3/2;
+    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: 1;
+}
+
 .screen-image{
     width: 100%;
     height: auto;
