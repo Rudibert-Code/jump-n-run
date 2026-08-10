@@ -22,6 +22,7 @@ class AmoTwo extends MovableObject{
     hitOffset_y = 0;
     hitWidth = 80;
     hitHeight = 80;
+    pause = "false"
 
     constructor(x,y){
         super().loadImage('./assets/ui/ani_amo/1.png');
@@ -29,16 +30,25 @@ class AmoTwo extends MovableObject{
         this.position_x = x;
         this.position_y = y + 150;
         this.animation(100,100);
+        this.checkForPause();
+    }
+
+    checkForPause(){
+        setInterval(() => {
+            this.pause = localStorage.getItem("paused");
+        }, 1000/30);
     }
 
     animation(){
         setInterval( () => {
-            this.position_x -= 10;
-            let iD = this.currentImage % this.amo.length;
-            let path = this.amo[iD];
-            this.img = this.imageCache[path];
-            this.currentImage++;
-            this.setPosition();
+            if (this.pause == "false") {
+                this.position_x -= 10;
+                let iD = this.currentImage % this.amo.length;
+                let path = this.amo[iD];
+                this.img = this.imageCache[path];
+                this.currentImage++;
+                this.setPosition();  
+            } 
         }, 1000 / 30)
     }
 

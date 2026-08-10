@@ -43,6 +43,7 @@ class Boss1 extends MovableObject{
     speed = 2;
     hit = false;
     click = 0;
+    pause = "false";
 
     constructor(imgPath, x){
         super().loadImage(imgPath);
@@ -51,26 +52,35 @@ class Boss1 extends MovableObject{
         this.position_y = 250;
         this.position_x = x;
         this.animate();
+        this.checkForPause();
+    }
+
+    checkForPause(){
+        setInterval(() => {
+            this.pause = localStorage.getItem("paused");
+        }, 1000/30);
     }
 
     animate(){
         setInterval( () => {
-            this.position_x -= this.speed;
-            this.setPosition();    
-            if (this.position_x == 3300) {
-                this.speed = -2;
-            }
-            if (this.position_x == 3600) {
-                this.speed = 2;
-            }
-            if (this.hit == false) {
-                this.animation(this.boss_idle);
-            } else if (this.hit == true) {
-                this.animation(this.boss_hit);
-                this.click++
-                if (this.click >= 5) {
-                    this.click = 0;
-                    this.hit = false;
+            if (this.pause == "false") {        
+                this.position_x -= this.speed;
+                this.setPosition();    
+                if (this.position_x == 3300) {
+                    this.speed = -2;
+                }
+                if (this.position_x == 3600) {
+                    this.speed = 2;
+                }
+                if (this.hit == false) {
+                    this.animation(this.boss_idle);
+                } else if (this.hit == true) {
+                    this.animation(this.boss_hit);
+                    this.click++
+                    if (this.click >= 5) {
+                        this.click = 0;
+                        this.hit = false;
+                    }
                 }
             }
         }, 1000 / 30);

@@ -6,33 +6,47 @@ class EnemyHover extends MovableObject{
     hitOffset_y = 500;
     hitWidth = 140;
     hitHeight = 140;
+    pause = "false";
 
     constructor(imgPath, x){
         super().loadImage(imgPath);
-
         this.position_x = x;
-
         this.animateUp();
+        this.checkForPause();
+    }
+
+    checkForPause(){
+        setInterval(() => {
+            this.pause = localStorage.getItem("paused");
+        }, 1000/30);
     }
 
     animateUp(){
         this.aniUp = setInterval( () => {
-            this.position_y-=2;
-            if (this.position_y == 150) {
-                this.animateDown();
-                clearInterval(this.aniUp);
+            if (this.pause == "false") {
+                
+                this.position_y-=2;
+                if (this.position_y == 150) {
+                    this.animateDown();
+                    clearInterval(this.aniUp);
+                }
+                this.setPosition();
+
             }
-            this.setPosition();
         }, 1000 / 30)
     }
     animateDown(){
         this.aniDown = setInterval( () => {
-            this.position_y+=2;
-            if (this.position_y == 350) {
-                this.animateUp();
-                clearInterval(this.aniDown);
+            if (this.pause == "false") {
+
+                this.position_y+=2;
+                if (this.position_y == 350) {
+                    this.animateUp();
+                    clearInterval(this.aniDown);
+                }
+                this.setPosition();
+            
             }
-            this.setPosition();
         }, 1000 / 30)
     }
     setPosition(){

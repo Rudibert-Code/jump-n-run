@@ -61,7 +61,7 @@ class Character extends MovableObject{
     ];
 
     world;
-    pause = true;
+    cooldown = true;
     speed_y = 0;
     acceleration = 2;
     aniType;
@@ -78,6 +78,7 @@ class Character extends MovableObject{
     position_y = 400;
     dead = false;
     outOfBounds = false;
+    pause = "false";
 
 
     constructor(){
@@ -89,20 +90,27 @@ class Character extends MovableObject{
         this.coolDown();
         this.applyGravity();
         this.animations();
+        this.checkforPause();
         this.offset_x = this.position_x;
         this.offset_y = this.position_y;
         this.dead = false;
         this.outOfBounds = false;
     }
 
+    checkforPause(){
+        setInterval(() => {
+            this.pause = localStorage.getItem("paused");
+        }, 1000/30);
+    }
+
     applyGravity(){
         setInterval(() => {
-            if (this.position_y <= 1000) {
+            if (this.position_y <= 1000 && this.pause == "false") {
                 this.midAir = true;
                 this.position_y -= this.speed_y;
                 this.speed_y -= this.acceleration;
             }
-            if (this.position_y >= 400 && this.dead == false) {
+            if (this.position_y >= 400 && this.dead == false && this.pause == "false") {
                 this.midAir = false;
                 this.position_y = 400;
             }
@@ -117,58 +125,60 @@ class Character extends MovableObject{
     }
     animations(){
         setInterval(() => {
-            if (this.world.keyboard.right || this.world.keyboard.left) {
-                if(this.position_y >= 400){
-                    this.aniType = this.img_walk;
+            if (this.pause == "false") {
+                if (this.world.keyboard.right || this.world.keyboard.left) {
+                    if(this.position_y >= 400){
+                        this.aniType = this.img_walk;
+                    }
+                    if(this.world.keyboard.right && this.position_x <= this.world.level.levelEndX && this.dead == false){
+                        this.moveRight();
+                    } else if(this.world.keyboard.left && this.position_x >= 0 && this.dead == false){
+                        this.moveLeft();
+                    }
                 }
-                if(this.world.keyboard.right && this.position_x <= this.world.level.levelEndX && this.dead == false){
-                    this.moveRight();
-                } else if(this.world.keyboard.left && this.position_x >= 0 && this.dead == false){
-                    this.moveLeft();
+                if (this.world.keyboard.right == false && this.world.keyboard.left == false && this.position_y >= 400) {
+                    this.aniType = this.img_idle;
                 }
-            }
-            if (this.world.keyboard.right == false && this.world.keyboard.left == false && this.position_y >= 400) {
-                this.aniType = this.img_idle;
-            }
-            if (this.world.keyboard.jump && this.position_y >= 400) {
-                this.jump(40);
-            }
-            if (this.position_y <= 399){
-                this.aniType = this.img_jump;
-            }
-            if (this.hit == true) {
-                this.height = 230;
-                this.width = 230; 
-                this.aniType = this.img_hit;
-                this.click++;
-                if (this.click >= 15) {
-                    this.height = 200;
-                    this.width = 200;
-                    this.click = 0;
-                    this.hit = false;
+                if (this.world.keyboard.jump && this.position_y >= 400) {
+                    this.jump(40);
                 }
+                if (this.position_y <= 399){
+                    this.aniType = this.img_jump;
+                }
+                if (this.hit == true) {
+                    this.height = 230;
+                    this.width = 230; 
+                    this.aniType = this.img_hit;
+                    this.click++;
+                    if (this.click >= 15) {
+                        this.height = 200;
+                        this.width = 200;
+                        this.click = 0;
+                        this.hit = false;
+                    }
+                }
+                if (this.world.keyboard.shoot == true && this.cooldown == true && this.world.amoNumber >= 1){
+                    this.cooldown = false;
+                    this.shoot();
+                    this.blockShootBtn();
+                }
+                if (this.lifePoints <= 0 && this.dead == false) {
+                    this.hit = true;
+                    AudioHub.stopSound(AudioHub.Walk);
+                    this.jump(10);
+                    this.dead = true;
+                }
+                if (this.position_y >= 800 && this.outOfBounds == false){
+                    this.outOfBounds = true;
+                }
+                this.anI = this.currentImage % this.aniType.length;
+                this.path = this.aniType[this.anI];
+                this.img = this.imageCache[this.path];
+                this.currentImage++;
+    
+                this.world.camera_x = -this.position_x + 100;
+                this.setPosition();
             }
-            if (this.world.keyboard.shoot == true && this.pause == true && this.world.amoNumber >= 1){
-                this.pause = false;
-                this.shoot();
-                this.blockShootBtn();
-            }
-            if (this.lifePoints <= 0 && this.dead == false) {
-                this.hit = true;
-                AudioHub.stopSound(AudioHub.Walk);
-                this.jump(10);
-                this.dead = true;
-            }
-            if (this.position_y >= 800 && this.outOfBounds == false){
-                this.outOfBounds = true;
-            }
-            this.anI = this.currentImage % this.aniType.length;
-            this.path = this.aniType[this.anI];
-            this.img = this.imageCache[this.path];
-            this.currentImage++;
-
-            this.world.camera_x = -this.position_x + 100;
-            this.setPosition();
         }, 1000/30);
     }
 
@@ -195,11 +205,11 @@ class Character extends MovableObject{
     }
     coolDown(){
         setInterval(() => {
-            if (this.pause == false) {
+            if (this.cooldown == false) {
             this.click++
             if (this.click == 30) {
                 this.click = 0;
-                this.pause = true;
+                this.cooldown = true;
             }
             }
         }, 1000/30);

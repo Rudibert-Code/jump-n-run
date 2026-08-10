@@ -22,6 +22,7 @@ class World{
     bossCoolDown = 0;
     win = false;
     iFrame = false;
+    pause ="false";
 
     constructor(canvas, keyboard){
         document.getElementById('game_canvas').classList.remove("hide");
@@ -37,6 +38,11 @@ class World{
         this.run();
         this.playTheme();
         this.toggleMobileBtn();
+    }
+    checkForPause(){
+        setInterval(() => {
+            this.pause = localStorage.getItem("paused");
+        }, 1000/30);
     }
     toggleMobileBtn(){
         const mobileBtnL = document.getElementById('mobile-btn_L');
@@ -54,8 +60,7 @@ class World{
     }
     run(){
         setInterval(() => {
-            let paused = localStorage.getItem("paused");
-            if (paused == "false") {
+            if (this.pause == "false") {
                 this.checkCollitionsEnemyTank();
                 this.checkCollitionsEnemyHover();
                 this.checkCollitionsEnemyBoss();
@@ -213,6 +218,7 @@ class World{
         this.toggleMobileBtn();
     }
     draw(){
+        let self = this;
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.ctx.translate(this.camera_x, 0);
         this.addObjectsToMap(this.level.sky);
@@ -241,7 +247,7 @@ class World{
         this.addObjectsToMap(this.destroy);
         this.addObjectsToMap(this.level.foregroundElements);
         this.ctx.translate(-this.camera_x, 0);
-        let self = this;
+
         requestAnimationFrame(function(){
             self.draw();
         });
@@ -255,6 +261,7 @@ class World{
         this.ctx.drawImage(mo.img, mo.position_x, mo.position_y, mo.width, mo.height);
         this.drawFrame(mo);
     }
+    // hit boxes
     drawFrame(mo){
         if (mo instanceof Character || mo instanceof EnemyHover || mo instanceof EnemyTank || mo instanceof Coins ||  mo instanceof Amo || mo instanceof Shot || mo instanceof EnemyShot || mo instanceof Lava || mo instanceof Boss1) {
             //this.ctx.beginPath();
@@ -271,7 +278,7 @@ class World{
         }
     }
     bossAttacks(){
-        if (this.bossCoolDown == 0 && this.bossFight == true) {
+        if (this.bossCoolDown == 0 && this.bossFight == true && this.pause == "false") {
             let rng = Math.random()*10;
             if (rng <= 8) {
                 this.bossShot(1);
@@ -289,6 +296,7 @@ class World{
         let bossY = this.level.enemiesBoss[0].position_y;
         let shot = new EnemyShot(bossX,bossY);
         let reload = new AmoTwo(bossX,bossY);
+
         if (x == 1) {
             this.epID++
             this.projectileEnemy.push(shot);

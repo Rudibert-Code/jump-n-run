@@ -19,34 +19,42 @@ class EnemyTank extends MovableObject{
     constructor(imgPath, x){
         super().loadImage(imgPath);
         this.loadImages(this.img_idle);
-
         this.position_y = 400;
         this.position_x = x;
-
         this.animate();
         this.animation();
+        this.checkForPause();
+    }
+
+    checkForPause(){
+        setInterval(() => {
+            this.pause = localStorage.getItem("paused");
+        }, 1000/30);
     }
 
     animate(){
         setInterval( () => {
-            this.position_x -= 3;
-            this.setPosition();  
+            if (this.pause == "false") {
+                this.position_x -= 3;
+                this.setPosition();  
+            }
         }, 1000 / 30);
     }
     animation(){
         setInterval(() => { 
-            if (this.destroy == true) {
-                let iD = this.currentImage % this.img_destroy.length;
-                let path = this.img_destroy[iD];
-                this.img = this.imageCache[path];
-                this.currentImage++;
-                console.log("DEAD");
-            } else {
-                let iW = this.currentImage % this.img_idle.length;
-                let path = this.img_idle[iW];
-                this.img = this.imageCache[path];
-                this.currentImage++;
-                this.setPosition(); 
+            if (this.pause == "false") {
+                if (this.destroy == true) {
+                    let iD = this.currentImage % this.img_destroy.length;
+                    let path = this.img_destroy[iD];
+                    this.img = this.imageCache[path];
+                    this.currentImage++;
+                } else {
+                    let iW = this.currentImage % this.img_idle.length;
+                    let path = this.img_idle[iW];
+                    this.img = this.imageCache[path];
+                    this.currentImage++;
+                    this.setPosition(); 
+                }
             }
         }, 1000 / 30);
     }

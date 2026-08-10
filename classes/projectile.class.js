@@ -5,6 +5,7 @@ class Shot extends MovableObject{
     hitOffset_y;
     hitWidth = 100;
     hitHeight = 100;
+    pause = "false";
 
     constructor(x,y){
         super().loadImage('./assets/player/shot.png');
@@ -13,10 +14,18 @@ class Shot extends MovableObject{
         this.animation(100,100);
     }
 
+    checkForPause(){
+        setInterval(() => {
+            this.pause = localStorage.getItem("paused");
+        }, 1000/30);
+    }
+
     animation(){
         setInterval( () => {
-            this.position_x += 10;
-            this.setPosition();
+            if (this.pause == "false") {
+                this.position_x += 10;
+                this.setPosition();
+            }
         }, 1000 / 30)
     }
 
