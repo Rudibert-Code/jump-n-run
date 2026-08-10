@@ -109,41 +109,47 @@ footer{
     transition: 0.5s;
 }
 
-.mobile-controlls_l{
-    color: #EAB33B;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 1.4rem;
+.mobile-controlls{
+    width: 56px;
+    aspect-ratio: 1/1;
+    background-image: url(assets/ui/mobile-btn_direction-pushed.png);
+    background-repeat: no-repeat;
+    background-size: cover;
     position: absolute;
-    top: calc(50% + 300px);
+    z-index: 4;
+    &:active{
+        background-image: url(assets/ui/mobile-btn_direction.png);
+    }
+}
+
+.L{
+    rotate: 180deg;
+    top: calc(50% + 280px);
     left: calc(50% - 480px);
-    z-index: 4;
 }
-.mobile-controlls_r{
-    color: #EAB33B;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 1.4rem;
-    position: absolute;
-    top: calc(50% + 300px);
-    left: calc(50% - 300px);
-    z-index: 4;
+.R{
+    top: calc(50% + 280px);
+    left: calc(50% - 350px);
 }
-.mobile-controlls_j{
-    color: #EAB33B;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 1.4rem;
+.J{
+    top: calc(50% + 280px);
+    left: calc(50% + 420px);
+    rotate: -90deg;
+}
+
+.mobile-controlls_Shoot{
+    width: 56px;
+    aspect-ratio: 1/1;
+    background-image: url(assets/ui/mobile-btn_shoot-pushed.png);
+    background-repeat: no-repeat;
+    background-size: cover;
     position: absolute;
     top: calc(50% + 280px);
-    left: calc(50% - 390px);
+    left: calc(50% + 290px);
     z-index: 4;
-}
-.mobile-controlls_s{
-    color: #EAB33B;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 1.4rem;
-    position: absolute;
-    top: calc(50% + 300px);
-    left: calc(50% + 390px);
-    z-index: 4;
+    &:active{
+        background-image: url(assets/ui/mobile-btn_shoot.png);
+    }
 }
 
 @media (max-width: 1440px) {
