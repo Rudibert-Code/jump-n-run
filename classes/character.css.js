@@ -107,7 +107,16 @@ class Character extends MovableObject{
                 this.position_y = 400;
             }
             this.setPosition();
+            this.unblockShootBtn()
         }, 1000/30);
+    }
+    unblockShootBtn(){
+        let targetBtn = document.getElementById('mobile-btn_S');
+        if (this.world.amoNumber != 0 && targetBtn.classList.contains("blocked")) {
+            targetBtn.classList.toggle("blocked");   
+        } else if(this.world.amoNumber == 0 && !targetBtn.classList.contains("blocked")){
+            targetBtn.classList.toggle("blocked");
+        }
     }
     animations(){
         setInterval(() => {
