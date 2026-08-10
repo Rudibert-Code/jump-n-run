@@ -16,8 +16,8 @@ class HealthBarBoss extends DrawableObject{
         super();
         this.loadImages(this.assets);
         this.inActive();
-        this.position_x = 154;
-        this.position_y = 600;
+        this.position_x = 190;
+        this.position_y = 550;
         this.height = 70;
         this.width = 700;
     }
