@@ -151,6 +151,7 @@ class World{
                 AudioHub.playSound(AudioHub.Amo);
                 this.amoNumber++;
                 this.level.amo.splice(amoID,1);
+                this.unblockShootBtn();
             }
         }) 
         let moAmo = this.movingAmo[this.aID];
@@ -159,7 +160,14 @@ class World{
                 this.amoNumber++;
                 this.movingAmo.splice(this.aID,1);
                 this.aID = 0;
+                this.unblockShootBtn();
             }
+    }
+    unblockShootBtn(){
+        let targetBtn = document.getElementById('mobile-btn_S');
+        if (this.amoNumber >= 1) {
+            targetBtn.classList.remove("blocked");   
+        }
     }
     checkCollitionsLava(){
         this.level.lava.forEach((unit) => {

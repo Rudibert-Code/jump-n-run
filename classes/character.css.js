@@ -107,15 +107,12 @@ class Character extends MovableObject{
                 this.position_y = 400;
             }
             this.setPosition();
-            this.unblockShootBtn()
         }, 1000/30);
     }
-    unblockShootBtn(){
+    blockShootBtn(){
         let targetBtn = document.getElementById('mobile-btn_S');
-        if (this.world.amoNumber != 0 && targetBtn.classList.contains("blocked")) {
-            targetBtn.classList.toggle("blocked");   
-        } else if(this.world.amoNumber == 0 && !targetBtn.classList.contains("blocked")){
-            targetBtn.classList.toggle("blocked");
+        if(this.world.amoNumber <= 0){
+            targetBtn.classList.add("blocked");
         }
     }
     animations(){
@@ -154,6 +151,7 @@ class Character extends MovableObject{
             if (this.world.keyboard.shoot == true && this.pause == true && this.world.amoNumber >= 1){
                 this.pause = false;
                 this.shoot();
+                this.blockShootBtn();
             }
             if (this.lifePoints <= 0 && this.dead == false) {
                 this.hit = true;

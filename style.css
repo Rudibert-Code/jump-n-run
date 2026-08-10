@@ -133,7 +133,7 @@ footer{
 }
 .J{
     top: calc(50% + 280px);
-    left: calc(50% + 420px);
+    left: calc(50% + 430px);
     rotate: -90deg;
 }
 
@@ -145,7 +145,7 @@ footer{
     background-size: cover;
     position: absolute;
     top: calc(50% + 280px);
-    left: calc(50% + 290px);
+    left: calc(50% + 300px);
     z-index: 4;
     &:active{
         background-image: url(assets/ui/mobile-btn_shoot.png);
