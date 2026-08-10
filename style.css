@@ -152,6 +152,10 @@ footer{
     }
 }
 
+.blocked{
+    opacity: .5;
+}
+
 @media (max-width: 1440px) {
     body{
         background-color: black;
