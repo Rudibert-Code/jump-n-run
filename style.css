@@ -29,10 +29,12 @@ body{
     >p{
         padding-left: 16px;
     }
-    >a{
-        color: #EEB836;
-        text-decoration: none;
-    }
+}
+
+.return{
+    position: absolute;
+    top: 32px;
+    left: calc(100% - 80px);
 }
 
 a{
