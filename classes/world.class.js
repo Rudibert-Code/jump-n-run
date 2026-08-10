@@ -22,7 +22,7 @@ class World{
     bossCoolDown = 0;
     win = false;
     iFrame = false;
-    pause ="false";
+    pause = "false";
 
     constructor(canvas, keyboard){
         document.getElementById('game_canvas').classList.remove("hide");
@@ -38,6 +38,7 @@ class World{
         this.run();
         this.playTheme();
         this.toggleMobileBtn();
+        this.checkForPause();
     }
     checkForPause(){
         setInterval(() => {
@@ -247,20 +248,22 @@ class World{
         this.addObjectsToMap(this.destroy);
         this.addObjectsToMap(this.level.foregroundElements);
         this.ctx.translate(-this.camera_x, 0);
-
         requestAnimationFrame(function(){
             self.draw();
         });
     }
+
     addObjectsToMap(objects){
         objects.forEach(element =>{
             this.addToMap(element);
         });
     }
+
     addToMap(mo){
         this.ctx.drawImage(mo.img, mo.position_x, mo.position_y, mo.width, mo.height);
         this.drawFrame(mo);
     }
+
     // hit boxes
     drawFrame(mo){
         if (mo instanceof Character || mo instanceof EnemyHover || mo instanceof EnemyTank || mo instanceof Coins ||  mo instanceof Amo || mo instanceof Shot || mo instanceof EnemyShot || mo instanceof Lava || mo instanceof Boss1) {
@@ -271,26 +274,32 @@ class World{
             //this.ctx.stroke();
         };
     }
+
     checkPlayerLocation(){
         if (this.character.position_x >= 3000 && this.bossFight == false && this.win == false) {
             this.bossFight = true;
             this.healthBarBoss.setHealth(100);
         }
     }
+
     bossAttacks(){
-        if (this.bossCoolDown == 0 && this.bossFight == true && this.pause == "false") {
-            let rng = Math.random()*10;
-            if (rng <= 8) {
-                this.bossShot(1);
-            } else{
-                this.bossShot(2);
+        if (this.pause == "false") {
+            if (this.bossCoolDown == 0 && this.bossFight == true) {
+                console.log("SHOT" + this.pause);
+                let rng = Math.random()*10;
+                if (rng <= 8) {
+                    this.bossShot(1);
+                } else{
+                    this.bossShot(2);
+                }
+            }
+            this.bossCoolDown++
+            if (this.bossCoolDown == 60) {
+                this.bossCoolDown = 0;
             }
         }
-        this.bossCoolDown++
-        if (this.bossCoolDown == 60) {
-            this.bossCoolDown = 0;
-        }
     }
+
     bossShot(x){
         let bossX = this.level.enemiesBoss[0].position_x;
         let bossY = this.level.enemiesBoss[0].position_y;

@@ -21,13 +21,29 @@ body{
     top: calc(50% - 360px);
     left: calc(50% - 540px);
     z-index: 10;
-    background-color: #3192FD;
+    background-image: url(assets/ui/screens/BG_Imprint.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     >h1{
         padding-left: 16px;
+        color: #F9C03C;
     }
     >p{
         padding-left: 16px;
+        color: white;
+    }
+    >a{
+        font-size: 1.4rem;
+        color: #F9C03C;
+    }
+}
+
+.link-color{
+    color: #F9C03C;
+    text-decoration: none;
+    &:hover{
+       color: #FFFFB7;
     }
 }
 
@@ -87,7 +103,7 @@ footer{
     height: 50px;
     position: absolute;
     top: calc(50% - 324px);
-    left: calc(100% - 80px);
+    left: calc(50% + 424px);
     z-index: 5;
 }
 .opacity{
