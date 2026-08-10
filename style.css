@@ -4,7 +4,9 @@ body{
     justify-content: center;
     align-items: center;
     margin: 0;
-    background-color: rgb(11, 3, 27);
+    background-image: url(assets/ui/screens/BG.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 a{
@@ -79,7 +81,7 @@ footer{
     font-size: 1.4rem;
     position: absolute;
     z-index: 5;
-    top: calc(100% - 124px);
+    top: calc(100% - 110px);
     text-decoration: none;
 }
 .position-imprint:hover{

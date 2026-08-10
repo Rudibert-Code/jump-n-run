@@ -26,7 +26,6 @@ class World{
     constructor(canvas, keyboard){
         document.getElementById('game_canvas').classList.remove("hide");
         document.getElementById('screen-graphic').classList.add("hide");
-        //document.getElementById('screen-base').classList.add("hide");
         document.getElementById('button').classList.add("hide");
         document.getElementById('settings').classList.remove("hide");
         this.ctx = canvas.getContext('2d');
@@ -37,6 +36,17 @@ class World{
         this.draw();
         this.run();
         this.playTheme();
+        this.toggleMobileBtn();
+    }
+    toggleMobileBtn(){
+        const mobileBtnL = document.getElementById('mobile-btn_L');
+        const mobileBtnR = document.getElementById('mobile-btn_R');
+        const mobileBtnJ = document.getElementById('mobile-btn_J');
+        const mobileBtnS = document.getElementById('mobile-btn_S');
+        mobileBtnL.classList.toggle("hide");
+        mobileBtnR.classList.toggle("hide");
+        mobileBtnJ.classList.toggle("hide");
+        mobileBtnS.classList.toggle("hide");
     }
     setWorld(){
         document.getElementById('theme-player').src = this.level.levelTheme;
@@ -195,6 +205,7 @@ class World{
         document.getElementById('button').classList.remove("hide");
         document.getElementById('settings').classList.add("hide");
         document.getElementById('button').innerHTML = "PLAY AGAIN";
+        this.toggleMobileBtn();
     }
     draw(){
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
