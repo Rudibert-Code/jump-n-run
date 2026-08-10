@@ -42,9 +42,26 @@
 <body id="body">
     <header></header>
     <main>
-        <dialog>
-            
-        </dialog>
+
+        <section class="imprint hide" id="imprint">
+            <h1>Impressum</h1> 
+            <p>Diese Anwendung wurde ausschließlich zu Bildungszwecken und nichtkommerziellen Zwecken im Rahmen eines Lernprojekts zur objektorientierten <br>
+                Programmierung (OOP) entwickelt.</p> 
+            <p>Björn Sagmeister<br> 
+            Dresdner STraße 12<br> 
+            66955 Pirmasens <br> 
+            </p> 
+            <p><strong>Kontakt:</strong> <br>
+            Telefon: 01707821309-01707821309<br>
+            E-Mail: <a href="mailto:onoofelo@googlemail.com">onoofelo@googlemail.com</a></br></p>  
+            <p>Haftungsausschluss<br>
+                Nichtkommerzielle Nutzung<br>
+                Dieses Projekt ist vollständig nichtkommerziell. Mit dieser Website oder diesem Spiel wird kein finanzieller Gewinn erzielt.<br>
+                <br>
+                Inhalte und externe Links<br>
+                Obwohl dieses Projekt mit größter Sorgfalt erstellt wurde, wird keine Haftung für die Richtigkeit, Vollständigkeit oder Aktualität der bereitgestellten Inhalte übernommen. Sofern diese Website Links zu externen Websites enthält, haben wir keinen Einfluss auf deren Inhalte und können keine Haftung für externe Links übernehmen.</p>
+        </section>
+
         <audio src="" id="theme-player"></audio>
         <section class="screen" id="screen-base">
             <img class="icon-sound hide" src="./assets/ui/Icon_Mute.png" onclick="editSound()" id="settings">
@@ -59,7 +76,7 @@
             <a class="mobile-controlls R hide" onmousedown="mobileButtonDown('R')" onmouseup="mobileButtonUp('R')" onmouseleave="mobileButtonLeave('R')" id="mobile-btn_R"></a>
             <a class="mobile-controlls_Shoot blocked hide" onmousedown="mobileButtonDown('Shoot')" onmouseup="mobileButtonUp('Shoot')" onmouseleave="mobileButtonLeave('Shoot')" id="mobile-btn_S"></a>
             <button class="menu-button" onclick="initGame()" id="button">PLAY</button>
-            <a class="position-imprint" href="/style/impressum.html" target="_blank">Impressum</a>
+            <a class="position-imprint" onclick="openImprint()">Impressum</a>
         </section>
     </main>
     <footer></footer>

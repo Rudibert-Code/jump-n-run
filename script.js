@@ -179,3 +179,8 @@ switch (ID) {
         break;
 }
 };
+
+function openImprint(){
+    let dialogImprint = document.getElementById("imprint");
+    dialogImprint.classList.toggle("hide")
+}
