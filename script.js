@@ -184,3 +184,7 @@ function openImprint(){
     let dialogImprint = document.getElementById("imprint");
     dialogImprint.classList.toggle("hide")
 }
+
+function reloadPage(){
+    location.reload();
+}
