@@ -54,18 +54,23 @@ class World{
     }
     run(){
         setInterval(() => {
-            this.checkCollitionsEnemyTank();
-            this.checkCollitionsEnemyHover();
-            this.checkCollitionsEnemyBoss();
-            this.checkCollitionsItem();
-            this.checkCollitionsEnemyBossAttack();
-            this.checkCollitionsLava();
-            this.checkPlayerLocation();
-            if (this.character.outOfBounds == true && this.win == false) {
-                this.gameOver(1);   
-            }
-            if (this.bossFight == true) {
-                this.bossAttacks();
+            let paused = localStorage.getItem("paused");
+            if (paused == "false") {
+                this.checkCollitionsEnemyTank();
+                this.checkCollitionsEnemyHover();
+                this.checkCollitionsEnemyBoss();
+                this.checkCollitionsItem();
+                this.checkCollitionsEnemyBossAttack();
+                this.checkCollitionsLava();
+                this.checkPlayerLocation();
+                if (this.character.outOfBounds == true && this.win == false) {
+                    this.gameOver(1);   
+                }
+                if (this.bossFight == true) {
+                    this.bossAttacks();
+                }
+            } else{
+                return
             }
         }, 1000/30);
     }

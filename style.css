@@ -87,7 +87,7 @@ footer{
     height: 50px;
     position: absolute;
     top: calc(50% - 324px);
-    left: calc(100% + 450px);
+    left: calc(100% - 80px);
     z-index: 5;
 }
 .opacity{

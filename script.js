@@ -13,6 +13,7 @@ function initGame(){
     keyboard = new Keyboard();
     world = new World(canvas, keyboard);
     checkScreenOrientation(canvas);
+    localStorage.setItem("paused", "false");
 }
 
 window.matchMedia("(orientation: portrait)").addEventListener("change", screenOrientation => {
@@ -180,11 +181,16 @@ switch (ID) {
 }
 };
 
-function openImprint(){
+function toggleImprint(){
     let dialogImprint = document.getElementById("imprint");
-    dialogImprint.classList.toggle("hide")
-}
+    let pause = localStorage.getItem("paused");
 
-function reloadPage(){
-    location.reload();
+    dialogImprint.classList.toggle("hide")
+
+    if (pause == "false") {
+        localStorage.setItem("paused", "true");
+    } else{
+        localStorage.setItem("paused", "false");
+    }
+    
 }
