@@ -130,9 +130,9 @@ class Character extends MovableObject{
                     if(this.position_y >= 400){
                         this.aniType = this.img_walk;
                     }
-                    if(this.world.keyboard.right && this.position_x <= this.world.level.levelEndX && this.dead == false){
+                    if(this.world.keyboard.right && this.position_x <= this.world.level.levelEndX && this.dead == false  && this.hit == false){
                         this.moveRight();
-                    } else if(this.world.keyboard.left && this.position_x >= 0 && this.dead == false){
+                    } else if(this.world.keyboard.left && this.position_x >= 0 && this.dead == false && this.hit == false){
                         this.moveLeft();
                     }
                 }
@@ -150,6 +150,7 @@ class Character extends MovableObject{
                     this.width = 230; 
                     this.aniType = this.img_hit;
                     this.click++;
+                    this.pushLeft();
                     if (this.click >= 15) {
                         this.height = 200;
                         this.width = 200;
@@ -190,6 +191,9 @@ class Character extends MovableObject{
         this.position_x += 8;
     }
     moveLeft(){
+        this.position_x -= 8;
+    }
+    pushLeft(){
         this.position_x -= 8;
     }
     shoot(){

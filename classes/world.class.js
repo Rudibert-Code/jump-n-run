@@ -101,7 +101,7 @@ class World{
                 this.destroyEnemyUnit(unit);
                 this.level.enemiesTank.splice(unitID,1);
                 this.character.jump(20);
-            } else if (this.character.isColliding(unit)) {
+            } else if (this.character.isColliding(unit) && this.character.hit == false) {
                 this.character.lifePoints -= 20;
                 this.healthBar.setHealth(this.character.lifePoints);
                 this.character.hit = true;
@@ -116,7 +116,7 @@ class World{
     checkCollitionsEnemyHover(){
         this.level.enemiesHover.forEach((unit) => {
             let unitID = this.level.enemiesHover.indexOf(unit);
-            if (this.character.isColliding(unit)) {
+            if (this.character.isColliding(unit) && this.character.hit == false) {
                 this.character.lifePoints -= 20;
                 this.healthBar.setHealth(this.character.lifePoints);
                 this.character.hit = true;
@@ -149,7 +149,7 @@ class World{
     }
     checkCollitionsEnemyBossAttack(){
         let attack = this.projectileEnemy[this.epID];
-        if (this.character.isColliding(attack)){
+        if (this.character.isColliding(attack) && this.character.hit == false){
                 this.character.lifePoints -= 40;
                 this.healthBar.setHealth(this.character.lifePoints);
                 this.character.hit = true;
