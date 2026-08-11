@@ -32,7 +32,7 @@ class Lava extends MovableObject{
     hitOffset_x = 0;
     hitOffset_y = 0;
     hitHeight = 200;
-    hitWidth = 180;
+    hitWidth = 120;
 
     constructor(imgPath, x, y){
         super().loadImage(imgPath);
@@ -52,7 +52,7 @@ class Lava extends MovableObject{
         }, 1000 / 30);
     }
     setPosition(){
-        this.hitOffset_x = this.position_x + 60;
+        this.hitOffset_x = this.position_x + 90;
         this.hitOffset_y = this.position_y;
     }
 }
