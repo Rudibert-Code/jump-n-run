@@ -186,6 +186,7 @@ class Character extends MovableObject{
     jump(strength){
         this.speed_y = strength;
         this.position_y -= this.speed_y;
+        AudioHub.playSound(AudioHub.Shot);
     }
     moveRight(){
         this.position_x += 8;
