@@ -4,8 +4,8 @@ class EnemyHover extends MovableObject{
     position_y = 450;
     hitOffset_x = 0;
     hitOffset_y = 500;
-    hitWidth = 140;
-    hitHeight = 140;
+    hitWidth = 100;
+    hitHeight = 120;
     pause = "false";
 
     constructor(imgPath, x){
@@ -50,7 +50,7 @@ class EnemyHover extends MovableObject{
         }, 1000 / 30)
     }
     setPosition(){
-        this.hitOffset_x = this.position_x + 80;
-        this.hitOffset_y = this.position_y + 75;
+        this.hitOffset_x = this.position_x + 100;
+        this.hitOffset_y = this.position_y + 85;
     }
 }

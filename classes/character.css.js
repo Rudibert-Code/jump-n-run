@@ -70,7 +70,7 @@ class Character extends MovableObject{
     hitOffset_x = 0;
     hitOffset_y = 400;
     hitWidth = 120;
-    hitHeight = 200;
+    hitHeight = 160;
     hit = false;
     midAir = false;
     click = 0;
@@ -205,7 +205,7 @@ class Character extends MovableObject{
     }
     setPosition(){
         this.hitOffset_x = this.position_x;
-        this.hitOffset_y = this.position_y;
+        this.hitOffset_y = this.position_y+20;
     }
     coolDown(){
         setInterval(() => {
