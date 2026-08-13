@@ -9,6 +9,7 @@ body{
     background-image: url(assets/ui/screens/BG.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
 }
 
 .imprint{
@@ -145,7 +146,7 @@ footer{
     border-style:none;
     cursor: pointer;
     position: absolute;
-    top: calc(50% + 250px);
+    top: calc(50% + 25px);
     z-index: 4;
 }
 
