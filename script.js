@@ -14,6 +14,12 @@ function initGame(){
     world = new World(canvas, keyboard);
     checkScreenOrientation(canvas);
     localStorage.setItem("paused", "false");
+    hideIMG();
+}
+
+function hideIMG(){
+    let targetContainer = document.getElementById('screen-base');
+    targetContainer.classList.toggle("hide");
 }
 
 window.matchMedia("(orientation: portrait)").addEventListener("change", screenOrientation => {
