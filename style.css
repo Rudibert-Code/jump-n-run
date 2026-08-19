@@ -27,6 +27,7 @@ body{
     background-repeat: no-repeat;
     background-size: contain;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    scrollbar-width: none;
     >h1{
         padding-left: 16px;
         color: #F9C03C;
@@ -290,5 +291,19 @@ footer{
 
     footer{
         display: none;
+    }
+}
+
+@media (max-height: 400px) {
+    .mobile-controlls{
+        width: 40px;
+        aspect-ratio: 1/1;  
+    }
+    .mobile-controlls_Shoot{
+        width: 40px;
+        aspect-ratio: 1/1;  
+    }
+    .button-container{
+        width: 108px;
     }
 }
