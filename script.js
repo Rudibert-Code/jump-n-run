@@ -24,11 +24,11 @@ window.matchMedia("(orientation: portrait)").addEventListener("change", screenOr
 });
 
 function checkScreenOrientation(element){
-    if (window.screen.width <= 1079) {
-        fullscreen(element);
-    } else{
-        exitFullscreen(element);
-    }
+    //if (window.screen.width <= 1079) {
+    //    fullscreen(element);
+    //} else{
+    //    exitFullscreen(element);
+    //}
 }
 
 function fullscreen(element){
