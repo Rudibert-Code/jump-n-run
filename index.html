@@ -70,16 +70,34 @@
             <img class="screen-image" src="./assets/ui/screens/Start.png" id="screen-graphic">
         </section>
         
-        <canvas class="hide" id="game_canvas" width="1080" height="720">
-        </canvas>
         <section class="browser-button-bar">
-            <a class="mobile-controlls L hide" onmousedown="mobileButtonDown('L')" onmouseup="mobileButtonUp('L')" onmouseleave="mobileButtonLeave('L')" id="mobile-btn_L"></a>
+            <!--<a class="mobile-controlls L hide" onmousedown="mobileButtonDown('L')" onmouseup="mobileButtonUp('L')" onmouseleave="mobileButtonLeave('L')" id="mobile-btn_L"></a>
             <a class="mobile-controlls J hide" onmousedown="mobileButtonDown('Jump')" onmouseup="mobileButtonUp('Jump')" onmouseleave="mobileButtonLeave('Jump')" id="mobile-btn_J"></a>
             <a class="mobile-controlls R hide" onmousedown="mobileButtonDown('R')" onmouseup="mobileButtonUp('R')" onmouseleave="mobileButtonLeave('R')" id="mobile-btn_R"></a>
             <a class="mobile-controlls_Shoot blocked hide" onmousedown="mobileButtonDown('Shoot')" onmouseup="mobileButtonUp('Shoot')" onmouseleave="mobileButtonLeave('Shoot')" id="mobile-btn_S"></a>
-            <button class="menu-button" onclick="initGame()" id="button">PLAY</button>
-            <!--<a class="position-imprint" onclick="toggleImprint()">Impressum</a>-->
+            
+            <a class="position-imprint" onclick="toggleImprint()">Impressum</a>-->
         </section>
+
+        <section class="canvas-base">
+            <button class="menu-button" onclick="initGame()" id="button">PLAY</button>
+
+            <div class="button-base">
+                <div class="button-container">
+                    <a class="mobile-controlls L hide" onmousedown="mobileButtonDown('L')" onmouseup="mobileButtonUp('L')" onmouseleave="mobileButtonLeave('L')" id="mobile-btn_L"></a>
+                    <a class="mobile-controlls R hide" onmousedown="mobileButtonDown('R')" onmouseup="mobileButtonUp('R')" onmouseleave="mobileButtonLeave('R')" id="mobile-btn_R"></a>
+                </div>
+                <div class="button-container">
+                    <a class="mobile-controlls_Shoot blocked hide" onmousedown="mobileButtonDown('Shoot')" onmouseup="mobileButtonUp('Shoot')" onmouseleave="mobileButtonLeave('Shoot')" id="mobile-btn_S"></a>
+                    <a class="mobile-controlls J hide" onmousedown="mobileButtonDown('Jump')" onmouseup="mobileButtonUp('Jump')" onmouseleave="mobileButtonLeave('Jump')" id="mobile-btn_J"></a>
+                </div>
+            </div>
+
+            <canvas class="hide" id="game_canvas" width="1080" height="720">
+            </canvas>
+        </section>
+
+
     </main>
     <footer></footer>
 </body>
