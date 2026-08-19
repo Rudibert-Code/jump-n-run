@@ -105,6 +105,7 @@ class World{
                 this.character.lifePoints -= 20;
                 this.healthBar.setHealth(this.character.lifePoints);
                 this.character.hit = true;
+                AudioHub.playSound(AudioHub.Hit);
             }
             if (this.level.lava[1].isColliding(unit)) {
                 this.destroyEnemyUnit(unit);
@@ -120,6 +121,7 @@ class World{
                 this.character.lifePoints -= 20;
                 this.healthBar.setHealth(this.character.lifePoints);
                 this.character.hit = true;
+                AudioHub.playSound(AudioHub.Hit);
             } else if (this.projectile[this.pID].isColliding(unit)) {
                 this.destroyEnemyUnit(unit);
                 AudioHub.playSound(AudioHub.Hit);
@@ -136,6 +138,7 @@ class World{
                 unit.lifePoints -= 20;
                 this.healthBarBoss.setHealth(unit.lifePoints);
                 unit.hit = true;
+                AudioHub.playSound(AudioHub.Hit);
                 this.projectile.splice(this.pID,1);
                 this.pID = 0;
                 if (unit.lifePoints == 0) {
@@ -153,6 +156,7 @@ class World{
                 this.character.lifePoints -= 40;
                 this.healthBar.setHealth(this.character.lifePoints);
                 this.character.hit = true;
+                AudioHub.playSound(AudioHub.Hit);
                 this.projectileEnemy.splice(this.epID,1);
                 this.epID = 0;
             }
