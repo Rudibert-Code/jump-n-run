@@ -208,10 +208,10 @@ class World{
     }
     gameOver(x){
         if (x == 1) {
-            document.getElementById('screen-graphic').src ='./assets/ui/screens/EndScreen.jpg';
+            document.getElementById('screen-graphic').src ='./assets/ui/screens/GameOver.png';
             this.win = true;
         } else if (x == 2) {
-            document.getElementById('screen-graphic').src ='./assets/ui/screens/WinScreen.jpg';
+            document.getElementById('screen-graphic').src ='./assets/ui/screens/Win.png';
         }
         document.getElementById('theme-player').pause();
         document.getElementById('game_canvas').classList.add("hide");
