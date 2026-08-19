@@ -41,6 +41,12 @@ body{
     }
 }
 
+.imprint-button{
+    position: absolute;
+    top: 16px;
+    left: calc(100% - 16px);
+}
+
 .link-color{
     color: #F9C03C;
     text-decoration: none;

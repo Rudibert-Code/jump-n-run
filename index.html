@@ -43,30 +43,32 @@
     <header></header>
     <main>
 
-        <section class="imprint hide" id="imprint">
-            <a class="return link-color" onclick="toggleImprint()">Return</a>
-            <h1>Legal Notice</h1> 
-            <p>This application was developed exclusively for educational and noncommercial purposes as part of a learning project on object-oriented <br>
-                programming (OOP).</p> 
-            <p>Björn Sagmeister<br> 
-            Dresdner Straße 12<br> 
-            66955 Pirmasens <br> 
-            </p> 
-            <p><strong>Contacts:</strong> <br>
-            Telefon: 01707821309-01707821309<br>
-            E-Mail: <a class="link-color" href="mailto:onoofelo@googlemail.com">onoofelo@googlemail.com</a></p>  
-            <p>Disclaimer<br>
-                Noncommercial Use<br>
-                This project is entirely non-commercial. No financial profit is made from this website or this game.<br>
-                <br>
-                Content and External Links<br>
-                Although this project was created with the utmost care, we assume no liability for the accuracy, completeness, or timeliness of the content provided.<br>
-                If this website contains links to external websites, we have no control over their content and cannot accept any liability for external links.</p>
-        </section>
-
         <audio src="" id="theme-player"></audio>
 
         <section class="canvas-base">
+            
+            <a class="imprint-button" onclick="toggleImprint()">i</a>
+
+            <section class="imprint" id="imprint">
+                <a class="return link-color" onclick="toggleImprint()">Return</a>
+                <h1>Legal Notice</h1> 
+                <p>This application was developed exclusively for educational and noncommercial purposes as part of a learning project on object-oriented <br>
+                    programming (OOP).</p> 
+                <p>Björn Sagmeister<br> 
+                Dresdner Straße 12<br> 
+                66955 Pirmasens <br> 
+                </p> 
+                <p><strong>Contacts:</strong> <br>
+                Telefon: 01707821309-01707821309<br>
+                E-Mail: <a class="link-color" href="mailto:onoofelo@googlemail.com">onoofelo@googlemail.com</a></p>  
+                <p>Disclaimer<br>
+                    Noncommercial Use<br>
+                    This project is entirely non-commercial. No financial profit is made from this website or this game.<br>
+                    <br>
+                    Content and External Links<br>
+                    Although this project was created with the utmost care, we assume no liability for the accuracy, completeness, or timeliness of the content provided.<br>
+                    If this website contains links to external websites, we have no control over their content and cannot accept any liability for external links.</p>
+            </section>
 
             <button class="menu-button" onclick="initGame()" id="button">PLAY</button>
 
@@ -92,7 +94,7 @@
 
             <canvas class="hide" id="game_canvas" width="1080" height="720">
             </canvas>
-            
+
         </section>
 
 
