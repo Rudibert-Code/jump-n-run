@@ -39,7 +39,7 @@ class Boss1 extends MovableObject{
     hitOffset_x;
     hitOffset_y = 260;
     hitWidth = 300;
-    hitHeight = 200;
+    hitHeight = 400;
     speed = 2;
     hit = false;
     click = 0;
