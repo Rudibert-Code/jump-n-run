@@ -74,7 +74,8 @@ class Boss1 extends MovableObject{
                 }
                 if (this.hit == false) {
                     this.animation(this.boss_idle);
-                } else if (this.hit == true) {
+                }
+                if (this.hit == true) {
                     this.animation(this.boss_hit);
                     this.click++
                     if (this.click >= 5) {

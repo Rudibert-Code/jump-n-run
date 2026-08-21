@@ -134,8 +134,7 @@ class World{
     checkCollitionsEnemyBoss(){
         this.level.enemiesBoss.forEach((unit) => {
             let unitID = this.level.enemiesBoss.indexOf(unit);
-            //if (this.projectile[this.pID].isColliding(unit)) {
-            if (unit.isColliding(this.projectile[this.pID])) {
+            if (unit.isColliding(this.projectile[this.pID]) && unit.hit == false) {
                 unit.lifePoints -= 20;
                 this.healthBarBoss.setHealth(unit.lifePoints);
                 unit.hit = true;
@@ -152,8 +151,7 @@ class World{
         }) 
     }
     checkCollitionsEnemyBossAttack(){
-        let attack = this.projectileEnemy[this.epID];
-        if (this.character.isColliding(attack)){
+        if (this.character.isColliding(this.projectileEnemy[this.epID]) && this.character.hit == false){
             this.character.hit = true;   
             AudioHub.playSound(AudioHub.Hit);
             this.character.lifePoints -= 40;
