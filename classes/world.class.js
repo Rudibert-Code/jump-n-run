@@ -134,7 +134,8 @@ class World{
     checkCollitionsEnemyBoss(){
         this.level.enemiesBoss.forEach((unit) => {
             let unitID = this.level.enemiesBoss.indexOf(unit);
-            if (this.projectile[this.pID].isColliding(unit)) {
+            //if (this.projectile[this.pID].isColliding(unit)) {
+            if (unit.isColliding(this.projectile[this.pID])) {
                 unit.lifePoints -= 20;
                 this.healthBarBoss.setHealth(unit.lifePoints);
                 unit.hit = true;
@@ -152,14 +153,14 @@ class World{
     }
     checkCollitionsEnemyBossAttack(){
         let attack = this.projectileEnemy[this.epID];
-        if (this.character.isColliding(attack) && this.character.hit == false){
-                this.character.lifePoints -= 40;
-                this.healthBar.setHealth(this.character.lifePoints);
-                this.character.hit = true;
-                AudioHub.playSound(AudioHub.Hit);
-                this.projectileEnemy.splice(this.epID,1);
-                this.epID = 0;
-            }
+        if (this.character.isColliding(attack)){
+            this.character.hit = true;   
+            AudioHub.playSound(AudioHub.Hit);
+            this.character.lifePoints -= 40;
+            this.healthBar.setHealth(this.character.lifePoints);
+            this.projectileEnemy.splice(this.epID,1);
+            this.epID = 0;
+        }
     }
     checkCollitionsItem(){
         this.level.coins.forEach((unit) => {
@@ -271,11 +272,11 @@ class World{
     // hit boxes
     drawFrame(mo){
         if (mo instanceof Character || mo instanceof EnemyHover || mo instanceof EnemyTank || mo instanceof Coins ||  mo instanceof Amo || mo instanceof Shot || mo instanceof EnemyShot || mo instanceof Lava || mo instanceof Boss1) {
-            this.ctx.beginPath();
-            this.ctx.lineWidth = '5';
-            this.ctx.strokeStyle = 'blue';
-            this.ctx.rect(mo.hitOffset_x, mo.hitOffset_y, mo.hitWidth, mo.hitHeight);
-            this.ctx.stroke();
+            //this.ctx.beginPath();
+            //this.ctx.lineWidth = '5';
+            //this.ctx.strokeStyle = 'blue';
+            //this.ctx.rect(mo.hitOffset_x, mo.hitOffset_y, mo.hitWidth, mo.hitHeight);
+            //this.ctx.stroke();
         };
     }
 
@@ -289,9 +290,8 @@ class World{
     bossAttacks(){
         if (this.pause == "false") {
             if (this.bossCoolDown == 0 && this.bossFight == true) {
-                console.log("SHOT" + this.pause);
                 let rng = Math.random()*10;
-                if (rng <= 8) {
+                if (rng <= 5) {
                     this.bossShot(1);
                 } else{
                     this.bossShot(2);
