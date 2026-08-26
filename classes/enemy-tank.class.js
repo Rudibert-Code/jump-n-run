@@ -10,7 +10,7 @@ class EnemyTank extends MovableObject{
         './assets/enemy/unit_2/7.png',
     ];
 
-    hitOffset_x = 0;
+    hitOffset_x = 500;
     hitOffset_y = 450;
     hitWidth = 200;
     hitHeight = 150;
