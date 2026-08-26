@@ -25,7 +25,7 @@ function hideIMG(){
 window.matchMedia("(orientation: portrait)").addEventListener("change", screenOrientation => {
     const portrait = screenOrientation.matches;
     if(portrait){
-        alert("This game only supports landscape mode. Please turn your phone.")
+        //alert("This game only supports landscape mode. Please turn your phone.")
     }
 });
 
@@ -142,29 +142,6 @@ switch (ID) {
 };
 
 function mobileButtonUp(ID){
-switch (ID) {
-    case 'L':
-        keyboard.left = false;
-        break;
-    case 'R':
-        keyboard.right = false;
-        break;
-    case 'Jump':
-        keyboard.jump = false;
-        break;
-    case 'Shoot':
-        keyboard.shoot = false;
-        break;
-    default:
-        keyboard.left = false;
-        keyboard.right = false;
-        keyboard.jump = false;
-        keyboard.shoot = false;
-        break;
-}
-};
-
-function mobileButtonLeave(ID){
 switch (ID) {
     case 'L':
         keyboard.left = false;
