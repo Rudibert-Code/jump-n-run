@@ -12,7 +12,6 @@ function initGame(){
     canvas = document.getElementById('game_canvas');
     keyboard = new Keyboard();
     world = new World(canvas, keyboard);
-    checkScreenOrientation(canvas);
     localStorage.setItem("paused", "false");
     hideIMG();
 }
@@ -24,18 +23,12 @@ function hideIMG(){
 
 window.matchMedia("(orientation: portrait)").addEventListener("change", screenOrientation => {
     const portrait = screenOrientation.matches;
+    const screenOverlay = document.getElementById('overlay');
     if(portrait){
+        screenOverlay.style.display="flex";
         //alert("This game only supports landscape mode. Please turn your phone.")
     }
 });
-
-function checkScreenOrientation(element){
-    //if (window.screen.width <= 1079) {
-    //    fullscreen(element);
-    //} else{
-    //    exitFullscreen(element);
-    //}
-}
 
 function fullscreen(element){
   if (element.requestFullscreen) {
