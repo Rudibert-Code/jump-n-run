@@ -1,3 +1,14 @@
+@keyframes overlay-icon-animation {
+  0%   {rotate: 0deg;}
+  100% {rotate: 360deg;}
+}
+
+@keyframes overlay-laoding-animation {
+    0%   {color: white;}
+    50% {color: rgba(255, 255, 255, 0);}
+    100% {color: white;}
+}
+
 body{
     display: flex;
     flex-direction: column;
@@ -23,13 +34,14 @@ body{
     z-index: 1000;
 }
 
-@keyframes overlay-icon-animation {
-  0%   {rotate: 0deg;}
-  100% {rotate: 360deg;}
-}
-
 .overlay-icon{
     animation-name: overlay-icon-animation;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+
+.overlay-loading{
+    animation-name: overlay-laoding-animation;
     animation-duration: 4s;
     animation-iteration-count: infinite;
 }
@@ -123,6 +135,9 @@ footer{
     display: none;
 }
 
+.show{
+    display: flex;
+}
 
 .opacity{
     opacity: 0.5;
