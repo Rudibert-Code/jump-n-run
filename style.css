@@ -41,6 +41,9 @@ body{
 }
 
 .overlay-loading{
+    color: #EAB33B;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1.4rem;
     animation-name: overlay-laoding-animation;
     animation-duration: 4s;
     animation-iteration-count: infinite;
