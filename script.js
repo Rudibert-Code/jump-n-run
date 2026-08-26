@@ -26,7 +26,8 @@ window.matchMedia("(orientation: portrait)").addEventListener("change", screenOr
     const screenOverlay = document.getElementById('overlay');
     if(portrait){
         screenOverlay.style.display="flex";
-        //alert("This game only supports landscape mode. Please turn your phone.")
+    } else if(!portrait){
+        screenOverlay.style.display="none";
     }
 });
 
