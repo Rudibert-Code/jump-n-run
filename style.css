@@ -12,6 +12,8 @@ body{
 
 .overlay{
     display: none;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     height: 100%;
     background-color: black;
@@ -19,6 +21,17 @@ body{
     top: 0;
     left: 0;
     z-index: 1000;
+}
+
+@keyframes overlay-icon-animation {
+  0%   {rotate: 0deg;}
+  100% {rotate: 360deg;}
+}
+
+.overlay-icon{
+    animation-name: overlay-icon-animation;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
 }
 
 .imprint{
