@@ -1,3 +1,7 @@
+function openLoadingScreen(){
+    document.getElementById('loading').classList.add("show");
+}
+
 function closeLoadingScreen(){
     document.getElementById('loading').classList.remove("show");
 }
