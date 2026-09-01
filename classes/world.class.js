@@ -80,6 +80,7 @@ class World{
             }
         }, 1000/30);
     }
+
     playTheme(){
         let audioSorce = document.getElementById('theme-player');
         audioSorce.loop = true;
@@ -139,6 +140,7 @@ class World{
                 this.healthBarBoss.setHealth(unit.lifePoints);
                 unit.hit = true;
                 AudioHub.playSound(AudioHub.Hit);
+                console.log("hitID : " + this.pID)
                 this.projectile.splice(this.pID,1);
                 this.pID = 0;
                 if (unit.lifePoints == 0) {
@@ -150,6 +152,7 @@ class World{
             }
         }) 
     }
+
     checkCollitionsEnemyBossAttack(){
         if (this.character.isColliding(this.projectileEnemy[this.epID]) && this.character.hit == false){
             this.character.hit = true;   
@@ -160,6 +163,7 @@ class World{
             this.epID = 0;
         }
     }
+
     checkCollitionsItem(){
         this.level.coins.forEach((unit) => {
             let coinID = this.level.coins.indexOf(unit);
