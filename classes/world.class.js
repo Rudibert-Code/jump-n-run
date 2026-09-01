@@ -134,7 +134,7 @@ class World{
     checkCollitionsEnemyBoss(){
         this.level.enemiesBoss.forEach((unit) => {
             let unitID = this.level.enemiesBoss.indexOf(unit);
-            if (unit.isColliding(this.projectile[this.pID]) && unit.hit == false) {
+            if (unit.isColliding(this.projectile[this.pID]) && unit.hit == false && this.bossFight == true) {
                 unit.lifePoints -= 20;
                 this.healthBarBoss.setHealth(unit.lifePoints);
                 unit.hit = true;
