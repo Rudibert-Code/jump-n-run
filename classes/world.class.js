@@ -140,7 +140,6 @@ class World{
                 this.healthBarBoss.setHealth(unit.lifePoints);
                 unit.hit = true;
                 AudioHub.playSound(AudioHub.Hit);
-                console.log("hitID : " + this.pID)
                 this.deletePlayerProjectile(this.pID);
                 if (unit.lifePoints == 0) {
                     this.bossFight = false;
