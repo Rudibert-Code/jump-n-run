@@ -198,11 +198,14 @@ class Character extends MovableObject{
         this.position_x -= 8;
     }
     shoot(){
-        this.world.amoNumber--
-        let amo = new Shot(this.position_x, this.position_y);
-        this.world.projectile.push(amo);
-        AudioHub.playSound(AudioHub.Shot);
-        this.world.pID++;
+        if (this.world.pID == 0) {
+            this.world.amoNumber--
+            let amo = new Shot(this.position_x, this.position_y);
+            this.world.projectile.push(amo);
+            AudioHub.playSound(AudioHub.Shot);
+            this.world.pID++;
+        } 
+        return
     }
     setPosition(){
         this.hitOffset_x = this.position_x;
