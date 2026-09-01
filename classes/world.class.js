@@ -69,6 +69,7 @@ class World{
                 this.checkCollitionsEnemyBossAttack();
                 this.checkCollitionsLava();
                 this.checkPlayerLocation();
+                this.outOfBoundsProjectile();
                 if (this.character.outOfBounds == true && this.win == false) {
                     this.gameOver(1);   
                 }
@@ -127,8 +128,7 @@ class World{
                 this.destroyEnemyUnit(unit);
                 AudioHub.playSound(AudioHub.Hit);
                 this.level.enemiesHover.splice(unitID,1);
-                this.projectile.splice(this.pID,1);
-                this.pID = 0;
+                this.deletePlayerProjectile(this.pID);
             }
         }) 
     }
@@ -141,8 +141,7 @@ class World{
                 unit.hit = true;
                 AudioHub.playSound(AudioHub.Hit);
                 console.log("hitID : " + this.pID)
-                this.projectile.splice(this.pID,1);
-                this.pID = 0;
+                this.deletePlayerProjectile(this.pID);
                 if (unit.lifePoints == 0) {
                     this.bossFight = false;
                     this.win = true;
@@ -151,6 +150,17 @@ class World{
                 }
             }
         }) 
+    }
+
+    outOfBoundsProjectile(){
+        if (this.projectile[this.pID].position_x >= this.character.position_x + 1000) {
+            this.deletePlayerProjectile(this.pID);
+        } return
+    }
+
+    deletePlayerProjectile(X){
+        this.projectile.splice(X,1);
+        this.pID = 0;
     }
 
     checkCollitionsEnemyBossAttack(){
@@ -191,12 +201,14 @@ class World{
                 this.unblockShootBtn();
             }
     }
+
     unblockShootBtn(){
         let targetBtn = document.getElementById('mobile-btn_S');
         if (this.amoNumber >= 1) {
             targetBtn.classList.remove("blocked");   
         }
     }
+
     checkCollitionsLava(){
         this.level.lava.forEach((unit) => {
             if (this.character.isColliding(unit)) {
@@ -205,10 +217,12 @@ class World{
             }
         }) 
     }
+
     destroyEnemyUnit(unit){
         let enemyLocation = new Destroy(unit.position_x, unit.position_y);
         this.destroy.push(enemyLocation);
     }
+
     gameOver(x){
         if (x == 1) {
             document.getElementById('screen-graphic').src ='./assets/ui/screens/GameOver.png';
@@ -225,6 +239,7 @@ class World{
         document.getElementById('button').innerHTML = "PLAY AGAIN";
         this.toggleMobileBtn();
     }
+
     draw(){
         let self = this;
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
