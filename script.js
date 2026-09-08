@@ -4,7 +4,8 @@ let keyboard;
 let mute = 0;
 let effectVolume = 0.2;
 
-function initGame(){
+async function initGame(){
+    openLoadingScreen();
     setSound();
     AudioHub.playSound(AudioHub.UISelect);
     startLevel1 = true;
@@ -14,6 +15,8 @@ function initGame(){
     world = new World(canvas, keyboard);
     localStorage.setItem("paused", "false");
     hideIMG();
+    await DrawableObject.waitForImages();
+    requestAnimationFrame(closeLoadingScreen);
 }
 
 function hideIMG(){
