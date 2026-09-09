@@ -1,9 +1,14 @@
+/**
+ * Create new ammunition icon
+ */
 class IconAmo extends DrawableObject{
-
     icon_amo = [
         './assets/ui/icon_amo.png'
     ];
 
+    /**
+     * Load, set and update player ammunition
+     */
     constructor(){
         super();
         this.loadImages(this.icon_amo);
