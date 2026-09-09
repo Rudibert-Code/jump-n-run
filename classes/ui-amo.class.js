@@ -1,3 +1,6 @@
+/**
+ * Show UI element player amo
+ */
 class AmoNumber extends DrawableObject{
     amoNumber = 0;
 

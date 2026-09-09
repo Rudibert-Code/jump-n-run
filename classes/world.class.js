@@ -1,3 +1,6 @@
+/**
+ * Create world 
+ */
 class World{ 
     character = new Character();
     healthBar = new HealthBar();
@@ -24,6 +27,11 @@ class World{
     iFrame = false;
     pause = "false";
 
+    /**
+     * 
+     * @param {HTMLCanvasElement} canvas - Game canvas 
+     * @param {HTMLElement} keyboard - Input commands 
+     */
     constructor(canvas, keyboard){
         document.getElementById('game_canvas').classList.remove("hide");
         document.getElementById('screen-graphic').classList.add("hide");
@@ -40,11 +48,19 @@ class World{
         this.toggleMobileBtn();
         this.checkForPause();
     }
+
+    /**
+     * Check if game is paused
+     */
     checkForPause(){
         setInterval(() => {
             this.pause = localStorage.getItem("paused");
         }, 1000/30);
     }
+
+    /**
+     * Show / hide mobile controls
+     */
     toggleMobileBtn(){
         const mobileBtnL = document.getElementById('mobile-btn_L');
         const mobileBtnR = document.getElementById('mobile-btn_R');
@@ -55,10 +71,18 @@ class World{
         mobileBtnJ.classList.toggle("hide");
         mobileBtnS.classList.toggle("hide");
     }
+
+    /**
+     * Set level theme
+     */
     setWorld(){
         document.getElementById('theme-player').src = this.level.levelTheme;
         this.character.world = this;        
     }
+
+    /**
+     * Run the game if not paused
+     */
     run(){
         setInterval(() => {
             if (this.pause == "false") {
@@ -82,6 +106,9 @@ class World{
         }, 1000/30);
     }
 
+    /**
+     * Play glevel theme
+     */
     playTheme(){
         let audioSorce = document.getElementById('theme-player');
         audioSorce.loop = true;
@@ -89,6 +116,10 @@ class World{
         audioSorce.play();
     }
 
+    /**
+     * Activate invulnerability frames; Reset it after the timeout.
+     * @returns {void}
+     */
     iFrameTimer(){
         iFrame = true;
         setTimeout(()=>{
@@ -96,6 +127,9 @@ class World{
         }, 0)
     }
 
+    /**
+     * Check collision for Enemy Tank
+     */
     checkCollitionsEnemyTank(){
         this.level.enemiesTank.forEach((unit) => {
             let unitID = this.level.enemiesTank.indexOf(unit);
@@ -116,6 +150,10 @@ class World{
             }
         }) 
     }
+
+    /**
+     * Check collision for Enemy Hover
+     */
     checkCollitionsEnemyHover(){
         this.level.enemiesHover.forEach((unit) => {
             let unitID = this.level.enemiesHover.indexOf(unit);
@@ -132,6 +170,10 @@ class World{
             }
         }) 
     }
+
+    /**
+     * Check collision for Enemy Boss
+     */
     checkCollitionsEnemyBoss(){
         this.level.enemiesBoss.forEach((unit) => {
             let unitID = this.level.enemiesBoss.indexOf(unit);
@@ -151,17 +193,28 @@ class World{
         }) 
     }
 
+    /**
+     * Check if player projectile is out of bounds
+     * @returns 
+     */
     outOfBoundsProjectile(){
         if (this.projectile[this.pID].position_x >= this.character.position_x + 1000) {
             this.deletePlayerProjectile(this.pID);
         } return
     }
 
+    /**
+     * Delete player projectile if hit or out of bounds
+     * @param {number} X 
+     */
     deletePlayerProjectile(X){
         this.projectile.splice(X,1);
         this.pID = 0;
     }
 
+    /**
+     * Check collision with Enemy Boss attack
+     */
     checkCollitionsEnemyBossAttack(){
         if (this.character.isColliding(this.projectileEnemy[this.epID]) && this.character.hit == false){
             this.character.hit = true;   
@@ -173,6 +226,9 @@ class World{
         }
     }
 
+    /**
+     * Check for item collect
+     */
     checkCollitionsItem(){
         this.level.coins.forEach((unit) => {
             let coinID = this.level.coins.indexOf(unit);
@@ -201,6 +257,9 @@ class World{
             }
     }
 
+    /**
+     * Unblock "Shoot" button if player amo >=1
+     */
     unblockShootBtn(){
         let targetBtn = document.getElementById('mobile-btn_S');
         if (this.amoNumber >= 1) {
@@ -208,6 +267,9 @@ class World{
         }
     }
 
+    /**
+     * Check collision with lava
+     */
     checkCollitionsLava(){
         this.level.lava.forEach((unit) => {
             if (this.character.isColliding(unit)) {
@@ -217,11 +279,19 @@ class World{
         }) 
     }
 
+    /**
+     * Destroy element (enemy)
+     * @param {HTMLElement} unit 
+     */
     destroyEnemyUnit(unit){
         let enemyLocation = new Destroy(unit.position_x, unit.position_y);
         this.destroy.push(enemyLocation);
     }
 
+    /**
+     * Pause Game & show "Game Over" screen
+     * @param {number} x 
+     */
     gameOver(x){
         if (x == 1) {
             document.getElementById('screen-graphic').src ='./assets/ui/screens/GameOver.png';
@@ -239,6 +309,9 @@ class World{
         this.toggleMobileBtn();
     }
 
+    /**
+     * Draw game objects
+     */
     draw(){
         let self = this;
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -274,28 +347,19 @@ class World{
         });
     }
 
+    /**
+     * Add game element to level
+     * @param {HTMLElement} objects 
+     */
     addObjectsToMap(objects){
         objects.forEach(element =>{
             this.addToMap(element);
         });
     }
 
-    addToMap(mo){
-        this.ctx.drawImage(mo.img, mo.position_x, mo.position_y, mo.width, mo.height);
-        this.drawFrame(mo);
-    }
-
-    // hit boxes
-    drawFrame(mo){
-        //if (mo instanceof Character || mo instanceof EnemyHover || mo instanceof EnemyTank || mo instanceof Coins ||  mo instanceof Amo || mo instanceof Shot || mo instanceof EnemyShot || mo instanceof Lava || mo instanceof Boss1) {
-        //    this.ctx.beginPath();
-        //    this.ctx.lineWidth = '5';
-        //    this.ctx.strokeStyle = 'blue';
-        //    this.ctx.rect(mo.hitOffset_x, mo.hitOffset_y, mo.hitWidth, mo.hitHeight);
-        //    this.ctx.stroke();
-        //};
-    }
-
+    /**
+     * Check player location in the level for boss fight trigger
+     */
     checkPlayerLocation(){
         if (this.character.position_x >= 3000 && this.bossFight == false && this.win == false) {
             this.bossFight = true;
@@ -303,6 +367,9 @@ class World{
         }
     }
 
+    /**
+     * Create boss projectile when cool down is 0
+     */
     bossAttacks(){
         if (this.pause == "false") {
             if (this.bossCoolDown == 0 && this.bossFight == true) {
@@ -320,6 +387,10 @@ class World{
         }
     }
 
+    /**
+     * Boss projectile parameters
+     * @param {number} x 
+     */
     bossShot(x){
         let bossX = this.level.enemiesBoss[0].position_x;
         let bossY = this.level.enemiesBoss[0].position_y;

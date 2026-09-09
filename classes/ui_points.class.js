@@ -1,3 +1,6 @@
+/**
+ * Show UI element game highscore
+ */
 class Points extends DrawableObject{
     highSccore = 0;
 
