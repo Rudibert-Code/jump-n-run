@@ -6,10 +6,10 @@ class BG1 extends MovableObject{
     width = 800;
 
     /**
-     * Load and position background element.
-     * @param {string} imgPath 
-     * @param {number} x 
-     * @param {number} y 
+     * Load and position new background element.
+     * @param {string} imgPath - image path
+     * @param {number} x - position on x-axes
+     * @param {number} y - position on y-axes
      */
     constructor(imgPath, x, y){
         super().loadImage(imgPath);
