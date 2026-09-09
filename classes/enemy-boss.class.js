@@ -1,3 +1,6 @@
+/**
+ * Create new Boss element
+ */
 class Boss1 extends MovableObject{
     boss_idle = [
         './assets/enemy/Boss/Normal/skeleton-animation_00.png',
@@ -45,6 +48,11 @@ class Boss1 extends MovableObject{
     click = 0;
     pause = "false";
 
+    /**
+     * 
+     * @param {string} imgPath 
+     * @param {number} x 
+     */
     constructor(imgPath, x){
         super().loadImage(imgPath);
         this.loadImages(this.boss_idle);
@@ -55,14 +63,23 @@ class Boss1 extends MovableObject{
         this.checkForPause();
     }
 
+    /**
+     * Check if game is paused
+     */
     checkForPause(){
         setInterval(() => {
             this.pause = localStorage.getItem("paused");
         }, 1000/30);
     }
 
+    /**
+     * Trigger animations at set interval
+     */
     animate(){
         setInterval( () => {
+            /**
+             * Update Boss position on x-axes
+             */
             if (this.pause == "false") {        
                 this.position_x -= this.speed;
                 this.setPosition();    
@@ -72,12 +89,24 @@ class Boss1 extends MovableObject{
                 if (this.position_x == 3600) {
                     this.speed = 2;
                 }
+
+                /**
+                 * Check for hit
+                 */
                 if (this.hit == false) {
                     this.animation(this.boss_idle);
                 }
+
+                /**
+                 * Trigger Boss's hit animation & start cooldown 
+                 */
                 if (this.hit == true) {
                     this.animation(this.boss_hit);
                     this.click++
+
+                    /**
+                     * End Boss's hit animation when cooldown ends
+                     */
                     if (this.click >= 5) {
                         this.click = 0;
                         this.hit = false;
@@ -87,12 +116,21 @@ class Boss1 extends MovableObject{
         }, 1000 / 30);
     }
 
+    /**
+     * Select next animation frame from the provided image paths.
+     * @param {string[]} aniType - Image paths that make up the animation.
+     * @returns {void}
+     */
     animation(aniType){
         let iD = this.currentImage % aniType.length;
         let path = aniType[iD];
         this.img = this.imageCache[path];
         this.currentImage++;
     }
+
+    /**
+     * Update Boss#s position on x-axes
+     */
     setPosition(){
         this.hitOffset_x = this.position_x + 75;
     }
