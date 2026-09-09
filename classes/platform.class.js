@@ -1,3 +1,6 @@
+/**
+ * Creates platform
+ */
 class Platform extends MovableObject{
     height = 162;
     width = 300;
@@ -6,6 +9,12 @@ class Platform extends MovableObject{
     hitHeight = 162;
     hitWidth = 300;
 
+    /**
+     * 
+     * @param {string} imgPath 
+     * @param {number} x 
+     * @param {number} y 
+     */
     constructor(imgPath, x, y){
         super().loadImage(imgPath);
 

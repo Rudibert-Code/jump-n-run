@@ -1,3 +1,6 @@
+/**
+ * Creates enemy shot element
+ */
 class EnemyShot extends MovableObject{
     height = 60;
     width = 60;
@@ -7,6 +10,11 @@ class EnemyShot extends MovableObject{
     hitHeight = 100;
     pause = "false";
 
+    /**
+     * 
+     * @param {number} x 
+     * @param {number} y 
+     */
     constructor(x,y){
         super().loadImage('./assets/player/shot.png');
         this.position_x = x;
@@ -15,12 +23,18 @@ class EnemyShot extends MovableObject{
         this.checkForPause();
     }
 
+    /**
+     * Check if game is paused
+     */
     checkForPause(){
         setInterval(() => {
             this.pause = localStorage.getItem("paused");
         }, 1000/30);
     }
 
+    /**
+     * Updates element position at the set interval
+     */
     animation(){
         setInterval( () => {
             if (this.pause == "false") {
@@ -30,6 +44,9 @@ class EnemyShot extends MovableObject{
         }, 1000 / 30)
     }
 
+    /**
+     * Updates element position
+     */
     setPosition(){
         this.hitOffset_x = this.position_x -20;
         this.hitOffset_y = this.position_y -20;
