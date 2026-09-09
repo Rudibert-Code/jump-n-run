@@ -1,9 +1,14 @@
+/**
+ * Create new coin icon
+ */
 class IconCoin extends DrawableObject{
-
     icon_coin = [
         './assets/ui/icon_coin.png'
     ];
 
+    /**
+     * Load, set and update player coins
+     */
     constructor(){
         super();
         this.loadImages(this.icon_coin);

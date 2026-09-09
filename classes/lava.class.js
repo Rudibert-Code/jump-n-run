@@ -1,3 +1,6 @@
+/**
+ * Create new lava element
+ */
 class Lava extends MovableObject{
 
     img_lava = [
@@ -34,6 +37,12 @@ class Lava extends MovableObject{
     hitHeight = 200;
     hitWidth = 120;
 
+    /**
+     * 
+     * @param {string} imgPath 
+     * @param {number} x 
+     * @param {number} y 
+     */
     constructor(imgPath, x, y){
         super().loadImage(imgPath);
         this.loadImages(this.img_lava);
@@ -42,6 +51,9 @@ class Lava extends MovableObject{
         this.animation();
     }
 
+    /**
+     * Update lava image at set interval
+     */
     animation(){
         setInterval(() => { 
             let i = this.currentImage % this.img_lava.length;
@@ -51,6 +63,10 @@ class Lava extends MovableObject{
             this.setPosition();
         }, 1000 / 30);
     }
+
+    /**
+     * Update element postion
+     */
     setPosition(){
         this.hitOffset_x = this.position_x + 90;
         this.hitOffset_y = this.position_y;
