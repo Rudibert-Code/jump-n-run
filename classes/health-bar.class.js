@@ -1,3 +1,6 @@
+/**
+ * Create new healthbar element
+ */
 class HealthBar extends DrawableObject{
 
     assets = [
@@ -11,6 +14,9 @@ class HealthBar extends DrawableObject{
 
     healthTotal = 100;
 
+    /**
+     * Load & position healthbar image
+     */
     constructor(){
         super();
         this.loadImages(this.assets);
@@ -21,12 +27,19 @@ class HealthBar extends DrawableObject{
         this.width = 400;
     }
 
+    /**
+     * Update player health according to healthBarIndex()
+     * @param {number} LP 
+     */
     setHealth(LP){
         this.healthTotal = LP;
         let imgPath = this.assets[this.healthBarIndex()];
         this.img = this.imageCache[imgPath];
     }
 
+    /**
+     * @returns - Healthbar state
+     */
     healthBarIndex(){
         if (this.healthTotal <= 100 && this.healthTotal >= 81) {
             return 0;

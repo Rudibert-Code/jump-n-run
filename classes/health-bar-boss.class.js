@@ -1,5 +1,5 @@
 /**
- * Create new healthbar element
+ * Create new boss healthbar element
  */
 class HealthBarBoss extends DrawableObject{
 
