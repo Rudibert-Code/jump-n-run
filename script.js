@@ -164,7 +164,6 @@ switch (ID) {
 function toggleImprint(){
     let dialogImprint = document.getElementById("imprint");
     let pause = localStorage.getItem("paused");
-
     dialogImprint.classList.toggle("hide")
 
     if (pause == "false") {
