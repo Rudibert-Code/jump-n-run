@@ -1,3 +1,6 @@
+/**
+ * Create a new ammunition icon.
+ */
 class Amo extends MovableObject{
     img_amo = [
         './assets/ui/ani_amo/1.png',
@@ -23,6 +26,12 @@ class Amo extends MovableObject{
     hitWidth = 80;
     hitHeight = 80;
 
+    /**
+     * 
+     * @param {string} imgPath - Image path.
+     * @param {number} x - x-position.
+     * @param {number} y - y-position.
+     */
     constructor(imgPath, x,y){
         super().loadImage(imgPath);
         this.loadImages(this.img_amo);
@@ -31,6 +40,9 @@ class Amo extends MovableObject{
         this.animation();
     }
 
+    /**
+     * Check for current pause state. Changes this.pause to current pause state.
+     */
     animation(){
         setInterval(() => { 
             let i = this.currentImage % this.img_amo.length;
@@ -41,6 +53,9 @@ class Amo extends MovableObject{
         }, 1000 / 30);
     }
 
+    /**
+     * Update object position.
+     */
     setPosition(){
         this.hitOffset_x = this.position_x;
         this.hitOffset_y = this.position_y;
