@@ -1,3 +1,7 @@
+/**
+ * Create a new, movable ammunition icon.
+ * @class
+ */
 class AmoTwo extends MovableObject{
     amo = [
         './assets/ui/ani_amo/1.png',
@@ -24,6 +28,11 @@ class AmoTwo extends MovableObject{
     hitHeight = 80;
     pause = "false"
 
+    /**
+     * 
+     * @param {number} x - Position on the x-axes. 
+     * @param {number} y - Position on the x-axes. 
+     */
     constructor(x,y){
         super().loadImage('./assets/ui/ani_amo/1.png');
         this.loadImages(this.amo);
@@ -33,12 +42,18 @@ class AmoTwo extends MovableObject{
         this.checkForPause();
     }
 
+    /**
+     * Check for current pause state. Changes this.pause to current pause state.
+     */
     checkForPause(){
         setInterval(() => {
             this.pause = localStorage.getItem("paused");
         }, 1000/30);
     }
 
+    /**
+     * Checks if game is paused. If not: object moves at set interval.
+     */
     animation(){
         setInterval( () => {
             if (this.pause == "false") {
@@ -52,6 +67,9 @@ class AmoTwo extends MovableObject{
         }, 1000 / 30)
     }
 
+    /**
+     * Update object position.
+     */
     setPosition(){
         this.hitOffset_x = this.position_x;
         this.hitOffset_y = this.position_y;
