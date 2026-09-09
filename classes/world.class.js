@@ -358,6 +358,29 @@ class World{
     }
 
     /**
+     * At selected element to map
+     * @param {HTMLElement} mo 
+     */
+    addToMap(mo){
+        this.ctx.drawImage(mo.img, mo.position_x, mo.position_y, mo.width, mo.height);
+        this.drawFrame(mo);
+    }
+
+    /**
+     * Add hitbox to selected element
+     * @param {HTMLElement} mo 
+     */
+    drawFrame(mo){
+        //if (mo instanceof Character || mo instanceof EnemyHover || mo instanceof EnemyTank || mo instanceof Coins ||  mo instanceof Amo || mo instanceof Shot || mo instanceof EnemyShot || mo instanceof Lava || mo instanceof Boss1) {
+        //    this.ctx.beginPath();
+        //    this.ctx.lineWidth = '5';
+        //    this.ctx.strokeStyle = 'blue';
+        //    this.ctx.rect(mo.hitOffset_x, mo.hitOffset_y, mo.hitWidth, mo.hitHeight);
+        //    this.ctx.stroke();
+        //};
+    }
+
+    /**
      * Check player location in the level for boss fight trigger
      */
     checkPlayerLocation(){

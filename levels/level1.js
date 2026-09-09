@@ -1,9 +1,5 @@
 let startLevel1 = false;
 let level1;
-
-/**
- * Level(1) set up
- */
 function renderLeve(){
     if (startLevel1 == true) {
     level1 = new Level(
