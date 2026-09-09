@@ -1,3 +1,6 @@
+/**
+ * Create new character.
+ */
 class Character extends MovableObject{
     img_idle = [
         './assets/player/idle/0.png',
@@ -81,6 +84,9 @@ class Character extends MovableObject{
     pause = "false";
 
 
+    /**
+     * Load images for character animations.
+     */
     constructor(){
         super().loadImage('./assets/player/idle/0.png');
         this.loadImages(this.img_idle);
@@ -97,12 +103,18 @@ class Character extends MovableObject{
         this.outOfBounds = false;
     }
 
+    /**
+     * Check current pause state.
+     */
     checkforPause(){
         setInterval(() => {
             this.pause = localStorage.getItem("paused");
         }, 1000/30);
     }
 
+    /**
+     * Apply gravity to character. Check character position on y-axes to determine if Jump/Fall state is active.
+     */
     applyGravity(){
         setInterval(() => {
             if (this.position_y <= 1000 && this.pause == "false") {
@@ -117,40 +129,74 @@ class Character extends MovableObject{
             this.setPosition();
         }, 1000/30);
     }
+
+    /**
+     * Check ammunition number; If ammunition number is 0, block Shoot button. 
+     */
     blockShootBtn(){
         let targetBtn = document.getElementById('mobile-btn_S');
         if(this.world.amoNumber <= 0){
             targetBtn.classList.add("blocked");
         }
     }
+
+    /**
+     * Check for animation triggers at set interval.
+     */
     animations(){
         setInterval(() => {
             if (this.pause == "false") {
+
+                /**
+                 * Trigger "Walk-Left" or "Walk-Right" animation.
+                 */
                 if (this.world.keyboard.right || this.world.keyboard.left) {
+
                     if(this.position_y >= 400){
                         this.aniType = this.img_walk;
                     }
+
                     if(this.world.keyboard.right && this.position_x <= this.world.level.levelEndX && this.dead == false  && this.hit == false){
                         this.moveRight();
                     } else if(this.world.keyboard.left && this.position_x >= 0 && this.dead == false && this.hit == false){
                         this.moveLeft();
                     }
                 }
+
+                /**
+                 * Trigger "Idle" animation
+                 */
                 if (this.world.keyboard.right == false && this.world.keyboard.left == false && this.position_y >= 400) {
                     this.aniType = this.img_idle;
                 }
+
+                /**
+                 * Accelerate character for "Jump" animation
+                 */
                 if (this.world.keyboard.jump && this.position_y >= 400) {
                     this.jump(40);
                 }
+
+                /**
+                 * Trigger "Jump" animation
+                 */
                 if (this.position_y <= 399){
                     this.aniType = this.img_jump;
                 }
+
+                /**
+                 * Trigger "Hit" animation; Start invulnerability state & counter
+                 */
                 if (this.hit == true) {
                     this.height = 230;
                     this.width = 230; 
                     this.aniType = this.img_hit;
                     this.click++;
                     this.pushLeft();
+
+                    /**
+                     * End invulnerability state
+                     */
                     if (this.click >= 15) {
                         this.height = 200;
                         this.width = 200;
@@ -158,20 +204,33 @@ class Character extends MovableObject{
                         this.hit = false;
                     }
                 }
+
+                /**
+                 * Trigger shoot
+                 */
                 if (this.world.keyboard.shoot == true && this.cooldown == true && this.world.amoNumber >= 1){
                     this.cooldown = false;
                     this.shoot();
                     this.blockShootBtn();
                 }
+
+                /**
+                 * Trigger "Death" animation & sound effect
+                 */
                 if (this.lifePoints <= 0 && this.dead == false) {
                     this.hit = true;
                     AudioHub.stopSound(AudioHub.Walk);
                     this.jump(10);
                     this.dead = true;
                 }
+
+                /**
+                 * Check if element is out of bounds
+                 */
                 if (this.position_y >= 800 && this.outOfBounds == false){
                     this.outOfBounds = true;
                 }
+
                 this.anI = this.currentImage % this.aniType.length;
                 this.path = this.aniType[this.anI];
                 this.img = this.imageCache[this.path];
@@ -183,20 +242,41 @@ class Character extends MovableObject{
         }, 1000/30);
     }
 
+    /**
+     * Accelerate character for jump
+     * @param {number} strength 
+     */
     jump(strength){
         this.speed_y = strength;
         this.position_y -= this.speed_y;
         AudioHub.playSound(AudioHub.Shot);
     }
+
+    /**
+     * Update character position on x-axes
+     */
     moveRight(){
         this.position_x += 8;
     }
+
+    /**
+     * Update character position on x-axes
+     */
     moveLeft(){
         this.position_x -= 8;
     }
+
+    /**
+     * Move character away from enemy when hit
+     */
     pushLeft(){
         this.position_x -= 8;
     }
+
+    /**
+     * Create new shot relative to player position; Update ammunition counter
+     * @returns 
+     */
     shoot(){
         if (this.world.pID == 0) {
             this.world.amoNumber--
@@ -207,10 +287,18 @@ class Character extends MovableObject{
         } 
         return
     }
+
+    /**
+     * Update player position
+     */
     setPosition(){
         this.hitOffset_x = this.position_x;
         this.hitOffset_y = this.position_y+20;
     }
+
+    /**
+     * Start cool down
+     */
     coolDown(){
         setInterval(() => {
             if (this.cooldown == false) {
