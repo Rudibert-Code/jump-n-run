@@ -1,3 +1,6 @@
+/**
+ * Create new "Destroy" animation
+ */
 class Destroy extends MovableObject{
     img_destroy = [
         './assets/enemy/destroy/3.png',
@@ -20,6 +23,11 @@ class Destroy extends MovableObject{
     height = 200;
     width = 200;
 
+    /**
+     * 
+     * @param {number} x 
+     * @param {number} y 
+     */
     constructor(x,y){
         super().loadImage('./assets/enemy/destroy/3.png');
         this.loadImages(this.img_destroy);
@@ -27,6 +35,10 @@ class Destroy extends MovableObject{
         this.position_y = y;
         this.animation();
     }
+
+    /**
+     * Create and play "Destroy" animation at current element location
+     */
     animation(){
         setInterval(() => { 
             let i = this.currentImage % this.img_destroy.length;
