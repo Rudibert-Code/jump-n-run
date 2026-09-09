@@ -1,3 +1,6 @@
+/**
+ * Create new Enemy Tank element
+ */
 class EnemyTank extends MovableObject{
     img_idle = [
         './assets/enemy/unit_2/0.png',
@@ -16,6 +19,11 @@ class EnemyTank extends MovableObject{
     hitHeight = 150;
     destroy = false;
 
+    /**
+     * 
+     * @param {string*} imgPath 
+     * @param {number} x 
+     */
     constructor(imgPath, x){
         super().loadImage(imgPath);
         this.loadImages(this.img_idle);
@@ -26,12 +34,18 @@ class EnemyTank extends MovableObject{
         this.checkForPause();
     }
 
+    /**
+     * Check if game is paused
+     */
     checkForPause(){
         setInterval(() => {
             this.pause = localStorage.getItem("paused");
         }, 1000/30);
     }
 
+    /**
+     * Update Enemy Tank position on x-axes at set interval
+     */
     animate(){
         setInterval( () => {
             if (this.pause == "false") {
@@ -40,9 +54,17 @@ class EnemyTank extends MovableObject{
             }
         }, 1000 / 30);
     }
+
+    /**
+     * Trigger Enemy Tank's animations
+     */
     animation(){
         setInterval(() => { 
             if (this.pause == "false") {
+
+                /**
+                 * Trigger "Dextroy" animation when hit
+                 */
                 if (this.destroy == true) {
                     let iD = this.currentImage % this.img_destroy.length;
                     let path = this.img_destroy[iD];
@@ -58,6 +80,10 @@ class EnemyTank extends MovableObject{
             }
         }, 1000 / 30);
     }
+
+    /**
+     * Update Enemy Tank's position on the x-axes
+     */
     setPosition(){
         this.hitOffset_x = this.position_x;
     }
