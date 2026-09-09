@@ -1,3 +1,6 @@
+/**
+ * Create new Coin element
+ */
 class Coins extends MovableObject{
     img_coin = [
         './assets/ui/ani_coin/1.png',
@@ -21,6 +24,12 @@ class Coins extends MovableObject{
     hitWidth = 80;
     hitHeight = 80;
 
+    /**
+     * 
+     * @param {string} imgPath - image path
+     * @param {number} x - position on x-axes
+     * @param {number} y - position on y-axes
+     */
     constructor(imgPath, x,y){
         super().loadImage(imgPath);
         this.loadImages(this.img_coin);
@@ -29,6 +38,9 @@ class Coins extends MovableObject{
         this.animation();
     }
 
+    /**
+     * Update element position at set interval
+     */
     animation(){
         setInterval(() => { 
             let i = this.currentImage % this.img_coin.length;
@@ -39,6 +51,9 @@ class Coins extends MovableObject{
         }, 1000 / 30);
     }
 
+    /**
+     * Update element position
+     */
     setPosition(){
         this.hitOffset_x = this.position_x;
         this.hitOffset_y = this.position_y;
