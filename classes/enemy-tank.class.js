@@ -21,7 +21,7 @@ class EnemyTank extends MovableObject{
 
     /**
      * 
-     * @param {string*} imgPath 
+     * @param {any} imgPath 
      * @param {number} x 
      */
     constructor(imgPath, x){
