@@ -195,7 +195,7 @@ class World{
 
     /**
      * Check if player projectile is out of bounds
-     * @returns 
+     * @returns - void
      */
     outOfBoundsProjectile(){
         if (this.projectile[this.pID].position_x >= this.character.position_x + 1000) {

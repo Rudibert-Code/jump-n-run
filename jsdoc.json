@@ -28,7 +28,7 @@
         "./classes/projectile.class.js",
         "./classes/Sky.class.js",
         "./classes/ui_points.class.js",
-        "./classes/ui-amos.class.js",
+        "./classes/ui-amo.class.js",
         "./classes/world.class.js"
         ],
         "opts": {

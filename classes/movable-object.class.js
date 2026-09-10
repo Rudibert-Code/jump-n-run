@@ -8,7 +8,7 @@ class MovableObject extends DrawableObject{
     /**
      * Checks for collision between game element and current element's hitbox
      * @param {HTMLElement} object 
-     * @returns 
+     * @returns - object hitbox in relation to current element hitbox
      */
     isColliding(object) {
     return this.hitOffset_x < object.hitOffset_x + object.hitWidth &&

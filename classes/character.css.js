@@ -275,7 +275,7 @@ class Character extends MovableObject{
 
     /**
      * Create new shot relative to player position; Update ammunition counter
-     * @returns 
+     * @returns - void
      */
     shoot(){
         if (this.world.pID == 0) {
