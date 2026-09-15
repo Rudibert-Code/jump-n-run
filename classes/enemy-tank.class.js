@@ -29,7 +29,7 @@ class EnemyTank extends MovableObject{
         this.loadImages(this.img_idle);
         this.position_y = 400;
         this.position_x = x;
-        this.animate();
+        window.addEventListener('gameLoaded', () => this.animate(), { once: true });
         this.animation();
         this.checkForPause();
     }

@@ -16,7 +16,10 @@ async function initGame(){
     localStorage.setItem("paused", "false");
     hideIMG();
     await DrawableObject.waitForImages();
-    requestAnimationFrame(closeLoadingScreen);
+    requestAnimationFrame(() => {
+        closeLoadingScreen();
+        window.dispatchEvent(new Event('gameLoaded'));
+    });
 }
 
 function hideIMG(){
