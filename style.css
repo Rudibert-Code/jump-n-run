@@ -278,9 +278,6 @@ footer{
     background-image: url(assets/ui/mobile-btn_direction-pushed.png);
     background-repeat: no-repeat;
     background-size: cover;
-    &:active{
-        background-image: url(assets/ui/mobile-btn_direction.png);
-    }
 }
 
 .L{
@@ -299,9 +296,6 @@ footer{
     background-image: url(assets/ui/mobile-btn_shoot-pushed.png);
     background-repeat: no-repeat;
     background-size: cover;
-    &:active{
-        background-image: url(assets/ui/mobile-btn_shoot.png);
-    }
 }
 
 .blocked{
