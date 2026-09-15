@@ -278,6 +278,10 @@ footer{
     background-image: url(assets/ui/mobile-btn_direction-pushed.png);
     background-repeat: no-repeat;
     background-size: cover;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
 }
 
 .L{

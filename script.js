@@ -133,10 +133,6 @@ switch (ID) {
         keyboard.shoot = true;
         break;
     default:
-        keyboard.left = false;
-        keyboard.right = false;
-        keyboard.jump = false;
-        keyboard.shoot = false;
         break;
 }
 };
@@ -156,10 +152,6 @@ switch (ID) {
         keyboard.shoot = false;
         break;
     default:
-        keyboard.left = false;
-        keyboard.right = false;
-        keyboard.jump = false;
-        keyboard.shoot = false;
         break;
 }
 };
