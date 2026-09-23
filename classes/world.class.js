@@ -8,7 +8,7 @@ class World{
     iconCoin = new IconCoin();
     iconAmo = new IconAmo();
     projectile = [new Shot()];
-    projectileEnemy = [new EnemyShot()];
+    projectileEnemy = [];
     movingAmo = [new AmoTwo()];
     destroy = [new Destroy()];
     pID = 0;
@@ -215,15 +215,16 @@ class World{
     /**
      * Check collision with Enemy Boss attack
      */
-    checkCollitionsEnemyBossAttack(){
-        if (this.character.isColliding(this.projectileEnemy[this.epID]) && this.character.hit == false){
-            this.character.hit = true;   
-            AudioHub.playSound(AudioHub.Hit);
-            this.character.lifePoints -= 40;
-            this.healthBar.setHealth(this.character.lifePoints);
-            this.projectileEnemy.splice(this.epID,1);
-            this.epID = 0;
-        }
+    checkCollitionsEnemyBossAttack() {
+        this.projectileEnemy.forEach((projectile, index) => {
+            if (this.character.isColliding(projectile) && this.character.hit == false) {
+                this.character.hit = true;
+                AudioHub.playSound(AudioHub.Hit);
+                this.character.lifePoints -= 40;
+                this.healthBar.setHealth(this.character.lifePoints);
+                this.projectileEnemy.splice(index, 1);
+            }
+        });
     }
 
     /**
@@ -404,7 +405,7 @@ class World{
                 }
             }
             this.bossCoolDown++
-            if (this.bossCoolDown == 60) {
+            if (this.bossCoolDown == 100) {
                 this.bossCoolDown = 0;
             }
         }
