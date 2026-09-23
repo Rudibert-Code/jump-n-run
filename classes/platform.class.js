@@ -17,7 +17,6 @@ class Platform extends MovableObject{
      */
     constructor(imgPath, x, y){
         super().loadImage(imgPath);
-
         this.position_x = x;
         this.position_y = y;
     }

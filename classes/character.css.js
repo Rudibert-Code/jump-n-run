@@ -302,11 +302,11 @@ class Character extends MovableObject{
     coolDown(){
         setInterval(() => {
             if (this.cooldown == false) {
-            this.click++
-            if (this.click == 30) {
-                this.click = 0;
-                this.cooldown = true;
-            }
+                this.click++
+                if (this.click == 30) {
+                    this.click = 0;
+                    this.cooldown = true;
+                }
             }
         }, 1000/30);
     }

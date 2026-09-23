@@ -249,12 +249,12 @@ class World{
         }) 
         let moAmo = this.movingAmo[this.aID];
         if (this.character.isColliding(moAmo)){
-                AudioHub.playSound(AudioHub.Amo);
-                this.amoNumber++;
-                this.movingAmo.splice(this.aID,1);
-                this.aID = 0;
-                this.unblockShootBtn();
-            }
+            AudioHub.playSound(AudioHub.Amo);
+            this.amoNumber++;
+            this.movingAmo.splice(this.aID,1);
+            this.aID = 0;
+            this.unblockShootBtn();
+        }
     }
 
     /**
