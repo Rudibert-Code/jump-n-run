@@ -1,3 +1,6 @@
+/**
+ * Creates player projectile / shot element
+ */
 class Shot extends MovableObject{
     height = 40;
     width = 40;
@@ -7,6 +10,11 @@ class Shot extends MovableObject{
     hitHeight = 100;
     pause = "false";
 
+    /**
+     * 
+     * @param {number} x 
+     * @param {number} y 
+     */
     constructor(x,y){
         super().loadImage('./assets/player/shot.png');
         this.position_x = x + 150;
@@ -14,12 +22,18 @@ class Shot extends MovableObject{
         this.animation(100,100);
     }
 
+    /**
+     * Check if game is paused
+     */
     checkForPause(){
         setInterval(() => {
             this.pause = localStorage.getItem("paused");
         }, 1000/30);
     }
 
+    /**
+     * Updates element position at the set interval
+     */
     animation(){
         setInterval( () => {
             if (this.pause == "false") {
@@ -29,6 +43,9 @@ class Shot extends MovableObject{
         }, 1000 / 30)
     }
 
+    /**
+     * Updates element position
+     */
     setPosition(){
         this.hitOffset_x = this.position_x -30;
         this.hitOffset_y = this.position_y -30;
